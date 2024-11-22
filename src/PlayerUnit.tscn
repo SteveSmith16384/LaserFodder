@@ -1,0 +1,75 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://character_scenes/Swat.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PlayerUnit.gd" type="Script" id=2]
+[ext_resource path="res://components/CanBeSelected.tscn" type="PackedScene" id=3]
+[ext_resource path="res://components/CanBeShot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://components/CheckCanSeeRay.tscn" type="PackedScene" id=5]
+[ext_resource path="res://DebuggingSphere.tscn" type="PackedScene" id=6]
+[ext_resource path="res://BloodSplatter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://components/CanShoot.tscn" type="PackedScene" id=8]
+[ext_resource path="res://components/CanCarry.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/sprites/sf_arrow.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Fonts/kenvector_future_thin.ttf" type="DynamicFontData" id=11]
+
+[sub_resource type="CylinderShape" id=1]
+height = 1.82962
+radius = 0.436268
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 11 )
+
+[node name="PlayerUnit" type="KinematicBody" groups=["player"]]
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.932587, 0 )
+shape = SubResource( 1 )
+
+[node name="Rotator" type="Spatial" parent="."]
+
+[node name="Swat" parent="Rotator" instance=ExtResource( 1 )]
+transform = Transform( -4.80825e-08, 0, -1.1, 0, 1.1, 0, 1.1, 0, -4.80825e-08, 0, 0, 0 )
+
+[node name="BloodSplatter" parent="Rotator/Swat" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 1.0149, 0 )
+
+[node name="DebuggingSphere" parent="Rotator" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.860362, 1.38062, 0 )
+visible = false
+
+[node name="CanBeSelected" parent="." instance=ExtResource( 3 )]
+
+[node name="CheckCanSeeRay" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="CanBeShot" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0.0653133, 1.46831, -2.22045e-16 )
+
+[node name="CanShoot" parent="." instance=ExtResource( 8 )]
+
+[node name="CanCarry" parent="." instance=ExtResource( 9 )]
+
+[node name="SelectedArrow" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.04542, 0 )
+visible = false
+cast_shadow = 0
+opacity = 0.5
+pixel_size = 0.05
+billboard = 1
+double_sided = false
+texture = ExtResource( 10 )
+
+[node name="CheckForEnemyTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128136, 2.22635, 0 )
+billboard = 1
+text = "[TODO]"
+font = SubResource( 2 )
+
+[connection signal="input_event" from="." to="." method="_on_PlayerUnit_input_event"]
+[connection signal="killed" from="CanBeShot" to="." method="_on_CanBeShot_killed"]
+[connection signal="shot" from="CanBeShot" to="." method="_on_CanBeShot_shot"]

@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://CameraController.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GameScene.gd" type="Script" id=3]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://systems/AISystem.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+background_color = Color( 0.152941, 0.152941, 0.152941, 1 )
+background_energy = 0.5
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_energy = 0.1
+ambient_light_sky_contribution = 0.0
+glow_enabled = true
+glow_intensity = 1.0
+glow_strength = 0.7
+glow_bloom = 1.0
+glow_blend_mode = 0
+glow_bicubic_upscale = true
+glow_high_quality = true
+
+[node name="GameScene" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="CameraController" parent="." instance=ExtResource( 2 )]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.83046, -0.192851, 0.522633, -0.372888, 0.504561, 0.778699, -0.413873, -0.841562, 0.347106, 21.577, 18.3942, 36.5006 )
+light_color = Color( 0.980392, 0.654902, 0.964706, 1 )
+shadow_enabled = true
+shadow_color = Color( 0.156863, 0.156863, 0.156863, 1 )
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="AISystem" parent="Systems" instance=ExtResource( 5 )]
+
+[node name="UI" parent="." instance=ExtResource( 4 )]
+
+[connection signal="player_selected" from="UI" to="." method="_on_UI_player_selected"]
+[connection signal="select_all" from="UI" to="." method="_on_UI_select_all"]

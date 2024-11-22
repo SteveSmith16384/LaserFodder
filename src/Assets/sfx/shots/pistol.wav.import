@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pistol.wav-5e53314f05ca5c89e66e357c60d7810e.sample"
+
+[deps]
+
+source_file="res://Assets/sfx/shots/pistol.wav"
+dest_files=[ "res://.import/pistol.wav-5e53314f05ca5c89e66e357c60d7810e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

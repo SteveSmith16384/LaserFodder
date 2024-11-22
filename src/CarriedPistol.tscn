@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/sfx/shots/pistol.wav" type="AudioStream" id=1]
+[ext_resource path="res://components/IsGun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://components/IsItem.tscn" type="PackedScene" id=3]
+
+[sub_resource type="SphereShape" id=1]
+
+[node name="CarriedPistol" type="Area"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="IsGun" parent="." instance=ExtResource( 2 )]
+reload_time = 2.0
+damage = 10.0
+distance = 15.0
+shot_sfx = ExtResource( 1 )
+
+[node name="IsItem" parent="." instance=ExtResource( 3 )]
+item_name = "Pistol"

@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://EnemyAgent.gd" type="Script" id=2]
+[ext_resource path="res://components/CheckCanSeeRay.tscn" type="PackedScene" id=3]
+[ext_resource path="res://components/CanShoot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://components/CanCarry.tscn" type="PackedScene" id=5]
+[ext_resource path="res://components/CanBeShot.tscn" type="PackedScene" id=6]
+[ext_resource path="res://components/HasAI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://components/CanBeSelected.tscn" type="PackedScene" id=8]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.414686
+
+[node name="EnemyAgent" type="KinematicBody" groups=["enemy"]]
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.992527, 0 )
+shape = SubResource( 1 )
+
+[node name="Rotator" type="Spatial" parent="."]
+
+[node name="ChangeDirTimer" type="Timer" parent="."]
+
+[node name="CheckCanSeeRay" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+cast_to = Vector3( 0, 0, 0 )
+
+[node name="CanShoot" parent="." instance=ExtResource( 4 )]
+accuracy = 70.0
+
+[node name="CanCarry" parent="." instance=ExtResource( 5 )]
+
+[node name="CanBeShot" parent="." instance=ExtResource( 6 )]
+
+[node name="HasAI" parent="." instance=ExtResource( 7 )]
+ai_type = 2
+
+[node name="CanBeSelected" parent="." instance=ExtResource( 8 )]
+
+[connection signal="input_event" from="." to="." method="_on_EnemyAgent_input_event"]
+[connection signal="timeout" from="ChangeDirTimer" to="." method="_on_ChangeDirTimer_timeout"]
+[connection signal="killed" from="CanBeShot" to="." method="_on_CanBeShot_killed"]
+[connection signal="shot" from="CanBeShot" to="." method="_on_CanBeShot_shot"]
