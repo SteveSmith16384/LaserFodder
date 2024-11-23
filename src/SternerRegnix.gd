@@ -2,7 +2,7 @@ extends KinematicBody
 
 # These will shoot at any gang members or anyone who shoots at them (i.e police)
 
-export(HasAI.Mode) var current_mode
+#export(HasAI.Mode) var current_mode
 
 const SPEED = 1.65
 
@@ -16,7 +16,7 @@ func _ready():
 	var pistol = pistol_class.instance()
 	$CanCarry.items.push_back(pistol)
 	$CanShoot.current_weapon = $CanCarry.get_first_gun()
-	$HasAI.current_mode = current_mode
+	#$HasAI.current_mode = current_mode
 	pass
 
 

@@ -6,6 +6,8 @@ var selected_units: Array
 var mouse_clicked_event:InputEventMouseButton
 
 func _ready():
+	var players = get_tree().get_nodes_in_group("player")
+	_on_player_selected(players[0])
 	pass
 
 func _process(_delta):

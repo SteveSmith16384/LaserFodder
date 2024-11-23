@@ -8,7 +8,7 @@ signal selected
 signal equipment_changed
 signal stats_changed
 
-onready var model = $Rotator/Swat
+onready var model = $Rotator/Spacesuit
 var has_destination = false
 var destination: Vector3
 
@@ -148,7 +148,7 @@ func _on_CanBeShot_shot(shooter:Spatial):
 	$Rotator.rotation_degrees.y -= 90
 	model.shot()
 	
-	$Rotator/Swat/BloodSplatter.activate()
+	model.get_node("BloodSplatter").activate()
 	
 	$CanShoot.current_target = shooter # todo - check priority of current target against new one?
 	emit_signal("stats_changed", self)

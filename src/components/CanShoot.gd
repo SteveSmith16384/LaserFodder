@@ -3,7 +3,7 @@ extends Spatial
 export var accuracy : float = 90
 
 var current_target : Spatial
-var current_weapon
+var current_weapon # IsGun
 var weapon_drawn = false
 
 var time_until_next_shot:float = 0
@@ -17,7 +17,7 @@ func _process(delta:float):
 	
 
 func shoot(): # Return whether to play shoot anim
-	var gun = current_weapon.get_node("IsGun")
+	var gun = current_weapon#.get_node("IsGun")
 	if gun.get_ammo() <= 0:
 		print("Out of ammo!")
 		return false
