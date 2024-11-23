@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://Bullet.gd"
+}, {
 "base": "Spatial",
 "class": "HasAI",
 "language": "GDScript",
 "path": "res://components/HasAI.gd"
 } ]
 _global_script_class_icons={
+"Bullet": "",
 "HasAI": ""
 }
 

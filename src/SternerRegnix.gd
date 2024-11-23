@@ -10,6 +10,8 @@ const pistol_class = preload("res://CarriedPistol.tscn")
 
 signal selected
 
+onready var model:Spatial = $Rotator/Swat
+
 func _ready():
 	var pistol = pistol_class.instance()
 	$CanCarry.items.push_back(pistol)
@@ -19,22 +21,22 @@ func _ready():
 
 
 func idle_anim():
-	$Rotator/Punk.idle()
+	$model.idle()
 	return
 
 
 func walk_anim():
-	$Rotator/Punk.walk()
+	model.walk()
 	return
 
 
 func run_anim():
-	$Rotator/Punk.run()
+	model.run()
 	return
 
 
 func shoot_anim():
-	$Rotator/Punk.shoot()
+	model.shoot()
 	return
 	
 
@@ -49,15 +51,15 @@ func can_see(enemy:Spatial) -> bool:
 	
 
 func _on_CanBeShot_killed(_shooter:Spatial):
-	$Rotator/Punk.killed()
+	model.killed()
 	pass
 
 
 func _on_CanBeShot_shot(shooter:Spatial):
 	turn_to_face(shooter)
-	$Rotator/Punk.shot()
+	model.shot()
 	
-	$Rotator/Punk/BloodSplatter.activate()
+	model.get_node("BloodSplatter").activate()
 	pass
 
 

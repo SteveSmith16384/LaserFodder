@@ -1,7 +1,5 @@
 extends Spatial
 
-
-
 func _ready():
 	place_droids()
 	place_sterner()

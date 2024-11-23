@@ -3,7 +3,7 @@ extends KinematicBody
 onready var bullet_class = preload("res://Bullet.tscn")
 var droid_corpse_class = preload("res://DestroyedRobot.tscn")
 
-var main : Main
+var main# : Main
 var player : Spatial
 
 var player_in_area = false

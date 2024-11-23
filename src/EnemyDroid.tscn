@@ -6,8 +6,8 @@
 [ext_resource path="res://Assets/sfx/launches/flaunch.wav" type="AudioStream" id=4]
 
 [sub_resource type="CylinderShape" id=1]
-radius = 0.504654
 height = 1.4635
+radius = 0.504654
 
 [sub_resource type="ConvexPolygonShape" id=2]
 points = PoolVector3Array( 0, 1, 0, -10, 0, -20, -10, 2, -20, 10, 0, -20, 10, 2, -20 )

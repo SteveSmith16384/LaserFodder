@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/models/the_assassins/door1_right.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Assets/models/the_assassins/door1_left.obj" type="ArrayMesh" id=2]
-[ext_resource path="res://Door1.gd" type="Script" id=3]
+[ext_resource path="res://Scenery/Door1.gd" type="Script" id=3]
 [ext_resource path="res://Assets/sfx/slidingdoor.wav" type="AudioStream" id=4]
 [ext_resource path="res://Assets/models/the_assassins/door1_right.png" type="Texture" id=5]
 [ext_resource path="res://Assets/models/the_assassins/door1_left.png" type="Texture" id=6]
