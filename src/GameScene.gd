@@ -6,6 +6,8 @@ var selected_units: Array
 var mouse_clicked_event:InputEventMouseButton
 
 func _ready():
+	EventBus.connect("enemy_selected", self, "_on_enemy_selected")
+	
 	var players = get_tree().get_nodes_in_group("player")
 	_on_player_selected(players[0])
 	pass
@@ -23,6 +25,9 @@ func _process(_delta):
 	elif Input.is_action_just_pressed("unit_4"):
 		var players = get_tree().get_nodes_in_group("player")
 		_on_player_selected(players[3])
+	elif Input.is_action_just_pressed("unit_5"):
+		var players = get_tree().get_nodes_in_group("player")
+		_on_player_selected(players[4])
 	pass
 	
 	
@@ -37,7 +42,7 @@ func _physics_process(_delta):
 		#print("Click:" + str(to))
 		var result = get_world().direct_space_state.intersect_ray(from, to)
 		if result.size() > 0:
-			if result.collider == $City/Floor:
+			if result.collider.is_in_group("floor"):# == $City/Floor:
 				var offset_idx : int = 0
 				for unit in selected_units:
 					unit.set_destination(result.position, true, offset_idx > 0)
@@ -54,7 +59,7 @@ func _unhandled_input(event):
 	pass
 	
 	
-func _on_player_selected(player):
+func _on_player_selected(player:KinematicBody):
 	for pl in get_tree().get_nodes_in_group("player"):
 		pl.get_node("SelectedArrow").visible = false
 
@@ -62,13 +67,13 @@ func _on_player_selected(player):
 	selected_units.push_back(player)
 	player.get_node("SelectedArrow").visible = true
 
-	$CameraController.target_aim = player
+	$CameraController.target_aim = player.global_translation
 	append_log("Unit selected")
 	pass
 	
 
 func append_log(s:String):
-	$UI/Log.append_to_log(s)
+	$GameUI/Log.append_to_log(s)
 	pass
 	
 	

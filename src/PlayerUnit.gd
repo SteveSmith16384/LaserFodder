@@ -47,16 +47,16 @@ func _physics_process(_delta):
 			
 			var dist = self.global_translation.distance_to($CanShoot.current_target.global_translation)
 			var is_gun = $CanShoot.current_weapon.get_node("IsGun")
-			if dist < is_gun.distance:
-				has_destination = false
-				var shot_fired = $CanShoot.shoot()
-				if shot_fired:
-					model.shoot_anim()
-					emit_signal("equipment_changed", self)
-				return
-			else:
-				# Walk towards them
-				set_destination($CanShoot.current_target.translation, false)
+#			if dist < is_gun.distance:
+			has_destination = false
+			var shot_fired = $CanShoot.shoot()
+			if shot_fired:
+				model.shoot_anim()
+				emit_signal("equipment_changed", self)
+			return
+#			else:
+#				# Walk towards them
+#				set_destination($CanShoot.current_target.translation, false)
 		else:
 			# Walk towards them
 			set_destination($CanShoot.current_target.translation, false)
@@ -87,9 +87,9 @@ func _physics_process(_delta):
 
 func set_target(enemy:KinematicBody):
 	$CanShoot.current_target = enemy
-	var can_see = $CheckCanSeeRay.can_see($CanShoot.current_target)
-	if can_see == false:
-		self.set_destination(enemy.global_translation, false)
+#	var can_see = $CheckCanSeeRay.can_see($CanShoot.current_target)
+#	if can_see == false:
+#		self.set_destination(enemy.global_translation, false)
 	pass
 	
 	
@@ -123,8 +123,8 @@ func set_destination(pos: Vector3, clear_target:bool, rnd_offset = false):
 	destination = pos
 	
 	if rnd_offset:
-		destination.x += Globals.rnd.randi_range(-2, 2)
-		destination.z += Globals.rnd.randi_range(-2, 2)
+		destination.x += Globals.rnd.randi_range(-1, 1) * 2
+		destination.z += Globals.rnd.randi_range(-1, 1) * 2
 
 	has_destination = true
 	

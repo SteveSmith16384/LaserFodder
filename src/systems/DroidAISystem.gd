@@ -9,7 +9,9 @@ func _process(delta):
 	pass
 	
 
-func _process_entity(delta: float, entity:KinematicBody):
+func _process_entity(_delta: float, entity:KinematicBody):
+	return # todo
+	
 	var our_cbs = entity.get_node("CanBeShot")
 	if our_cbs.killed:
 		# We're dead!

@@ -47,4 +47,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17032, -0.835943 )
 [node name="CheckCanSeeRay" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
+[connection signal="input_event" from="." to="." method="_on_EnemyDroid_input_event"]
 [connection signal="timeout" from="Death_Timer" to="." method="_on_Death_Timer_timeout"]

@@ -1,20 +1,21 @@
 extends KinematicBody
 
-#var pistol_class = preload()
+signal selected
+
+var laser_class = preload("res://CarriedDroidLaser.tscn")
 var bullet_class = preload("res://Bullet.tscn")
 var droid_corpse_class = preload("res://DestroyedRobot.tscn")
 
 
 func _ready():
-	$CanShoot.current_weapon = $CanShoot/IsGun
-#	var pistol = pistol_class.instance()
+#	$CanShoot.current_weapon = #$CanShoot/IsGun
+	var laser = laser_class.instance()
 #	$CanCarry.items.push_back(pistol)
-#	$CanShoot.current_weapon = $CanCarry.get_first_gun()
+	$CanShoot.current_weapon = laser#$CanCarry.get_first_gun()
 	pass
 	
 	
 func _physics_process(_delta):
-
 #	if player_in_area == false or can_see_player == false:
 #		if patrol_points == null:
 #			patrol_points = main.get_patrol_points(self);
@@ -45,4 +46,11 @@ func can_see(enemy:Spatial) -> bool:
 	return $CheckCanSeeRay.can_see(enemy)
 	
 
+func _on_EnemyDroid_input_event(_camera, event, _position, _normal, _shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == 2 and event.pressed:
+			EventBus.enemy_selected(self)
+			#emit_signal("selected", self)
+		pass
+	pass
 

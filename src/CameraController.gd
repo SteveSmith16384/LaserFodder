@@ -1,13 +1,13 @@
 extends Spatial
 
-const SPEED:float = 5.0
+const SPEED:float = 15.0
 const distance : float = 10.0
 
-var target_pos: Vector3
-var target_aim : Spatial
+#var target_pos: Vector3
+var target_aim : Vector3#Spatial
 var current_aim: Vector3
 
-var angle: float
+#var angle: float
 var height : float = 16.0
 
 var hidden_spatials = []
@@ -16,37 +16,41 @@ func _process(delta):
 	if target_aim == null:
 		return
 		
-	current_aim = lerp(current_aim, target_aim.global_translation, 0.5)
+	current_aim = lerp(current_aim, target_aim, 0.5)
 	
 	if Input.is_action_pressed("ui_left"):
+		target_aim.x -= delta * SPEED
 		#self.translation.x += delta * SPEED
-		angle -= delta * SPEED
+		#angle -= delta * SPEED
+		pass
 	elif Input.is_action_pressed("ui_right"):
+		target_aim.x += delta * SPEED
 		#self.translation.x -= delta * SPEED
-		angle += delta * SPEED
-
-#	if Input.is_action_pressed("ui_up"):
+		#angle += delta * SPEED
+		pass
+		
+	if Input.is_action_pressed("ui_up"):
+		target_aim.z -= delta * SPEED
 #		distance -= delta * SPEED
 #		#self.translation.z += delta * SPEED
-#	elif Input.is_action_pressed("ui_down"):
+	elif Input.is_action_pressed("ui_down"):
+		target_aim.z += delta * SPEED
 #		#self.translation.z -= delta * SPEED
 #		distance += delta * SPEED
 	
-#	if distance < 1:
-#		distance = 1
-	if angle < 0:
-		angle += PI*2
-	elif angle > PI*2:
-		angle -= PI*2
+#	if angle < 0:
+#		angle += PI*2
+#	elif angle > PI*2:
+#		angle -= PI*2
 	#print("Angle=" + str(angle))
 	
-	var x = cos(angle) * distance
-	var z = sin(angle) * distance
-	self.translation.x = current_aim.x + x
+#	var x = cos(angle) * distance
+#	var z = sin(angle) * distance
+	self.translation.x = current_aim.x# + x
 	self.translation.y = height
-	self.translation.z = current_aim.z + z
+	self.translation.z = current_aim.z+5# + z
 	
-	$Camera.look_at(current_aim, Vector3.UP)
+#	$Camera.look_at(current_aim, Vector3.UP)
 	
 #	var dir:Vector3 = self.global_translation - current_aim
 #	$RayCast.cast_to = dir

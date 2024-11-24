@@ -2,7 +2,7 @@ extends Node
 
 export var reload_time:float = 1.0
 export var damage: float = 1.0
-export var distance: float = 20.0
+#export var distance: float = 20.0
 export var max_ammo:int = 20
 export var accuracy:int = 90
 export(Resource) var shot_sfx

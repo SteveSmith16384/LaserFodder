@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "AbstractGunData",
+"language": "GDScript",
+"path": "res://Classes/AbstractGunData.gd"
+}, {
 "base": "KinematicBody",
 "class": "Bullet",
 "language": "GDScript",
@@ -18,10 +23,17 @@ _global_script_classes=[ {
 "class": "CanMove",
 "language": "GDScript",
 "path": "res://components/CanMove.gd"
+}, {
+"base": "AbstractGunData",
+"class": "PistolData",
+"language": "GDScript",
+"path": "res://Classes/PistolData.gd"
 } ]
 _global_script_class_icons={
+"AbstractGunData": "",
 "Bullet": "",
-"CanMove": ""
+"CanMove": "",
+"PistolData": ""
 }
 
 [application]
@@ -33,6 +45,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Globals="*res://Globals.gd"
+EventBus="*res://EventBus.gd"
 
 [gui]
 
