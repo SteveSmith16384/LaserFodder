@@ -19,7 +19,7 @@ func place_droids():
 func place_sterner():
 	var sterner_start_positions = $SternerStartPositions
 	var idx = Globals.rnd.randi_range(0, sterner_start_positions.get_child_count()-1)
-	$SternerRegnix.translation = sterner_start_positions.get_child(idx).translation;
+	$Units/SternerRegnix.translation = sterner_start_positions.get_child(idx).translation;
 	pass
 
 

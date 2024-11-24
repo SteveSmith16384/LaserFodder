@@ -1,6 +1,6 @@
 extends KinematicBody
 
-signal selected
+#signal selected
 
 var laser_class = preload("res://CarriedDroidLaser.tscn")
 var bullet_class = preload("res://Bullet.tscn")

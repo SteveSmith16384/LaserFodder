@@ -4,7 +4,7 @@ const SPEED = 3#1.65
 
 const pistol_class = preload("res://CarriedPistol.tscn")
 
-signal selected
+#signal selected
 signal equipment_changed
 signal stats_changed
 
@@ -45,8 +45,8 @@ func _physics_process(_delta):
 		if can_see:
 			turn_to_face($CanShoot.current_target)
 			
-			var dist = self.global_translation.distance_to($CanShoot.current_target.global_translation)
-			var is_gun = $CanShoot.current_weapon.get_node("IsGun")
+			#var dist = self.global_translation.distance_to($CanShoot.current_target.global_translation)
+			#var is_gun = $CanShoot.current_weapon.get_node("IsGun")
 #			if dist < is_gun.distance:
 			has_destination = false
 			var shot_fired = $CanShoot.shoot()
@@ -114,7 +114,8 @@ func _stop_walking():
 func _on_PlayerUnit_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.pressed:
-			emit_signal("selected", self)
+			EventBus.player_selected(self)
+			#emit_signal("selected", self)
 		pass
 	pass
 	

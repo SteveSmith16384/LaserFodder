@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/trak_base_y.png-cc68fca5fa0195c3450c6b1ebf1ae1b2.s3tc.stex"
-path.etc2="res://.import/trak_base_y.png-cc68fca5fa0195c3450c6b1ebf1ae1b2.etc2.stex"
+path.s3tc="res://.import/wall_square_tex.png-86d9edbda62f9c6e1da6f43567dcf383.s3tc.stex"
+path.etc2="res://.import/wall_square_tex.png-86d9edbda62f9c6e1da6f43567dcf383.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/textures/trak_base_y.png"
-dest_files=[ "res://.import/trak_base_y.png-cc68fca5fa0195c3450c6b1ebf1ae1b2.s3tc.stex", "res://.import/trak_base_y.png-cc68fca5fa0195c3450c6b1ebf1ae1b2.etc2.stex" ]
+source_file="res://Assets/textures/wall_square_tex.png"
+dest_files=[ "res://.import/wall_square_tex.png-86d9edbda62f9c6e1da6f43567dcf383.s3tc.stex", "res://.import/wall_square_tex.png-86d9edbda62f9c6e1da6f43567dcf383.etc2.stex" ]
 
 [params]
 
@@ -22,7 +22,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
-flags/filter=true
+flags/filter=false
 flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=1

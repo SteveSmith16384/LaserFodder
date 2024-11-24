@@ -3,9 +3,7 @@ extends Node
 const VERSION = "1.0"
 const RELEASE_MODE = false
 
-#const AI_VIEW_DISTANCE = 40.0
-
-const SHOW_FPS = false and !RELEASE_MODE
+const SHOW_FPS = true and !RELEASE_MODE
 
 var rnd : RandomNumberGenerator
 
