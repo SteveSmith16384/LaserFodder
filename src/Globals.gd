@@ -8,6 +8,9 @@ const SHOW_FPS = true and !RELEASE_MODE
 var astar: AStar
 var rnd : RandomNumberGenerator
 
+var to_remove = [] # Hack!
+
+
 func _ready():
 	rnd = RandomNumberGenerator.new()
 	rnd.randomize()

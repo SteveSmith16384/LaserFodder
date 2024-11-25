@@ -3,6 +3,8 @@ extends Node
 const SPEED = 3#1.65
 const ENEMY_TARGET_CHECK_INTERVAL :int = 1
 
+signal equipment_changed
+
 func _physics_process(delta):
 	var players = get_tree().get_nodes_in_group("player")
 	for player in players:

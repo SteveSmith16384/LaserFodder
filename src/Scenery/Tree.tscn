@@ -7,6 +7,7 @@
 extents = Vector3( 0.639228, 1, 0.538298 )
 
 [node name="Tree" type="StaticBody"]
+collision_layer = 3
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.336437, 0, -0.65605 )

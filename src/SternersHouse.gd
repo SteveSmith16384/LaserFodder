@@ -1,7 +1,7 @@
 extends Spatial
 
 func _ready():
-	$GenerateAStar.generate_astar(1.6, -8, 34, 25, 3.2)
+	$GenerateAStar.generate_astar(1.6)#3.2)#1.6, -8, 34, 25, 3.2)
 
 	place_droids()
 	place_sterner()

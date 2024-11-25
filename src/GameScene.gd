@@ -9,7 +9,7 @@ func _ready():
 	# Create players
 	var start_positions = $SternersHouse.get_player_start_points()
 	for start_position in start_positions:
-		_create_player(start_position.translation)
+		_create_player(start_position.global_translation)
 	
 	EventBus.connect("player_selected", self, "_on_player_selected")
 	EventBus.connect("enemy_selected", self, "_on_enemy_selected")
@@ -104,8 +104,8 @@ func _create_player(pos: Vector3):
 	$GameUI.add_player_icon(player)
 	
 	#player.connect("selected", self, "_on_player_selected")
-	player.connect("stats_changed", self, "_on_player_stats_changed")
-	player.connect("equipment_changed", self, "_on_player_equipment_changed")
+	#player.connect("stats_changed", self, "_on_player_stats_changed")
+	#player.connect("equipment_changed", self, "_on_player_equipment_changed")
 
 	if selected_unit == null:
 		_on_player_selected(player)

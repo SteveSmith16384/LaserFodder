@@ -2,8 +2,7 @@ extends KinematicBody
 
 const pistol_class = preload("res://CarriedPistol.tscn")
 
-signal equipment_changed
-signal stats_changed
+#signal stats_changed
 
 onready var model = $Rotator/Spacesuit
 #var has_destination = false
@@ -16,8 +15,8 @@ func _ready():
 
 	model.idle()
 	
-	call_deferred("emit_signal", "stats_changed", self)
-	call_deferred("emit_signal", "equipment_changed", self)
+	#call_deferred("emit_signal", "stats_changed", self)
+	#call_deferred("emit_signal", "equipment_changed", self)
 	pass
 
 
@@ -63,7 +62,7 @@ func _on_CanBeShot_killed(shooter:Spatial):
 	$Rotator.look_at(shooter.global_translation, Vector3.UP)
 	$Rotator.rotation_degrees.y -= 90
 	model.killed()
-	emit_signal("stats_changed", self)
+	#todo emit_signal("stats_changed", self)
 	pass
 
 
@@ -76,7 +75,7 @@ func _on_CanBeShot_shot(shooter:Spatial):
 	model.get_node("BloodSplatter").activate()
 	
 	$CanShoot.current_target = shooter # todo - check priority of current target against new one?
-	emit_signal("stats_changed", self)
+	#todo emit_signal("stats_changed", self)
 	pass
 
 
@@ -109,6 +108,11 @@ func _on_CanBeShot_shot(shooter:Spatial):
 #	pass
 
 
+func idle_anim():
+	$Rotator/Spacesuit.idle()
+	pass
+	
+	
 func walk_anim():
 	$Rotator/Spacesuit.walk()
 	pass
