@@ -21,6 +21,7 @@ material = SubResource( 3 )
 size = Vector3( 1.6, 2.1, 0.3 )
 
 [node name="Wall" type="StaticBody"]
+collision_layer = 3
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19861, 0, -1.84464 )

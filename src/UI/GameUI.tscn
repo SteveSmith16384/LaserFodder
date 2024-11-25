@@ -20,7 +20,8 @@ margin_right = 55.0
 margin_bottom = 152.0
 theme = ExtResource( 2 )
 
-[node name="Button" type="Button" parent="Commands"]
+[node name="SelectAllButton" type="Button" parent="Commands"]
+visible = false
 margin_right = 101.0
 margin_bottom = 18.0
 text = "Select All"
@@ -40,4 +41,4 @@ Hello!"
 readonly = true
 script = ExtResource( 1 )
 
-[connection signal="pressed" from="Commands/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Commands/SelectAllButton" to="." method="_on_SelectAllButton_pressed"]

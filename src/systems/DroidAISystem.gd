@@ -20,6 +20,10 @@ func _process_entity(_delta: float, entity:KinematicBody):
 	var can_move = entity.get_node("CanMove")
 	var can_shoot = entity.get_node("CanShoot")
 	if can_shoot.current_target != null:
+		if is_instance_valid(can_shoot.current_target) == false:
+			can_shoot.current_target = null
+			return
+			
 		var cbs = can_shoot.current_target.get_node("CanBeShot")
 		if cbs.killed:
 			can_shoot.current_target = null
@@ -67,11 +71,6 @@ func _process_entity(_delta: float, entity:KinematicBody):
 	
 
 func _check_for_enemy(entity, can_shoot):
-	if can_shoot.current_target != null:
-		if is_instance_valid(can_shoot.current_target) == false:
-			can_shoot.current_target = null
-		return
-	
 	var closest: KinematicBody = null
 	var closest_dist: float = 9999
 	

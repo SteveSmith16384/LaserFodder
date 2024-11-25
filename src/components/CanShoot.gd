@@ -17,29 +17,29 @@ func _process(delta:float):
 	
 
 func shoot(): # Return whether to play shoot anim
-	var gun = current_weapon#.get_node("IsGun")
-	if gun.get_ammo() <= 0:
+	var is_gun = current_weapon.get_node("IsGun")
+	if is_gun.get_ammo() <= 0:
 		print("Out of ammo!")
 		return false
 	if time_until_next_shot > 0:# < gun.reload_time:
 		return false
 		
-	gun.dec_ammo()
+	is_gun.dec_ammo()
 	num_left_in_burst -= 1
 	if num_left_in_burst <= 0:
-		time_until_next_shot = gun.reload_time
+		time_until_next_shot = is_gun.reload_time
 		$Audio_Reload.play()
 		num_left_in_burst = Globals.rnd.randi_range(3, 5)
 	else:
 		time_until_next_shot = Globals.rnd.randf_range(0.2, 0.3)
-	$Audio_Shoot.stream = gun.shot_sfx
+	$Audio_Shoot.stream = is_gun.shot_sfx
 	$Audio_Shoot.play()
 	
-	var tot_acc = accuracy * (gun.accuracy/100.0)
+	var tot_acc = accuracy * (is_gun.accuracy/100.0)
 	var r = Globals.rnd.randi_range(1, 100)
 	if r < tot_acc:
 		var cbs = current_target.get_node("CanBeShot")
-		cbs.dec_health(self.get_parent(), gun.damage)
+		cbs.dec_health(self.get_parent(), is_gun.damage)
 	else:
 		print("Missed!")
 	return true

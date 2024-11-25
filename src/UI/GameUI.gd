@@ -23,11 +23,6 @@ func _on_player_selected(player):
 	pass
 	
 
-func _on_Button_pressed():
-	emit_signal("select_all")
-	pass
-
-
 func update_player_stats(player):
 	player_icons[player].update_stats()
 	pass
@@ -37,3 +32,8 @@ func update_player_equipment(player):
 	player_icons[player].update_equipment()
 	pass
 	
+
+
+func _on_SelectAllButton_pressed():
+	emit_signal("select_all")
+	pass

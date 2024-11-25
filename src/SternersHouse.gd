@@ -1,6 +1,8 @@
 extends Spatial
 
 func _ready():
+	$GenerateAStar.generate_astar(1.6, -8, 34, 25, 3.2)
+
 	place_droids()
 	place_sterner()
 	pass
@@ -35,3 +37,9 @@ func get_route(start, end):
 		print("No route!")
 	route.append(end)
 	return route
+
+
+func get_player_start_points():
+	return $PlayerStartPositions.get_children()
+	
+	

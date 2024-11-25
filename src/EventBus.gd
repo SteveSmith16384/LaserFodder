@@ -4,7 +4,7 @@ signal player_selected
 signal enemy_selected
 
 func player_selected(player:Spatial):
-	emit_signal("player_selected")
+	emit_signal("player_selected", player)
 	pass
 	
 	

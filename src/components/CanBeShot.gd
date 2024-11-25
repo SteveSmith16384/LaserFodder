@@ -14,8 +14,6 @@ func dec_health(shooter:Spatial, amt:float):
 	if health <= 0:
 		killed = true
 		get_parent().get_node("CollisionShape").disabled = true
-		if get_parent().is_in_group("has_ai"):
-			get_parent().remove_from_group("has_ai") # Stop them being processed
 		emit_signal("killed", shooter)
 	else:
 		emit_signal("shot", shooter)

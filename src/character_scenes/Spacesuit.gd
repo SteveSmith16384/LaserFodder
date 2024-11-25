@@ -6,7 +6,7 @@ func idle():
 
 
 func walk():
-	$AnimationPlayer.play("Walk")
+	$AnimationPlayer.play("Walk", 0, 1.4)
 	pass
 
 

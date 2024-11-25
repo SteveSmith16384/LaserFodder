@@ -12,7 +12,7 @@
 [sub_resource type="CylinderShape" id=1]
 radius = 0.414686
 
-[node name="SternerRegnix" type="KinematicBody" groups=["sterner"]]
+[node name="SternerRegnix" type="KinematicBody" groups=["enemy", "sterner"]]
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

@@ -18,6 +18,7 @@ extents = Vector3( 0.804636, 0.195967, 0.165971 )
 extents = Vector3( 0.240981, 0.516484, 0.143523 )
 
 [node name="Wall_Window" type="StaticBody"]
+collision_layer = 3
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19861, 0, -1.75984 )

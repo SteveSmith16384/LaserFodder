@@ -5,6 +5,7 @@ const RELEASE_MODE = false
 
 const SHOW_FPS = true and !RELEASE_MODE
 
+var astar: AStar
 var rnd : RandomNumberGenerator
 
 func _ready():

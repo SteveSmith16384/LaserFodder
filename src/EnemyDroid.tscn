@@ -14,7 +14,7 @@
 height = 1.4635
 radius = 0.504654
 
-[node name="EnemyDroid" type="KinematicBody" groups=["droid"]]
+[node name="EnemyDroid" type="KinematicBody" groups=["droid", "enemy"]]
 script = ExtResource( 2 )
 
 [node name="Rotator" type="Spatial" parent="."]

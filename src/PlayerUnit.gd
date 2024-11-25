@@ -1,16 +1,13 @@
 extends KinematicBody
 
-const SPEED = 3#1.65
-
 const pistol_class = preload("res://CarriedPistol.tscn")
 
-#signal selected
 signal equipment_changed
 signal stats_changed
 
 onready var model = $Rotator/Spacesuit
-var has_destination = false
-var destination: Vector3
+#var has_destination = false
+#var destination: Vector3
 
 func _ready():
 	var pistol = pistol_class.instance()
@@ -25,63 +22,6 @@ func _ready():
 
 
 func _physics_process(_delta):
-	if $CanBeShot.killed:
-		# We're dead
-		return
-
-	if $CanShoot.current_target != null:
-		if is_instance_valid($CanShoot.current_target) == false:
-			# Target is dead
-			$CanShoot.current_target = null
-			return
-
-		var cbs = $CanShoot.current_target.get_node("CanBeShot")
-		if cbs.killed:
-			# Target is dead
-			$CanShoot.current_target = null
-			return
-			
-		var can_see = $CheckCanSeeRay.can_see($CanShoot.current_target)
-		if can_see:
-			turn_to_face($CanShoot.current_target)
-			
-			#var dist = self.global_translation.distance_to($CanShoot.current_target.global_translation)
-			#var is_gun = $CanShoot.current_weapon.get_node("IsGun")
-#			if dist < is_gun.distance:
-			has_destination = false
-			var shot_fired = $CanShoot.shoot()
-			if shot_fired:
-				model.shoot_anim()
-				emit_signal("equipment_changed", self)
-			return
-#			else:
-#				# Walk towards them
-#				set_destination($CanShoot.current_target.translation, false)
-		else:
-			# Walk towards them
-			set_destination($CanShoot.current_target.translation, false)
-			pass
-		
-	if has_destination == false:
-		return
-	
-	destination.y = self.translation.y
-
-	var dir:Vector3 = destination - self.translation
-	if dir.length() < 2: # Reached destination?
-		_stop_walking()
-		return
-		
-	var offset :Vector3 = dir.normalized() * SPEED
-	var old_pos:= Vector2(translation.x, self.translation.z)
-	self.move_and_slide(offset)
-		
-	# Rotate based on new position
-	var new_pos:= Vector2(translation.x, self.translation.z)
-	var ang:float = old_pos.angle_to_point(new_pos)
-	$Rotator.rotation.y = -ang
-
-	model.walk()
 	pass
 	
 
@@ -92,7 +32,12 @@ func set_target(enemy:KinematicBody):
 #		self.set_destination(enemy.global_translation, false)
 	pass
 	
+
+func can_see(target:Spatial):
+	var can_see = $CheckCanSeeRay.can_see_target(target)
+	return can_see
 	
+		
 func set_label(i:int):
 	$Label3D.text = str(i)
 	pass
@@ -104,13 +49,6 @@ func turn_to_face(enemy:Spatial):
 	pass
 	
 
-func _stop_walking():
-	has_destination = false
-	#emit_signal("reached_destination")
-	model.idle()
-	pass
-	
-	
 func _on_PlayerUnit_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.pressed:
@@ -120,22 +58,8 @@ func _on_PlayerUnit_input_event(_camera, event, _position, _normal, _shape_idx):
 	pass
 	
 
-func set_destination(pos: Vector3, clear_target:bool, rnd_offset = false):
-	destination = pos
-	
-	if rnd_offset:
-		destination.x += Globals.rnd.randi_range(-1, 1) * 2
-		destination.z += Globals.rnd.randi_range(-1, 1) * 2
-
-	has_destination = true
-	
-	if clear_target:
-		$CanShoot.current_target = null # Otherwise they won't move until they've killed the target
-	pass
-
-
 func _on_CanBeShot_killed(shooter:Spatial):
-	_stop_walking()
+	#_stop_walking()
 	$Rotator.look_at(shooter.global_translation, Vector3.UP)
 	$Rotator.rotation_degrees.y -= 90
 	model.killed()
@@ -144,7 +68,7 @@ func _on_CanBeShot_killed(shooter:Spatial):
 
 
 func _on_CanBeShot_shot(shooter:Spatial):
-	_stop_walking()
+	#_stop_walking()
 	$Rotator.look_at(shooter.global_translation, Vector3.UP)
 	$Rotator.rotation_degrees.y -= 90
 	model.shot()
@@ -184,3 +108,13 @@ func _on_CanBeShot_shot(shooter:Spatial):
 #	can_shoot.current_target = closest
 #	pass
 
+
+func walk_anim():
+	$Rotator/Spacesuit.walk()
+	pass
+	
+	
+func shoot_anim():
+	$Rotator/Spacesuit.shoot()
+	pass
+	
