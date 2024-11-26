@@ -10,7 +10,8 @@ func _ready():
 	var start_positions = $SternersHouse.get_player_start_points()
 	for start_position in start_positions:
 		_create_player(start_position.global_translation)
-	
+		break # todo - remove
+		
 	EventBus.connect("player_selected", self, "_on_player_selected")
 	EventBus.connect("enemy_selected", self, "_on_enemy_selected")
 	

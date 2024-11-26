@@ -12,7 +12,7 @@
 
 [sub_resource type="CylinderShape" id=1]
 height = 1.4635
-radius = 0.504654
+radius = 0.414417
 
 [node name="EnemyDroid" type="KinematicBody" groups=["droid", "enemy"]]
 script = ExtResource( 2 )

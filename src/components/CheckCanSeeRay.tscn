@@ -3,5 +3,4 @@
 [ext_resource path="res://components/CheckCanSeeRay.gd" type="Script" id=1]
 
 [node name="CheckCanSeeRay" type="RayCast"]
-collision_mask = 2
 script = ExtResource( 1 )

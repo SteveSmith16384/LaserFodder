@@ -24,7 +24,7 @@ roughness = 0.5
 extents = Vector3( 0.45, 0.976, 0.095 )
 
 [sub_resource type="BoxShape" id=5]
-extents = Vector3( 0.771012, 0.943699, 0.233496 )
+extents = Vector3( 0.771012, 0.943699, 0.527241 )
 
 [node name="Door1" type="Spatial"]
 script = ExtResource( 3 )
@@ -60,9 +60,11 @@ shape = SubResource( 5 )
 
 [node name="CloseTimer" type="Timer" parent="."]
 wait_time = 4.0
+autostart = true
 
 [node name="Audio_OpenClose" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 4 )
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
 [connection signal="timeout" from="CloseTimer" to="." method="_on_CloseTimer_timeout"]

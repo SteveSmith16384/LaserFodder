@@ -67,6 +67,7 @@ func _process_player(player, _delta):
 	var next_dest: Vector3 = can_move.route_points[can_move.route_index]
 	
 	if can_move.route_index + 1 < can_move.route_points.size():
+		# Can we see ahead?
 		if player.can_see_point(can_move.route_points[can_move.route_index+1]):
 			can_move.route_index += 1
 			next_dest = can_move.route_points[can_move.route_index]
@@ -74,7 +75,7 @@ func _process_player(player, _delta):
 	next_dest.y = player.translation.y
 
 	var dir:Vector3 = next_dest - player.translation
-	if dir.length() < .5: # Reached point
+	if dir.length() < .2: # Reached point
 		can_move.route_index += 1
 		if can_move.route_index >= can_move.route_points.size():
 			 # Reached destination

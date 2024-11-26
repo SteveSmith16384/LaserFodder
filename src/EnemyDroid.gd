@@ -42,10 +42,15 @@ func turn_to_face(enemy:Spatial):
 	pass
 	
 
-func can_see(enemy:Spatial) -> bool:
-	return $CheckCanSeeRay.can_see(enemy)
+func can_see_target(enemy:Spatial) -> bool:
+	return $CheckCanSeeRay.can_see_target(enemy)
 	
 
+func can_see_point(point:Vector3) -> bool:
+	var can_see = $CheckCanSeeRay.can_see_point(point - self.translation)
+	return can_see == null
+	
+		
 func _on_EnemyDroid_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == 2 and event.pressed:

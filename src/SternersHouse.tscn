@@ -2138,25 +2138,24 @@ radius = 0.3
 material = SubResource( 20 )
 
 [node name="Units" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.098, 0, -6.10605 )
 
 [node name="SternerRegnix" parent="Units" instance=ExtResource( 33 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.19013, 0, -3.93306 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25971, 0, -3.93306 )
 
 [node name="EnemyDroid1" parent="Units" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8, 0, 4.8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8696, 0, 4.8 )
 
 [node name="EnemyDroid2" parent="Units" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8, 0, 4.8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8696, 0, 4.8 )
 
 [node name="EnemyDroid3" parent="Units" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8, 0, 4.8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8696, 0, 4.8 )
 
 [node name="EnemyDroid4" parent="Units" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8, 0, 4.8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8696, 0, 4.8 )
 
 [node name="EnemyDroid5" parent="Units" instance=ExtResource( 21 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8, 0, 4.8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8696, 0, 4.8 )
 
 [node name="PlayerStartPositions" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.098, 0, -6.10605 )

@@ -26,9 +26,9 @@ func generate_astar(sq_size:float):
 			if pointid == 487:
 				pass
 				
-			$CheckCanSeeRay.translation.x = x - self.translation.x
-			$CheckCanSeeRay.translation.y = 0.1 # Keep below window level
-			$CheckCanSeeRay.translation.z = z - self.translation.z
+			$RayCast.translation.x = x - self.translation.x
+			$RayCast.translation.y = 0.1 # Keep below window level
+			$RayCast.translation.z = z - self.translation.z
 			
 			#var debug:Spatial = debug_class.instance()
 			#debug.translation = $CheckCanSeeRay.translation
@@ -36,7 +36,7 @@ func generate_astar(sq_size:float):
 			
 			if x > sx:
 				# Check West
-				var can_see = $CheckCanSeeRay.can_see_point(Vector3(-sq_size, 0, 0))
+				var can_see = can_see_point(Vector3(-sq_size, 0, 0))
 				if can_see == null:
 					astar.connect_points(pointid, pointid - 1)
 #					if pointid == 488:
@@ -47,7 +47,7 @@ func generate_astar(sq_size:float):
 				
 			# Check North
 			if z > sz:
-				var can_see = $CheckCanSeeRay.can_see_point(Vector3(0, 0, -sq_size))
+				var can_see = can_see_point(Vector3(0, 0, -sq_size))
 				if can_see == null:
 					astar.connect_points(pointid, pointid - points_per_row)
 				else:
@@ -65,3 +65,11 @@ func generate_astar(sq_size:float):
 	pass
 	
 	
+func can_see_point(point:Vector3):
+	#self.enabled = true
+	$RayCast.cast_to = point
+	$RayCast.cast_to.y = 0
+	$RayCast.force_raycast_update()
+	var hit = $RayCast.get_collider()
+	#todo self.enabled = false
+	return hit# == target or hit == null
