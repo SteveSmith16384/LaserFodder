@@ -41,6 +41,7 @@ func shoot(): # Return whether to play shoot anim
 		var cbs = current_target.get_node("CanBeShot")
 		cbs.dec_health(self.get_parent(), is_gun.damage)
 	else:
-		print("Missed!")
+		#print("Missed!")
+		pass
 	return true
 	

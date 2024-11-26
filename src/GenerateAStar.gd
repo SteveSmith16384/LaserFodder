@@ -23,9 +23,12 @@ func generate_astar(sq_size:float):
 			pointid += 1
 			astar.add_point(pointid, Vector3(x, 0, z))
 			
-			$CheckCanSeeRay.translation.x = x# - self.translation.x
+			if pointid == 144:
+				pass
+				
+			$CheckCanSeeRay.translation.x = x - self.translation.x
 			$CheckCanSeeRay.translation.y = 0.1 # Keep below window level
-			$CheckCanSeeRay.translation.z = z# - self.translation.z
+			$CheckCanSeeRay.translation.z = z - self.translation.z
 			
 			#var debug:Spatial = debug_class.instance()
 			#debug.translation = $CheckCanSeeRay.translation
@@ -40,10 +43,10 @@ func generate_astar(sq_size:float):
 				else:
 					#print("Can't see")
 					pass
-
+				
 			# Check North
 			if z > sz:
-				var can_see = $CheckCanSeeRay.can_see_point(Vector3(0, 0, sq_size))
+				var can_see = $CheckCanSeeRay.can_see_point(Vector3(0, 0, -sq_size))
 				if can_see == null:
 					astar.connect_points(pointid, pointid - points_per_row)
 				else:

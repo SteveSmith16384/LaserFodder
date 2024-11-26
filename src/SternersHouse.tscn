@@ -1209,6 +1209,7 @@ skeleton = NodePath("../..")
 
 [node name="Walls" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.098, 0, -6.10605 )
+visible = false
 
 [node name="WallCorner46" parent="Walls" instance=ExtResource( 5 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 36.4602, 0, 7.6739 )
@@ -2177,10 +2178,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75436, 0, 6.59378 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75436, 0, 8.76389 )
 
 [node name="GenerateAStar" parent="." instance=ExtResource( 35 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9359, 1, -20.4945 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.936, 1, -19.495 )
 
 [node name="Position3D" type="Position3D" parent="GenerateAStar"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 62.4165, 0.68757, 46.0579 )
+
+[node name="Wall" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5368, 0, -4.76168 )
+
+[node name="Wall2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.8401, 0, -4.72474 )
 
 [node name="DebugImmedDest" type="CSGSphere" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -3 )

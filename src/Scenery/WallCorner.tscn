@@ -9,7 +9,7 @@ metallic = 0.5
 roughness = 0.5
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.497939, 0.869041, 0.486872 )
+extents = Vector3( 0.497939, 1.02229, 0.486872 )
 
 [node name="WallCorner" type="StaticBody"]
 collision_layer = 3
@@ -20,5 +20,5 @@ mesh = ExtResource( 1 )
 material/0 = SubResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.886255, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04424, 0 )
 shape = SubResource( 2 )
