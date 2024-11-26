@@ -68,7 +68,7 @@ func _process_player(player, _delta):
 	next_dest.y = player.translation.y
 
 	var dir:Vector3 = next_dest - player.translation
-	if dir.length() < 1: # Reached point
+	if dir.length() < .5: # Reached point
 		can_move.route_index += 1
 		if can_move.route_index >= can_move.route_points.size():
 			 # Reached destination

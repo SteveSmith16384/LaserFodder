@@ -23,7 +23,7 @@ func generate_astar(sq_size:float):
 			pointid += 1
 			astar.add_point(pointid, Vector3(x, 0, z))
 			
-			if pointid == 144:
+			if pointid == 487:
 				pass
 				
 			$CheckCanSeeRay.translation.x = x - self.translation.x
@@ -39,7 +39,8 @@ func generate_astar(sq_size:float):
 				var can_see = $CheckCanSeeRay.can_see_point(Vector3(-sq_size, 0, 0))
 				if can_see == null:
 					astar.connect_points(pointid, pointid - 1)
-					#return
+#					if pointid == 488:
+#						return
 				else:
 					#print("Can't see")
 					pass
@@ -60,7 +61,7 @@ func generate_astar(sq_size:float):
 		
 	Globals.astar = astar
 	
-	var path = astar.get_point_path(1, 5+points_per_row)
+	#var path = astar.get_point_path(1, 5+points_per_row)
 	pass
 	
 	
