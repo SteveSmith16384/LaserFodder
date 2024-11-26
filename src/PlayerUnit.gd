@@ -32,9 +32,14 @@ func set_target(enemy:KinematicBody):
 	pass
 	
 
-func can_see(target:Spatial):
+func can_see_target(target:Spatial):
 	var can_see = $CheckCanSeeRay.can_see_target(target)
 	return can_see
+	
+		
+func can_see_point(point:Vector3) -> bool:
+	var can_see = $CheckCanSeeRay.can_see_point(point - self.translation)
+	return can_see == null
 	
 		
 func set_label(i:int):

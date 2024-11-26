@@ -34,7 +34,7 @@ func _process_player(player, _delta):
 			can_shoot.current_target = null
 			return
 			
-		var can_see = player.can_see(can_shoot.current_target)
+		var can_see = player.can_see_target(can_shoot.current_target)
 		if can_see:
 			player.turn_to_face(can_shoot.current_target)
 			
@@ -65,6 +65,12 @@ func _process_player(player, _delta):
 		return
 	
 	var next_dest: Vector3 = can_move.route_points[can_move.route_index]
+	
+	if can_move.route_index + 1 < can_move.route_points.size():
+		if player.can_see_point(can_move.route_points[can_move.route_index+1]):
+			can_move.route_index += 1
+			next_dest = can_move.route_points[can_move.route_index]
+			
 	next_dest.y = player.translation.y
 
 	var dir:Vector3 = next_dest - player.translation
@@ -94,7 +100,7 @@ func _check_for_enemy(entity, can_shoot):
 	
 	var enemy_units = get_tree().get_nodes_in_group("enemy")
 	for enemy_unit in enemy_units:
-		var can_see:bool = entity.can_see(enemy_unit)
+		var can_see:bool = entity.can_see_target(enemy_unit)
 		if can_see:
 			var cbs = enemy_unit.get_node("CanBeShot")
 			if cbs.killed:

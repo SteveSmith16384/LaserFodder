@@ -7,6 +7,7 @@
 extents = Vector3( 1.42892, 0.428956, 0.617249 )
 
 [node name="Bed" type="StaticBody"]
+collision_layer = 3
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.538297, 0, -1.33085 )

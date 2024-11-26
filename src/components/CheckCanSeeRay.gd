@@ -8,7 +8,7 @@ func _ready():
 	
 	
 func can_see_target(target: Spatial):
-	var hit = can_see_point(target.translation)
+	var hit = can_see_point(target.translation - self.translation)
 	return hit == target or hit == null
 	
 	
