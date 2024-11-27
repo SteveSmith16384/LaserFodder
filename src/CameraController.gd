@@ -3,11 +3,9 @@ extends Spatial
 const SPEED:float = 15.0
 const distance : float = 10.0
 
-#var target_pos: Vector3
-var target_aim : Vector3#Spatial
+var target_aim : Vector3
 var current_aim: Vector3
 
-#var angle: float
 var height : float = 16.0
 
 var hidden_spatials = []

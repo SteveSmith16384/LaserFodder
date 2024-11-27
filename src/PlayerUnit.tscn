@@ -40,6 +40,9 @@ transform = Transform( -4.80825e-08, 0, -1.1, 0, 1.1, 0, 1.1, 0, -4.80825e-08, 0
 
 [node name="BloodSplatter" parent="Rotator/Spacesuit" instance=ExtResource( 7 )]
 
+[node name="Muzzle" type="Position3D" parent="Rotator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.64001, 1.306, -0.213336 )
+
 [node name="CanBeSelected" parent="." instance=ExtResource( 3 )]
 
 [node name="CheckCanSeeRay" parent="." instance=ExtResource( 5 )]

@@ -732,55 +732,55 @@ transform = Transform( 0.998522, 2.37605e-09, 0.0543577, -2.37605e-09, 1, -6.462
 skeleton = NodePath("../..")
 
 [node name="IndoorFloor_Small21" parent="Floors" instance=ExtResource( 10 )]
-transform = Transform( 0.998522, 2.37605e-09, 0.0543577, -2.37605e-09, 1, -6.4627e-11, -0.0543577, -6.4627e-11, 0.998522, 48, 0, -3.2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, -3.2 )
 skeleton = NodePath("../..")
 
 [node name="IndoorFloor_Small22" parent="Floors" instance=ExtResource( 10 )]
-transform = Transform( 0.998522, 2.37605e-09, 0.0543577, -2.37605e-09, 1, -6.4627e-11, -0.0543577, -6.4627e-11, 0.998522, 49.6, 0, -3.2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 49.6, 0, -3.2 )
 skeleton = NodePath("../..")
 
 [node name="IndoorFloor_Small23" parent="Floors" instance=ExtResource( 10 )]
-transform = Transform( 0.998522, 2.37605e-09, 0.0543577, -2.37605e-09, 1, -6.4627e-11, -0.0543577, -6.4627e-11, 0.998522, 51.2, 0, -3.2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.2, 0, -3.2 )
 skeleton = NodePath("../..")
 
 [node name="IndoorFloor_Small24" parent="Floors" instance=ExtResource( 10 )]
-transform = Transform( 0.998522, 2.37605e-09, 0.0543577, -2.37605e-09, 1, -6.4627e-11, -0.0543577, -6.4627e-11, 0.998522, 51.2, 0, -1.6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.2, 0, -1.6 )
 skeleton = NodePath("../..")
 
 [node name="IndoorFloor_Small25" parent="Floors" instance=ExtResource( 10 )]
-transform = Transform( 0.998522, 2.37605e-09, 0.0543577, -2.37605e-09, 1, -6.4627e-11, -0.0543577, -6.4627e-11, 0.998522, 51.2, 0, 2.38419e-07 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.2, 0, 2.38419e-07 )
 skeleton = NodePath("../..")
 
 [node name="IndoorFloor_Small26" parent="Floors" instance=ExtResource( 10 )]
-transform = Transform( 0.998522, 2.37605e-09, 0.0543577, -2.37605e-09, 1, -6.4627e-11, -0.0543577, -6.4627e-11, 0.998522, 51.2, 0, 1.6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.2, 0, 1.6 )
 skeleton = NodePath("../..")
 
 [node name="IndoorFloor_Small27" parent="Floors" instance=ExtResource( 10 )]
-transform = Transform( 0.998522, 2.37605e-09, 0.0543577, -2.37605e-09, 1, -6.4627e-11, -0.0543577, -6.4627e-11, 0.998522, 51.2, 0, 3.2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.2, 0, 3.2 )
 skeleton = NodePath("../..")
 
 [node name="IndoorFloor_Small28" parent="Floors" instance=ExtResource( 10 )]
-transform = Transform( 0.998522, 2.37605e-09, 0.0543577, -2.37605e-09, 1, -6.4627e-11, -0.0543577, -6.4627e-11, 0.998522, 48, 0, 4.8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 4.8 )
 skeleton = NodePath("../..")
 
 [node name="IndoorFloor_Small29" parent="Floors" instance=ExtResource( 10 )]
-transform = Transform( 0.998522, 2.37605e-09, 0.0543577, -2.37605e-09, 1, -6.4627e-11, -0.0543577, -6.4627e-11, 0.998522, 48, 0, 6.4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 6.4 )
 skeleton = NodePath("../..")
 
 [node name="IndoorFloor_Small30" parent="Floors" instance=ExtResource( 10 )]
-transform = Transform( 0.998522, 2.37605e-09, 0.0543577, -2.37605e-09, 1, -6.4627e-11, -0.0543577, -6.4627e-11, 0.998522, 48, 0, 8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 8 )
 skeleton = NodePath("../..")
 
 [node name="IndoorFloor_Small31" parent="Floors" instance=ExtResource( 10 )]
-transform = Transform( 0.998522, 2.37605e-09, 0.0543577, -2.37605e-09, 1, -6.4627e-11, -0.0543577, -6.4627e-11, 0.998522, 48, 0, 9.6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 9.6 )
 skeleton = NodePath("../..")
 
 [node name="IndoorFloor_Small32" parent="Floors" instance=ExtResource( 10 )]
-transform = Transform( 0.998522, 2.37605e-09, 0.0543577, -2.37605e-09, 1, -6.4627e-11, -0.0543577, -6.4627e-11, 0.998522, 48, 0, 11.2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 11.2 )
 skeleton = NodePath("../..")
 
 [node name="IndoorFloor_Small33" parent="Floors" instance=ExtResource( 10 )]
-transform = Transform( 0.998522, 2.37605e-09, 0.0543577, -2.37605e-09, 1, -6.4627e-11, -0.0543577, -6.4627e-11, 0.998522, 48, 0, 12.8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 12.8 )
 skeleton = NodePath("../..")
 
 [node name="IndoorFloor_Small34" parent="Floors" instance=ExtResource( 10 )]

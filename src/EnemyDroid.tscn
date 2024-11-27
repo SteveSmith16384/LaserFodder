@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/models/the_assassins/enemy_droid.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://EnemyDroid.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://components/CheckCanSeeRay.tscn" type="PackedScene" id=7]
 [ext_resource path="res://components/CanMove.tscn" type="PackedScene" id=8]
 [ext_resource path="res://components/IsGun.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Sparks.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CylinderShape" id=1]
 height = 1.4635
@@ -19,18 +20,20 @@ script = ExtResource( 2 )
 
 [node name="Rotator" type="Spatial" parent="."]
 
+[node name="Muzzle" type="Spatial" parent="Rotator"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17032, -0.835943 )
+
 [node name="MeshInstance" type="MeshInstance" parent="Rotator"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44667, 0.00878421, -1.36257 )
 mesh = ExtResource( 1 )
 skeleton = NodePath("../..")
 material/0 = ExtResource( 3 )
 
+[node name="Sparks" parent="Rotator/MeshInstance" instance=ExtResource( 10 )]
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.723337, 0 )
 shape = SubResource( 1 )
-
-[node name="Muzzle" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17032, -0.835943 )
 
 [node name="Death_Timer" type="Timer" parent="."]
 
@@ -49,3 +52,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [connection signal="input_event" from="." to="." method="_on_EnemyDroid_input_event"]
 [connection signal="timeout" from="Death_Timer" to="." method="_on_Death_Timer_timeout"]
+[connection signal="killed" from="CanBeShot" to="." method="_on_CanBeShot_killed"]
+[connection signal="shot" from="CanBeShot" to="." method="_on_CanBeShot_shot"]

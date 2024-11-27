@@ -41,7 +41,8 @@ func _process_player(player, _delta):
 			#var dist = self.global_translation.distance_to($CanShoot.current_target.global_translation)
 			#var is_gun = $CanShoot.current_weapon.get_node("IsGun")
 #			if dist < is_gun.distance:
-			can_move.has_destination = false
+#			if is_player.selected == false:
+#				can_move.has_destination = false
 			var shot_fired = can_shoot.shoot()
 			if shot_fired:
 				player.shoot_anim()

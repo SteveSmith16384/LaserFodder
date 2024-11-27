@@ -1,5 +1,7 @@
 extends Spatial
 
+const bullet_class = preload("res://Bullet.tscn")
+
 export var accuracy : float = 90
 
 var current_target : Spatial
@@ -35,13 +37,22 @@ func shoot(): # Return whether to play shoot anim
 	$Audio_Shoot.stream = is_gun.shot_sfx
 	$Audio_Shoot.play()
 	
-	var tot_acc = accuracy * (is_gun.accuracy/100.0)
-	var r = Globals.rnd.randi_range(1, 100)
-	if r < tot_acc:
-		var cbs = current_target.get_node("CanBeShot")
-		cbs.dec_health(self.get_parent(), is_gun.damage)
-	else:
-		#print("Missed!")
-		pass
+	var bullet:Spatial = bullet_class.instance()
+	bullet.init(is_gun)
+	bullet.shooter = get_parent()
+	#bullet.transform = head.global_transform
+	var pos = get_parent().get_node("Rotator/Muzzle").global_translation
+	#bullet.translation = get_parent().get_node("Muzzle").global_translation
+	bullet.look_at_from_position(pos, current_target.global_translation, Vector3.UP)
+	self.get_parent().get_parent().add_child(bullet)
+	
+#	var tot_acc = accuracy * (is_gun.accuracy/100.0)
+#	var r = Globals.rnd.randi_range(1, 100)
+#	if r < tot_acc:
+#		var cbs = current_target.get_node("CanBeShot")
+#		cbs.dec_health(self.get_parent(), is_gun.damage)
+#	else:
+#		#print("Missed!")
+#		pass
 	return true
 	

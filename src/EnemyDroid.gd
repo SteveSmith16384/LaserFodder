@@ -2,9 +2,9 @@ extends KinematicBody
 
 #signal selected
 
-var laser_class = preload("res://CarriedDroidLaser.tscn")
-var bullet_class = preload("res://Bullet.tscn")
-var droid_corpse_class = preload("res://DestroyedRobot.tscn")
+const laser_class = preload("res://CarriedDroidLaser.tscn")
+const bullet_class = preload("res://Bullet.tscn")
+const droid_corpse_class = preload("res://DestroyedRobot.tscn")
 
 
 func _ready():
@@ -59,3 +59,16 @@ func _on_EnemyDroid_input_event(_camera, event, _position, _normal, _shape_idx):
 		pass
 	pass
 
+
+func _on_CanBeShot_killed(_shooter:Spatial):
+	var corpse: Spatial = droid_corpse_class.instance()
+	corpse.translation = self.translation
+	get_parent().add_child(corpse)
+	
+	self.queue_free()
+	pass
+
+
+func _on_CanBeShot_shot(_shooter:Spatial):
+	$Rotator/MeshInstance/Sparks.activate()
+	pass

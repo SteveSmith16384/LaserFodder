@@ -76,10 +76,11 @@ func _on_CanBeShot_shot(shooter:Spatial):
 	$Rotator.look_at(shooter.global_translation, Vector3.UP)
 	$Rotator.rotation_degrees.y -= 90
 	model.shot()
-	
 	model.get_node("BloodSplatter").activate()
 	
-	$CanShoot.current_target = shooter # todo - check priority of current target against new one?
+	if $IsPlayer.selected == false:
+		$CanShoot.current_target = shooter # todo - check priority of current target against new one?
+
 	#todo emit_signal("stats_changed", self)
 	pass
 
