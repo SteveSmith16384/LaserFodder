@@ -12,7 +12,7 @@ roughness = 0.5
 extents = Vector3( 0.351586, 0.85288, 0.144147 )
 
 [node name="WallHalf" type="StaticBody"]
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.64901, 0, -1.84717 )

@@ -13,6 +13,7 @@
 radius = 0.414686
 
 [node name="SternerRegnix" type="KinematicBody" groups=["enemy", "sterner"]]
+collision_layer = 9
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

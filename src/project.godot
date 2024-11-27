@@ -79,6 +79,12 @@ unit_5={
  ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Collisions"
+3d_physics/layer_2="Block A*"
+3d_physics/layer_3="Blocks LoS"
+
 [physics]
 
 common/enable_pause_aware_picking=true

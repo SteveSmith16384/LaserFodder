@@ -41,8 +41,6 @@ func _on_Area_body_entered(body):
 		num_bodies += 1
 		opening = true
 		closing = false
-		#$CloseTimer.stop()
-		#$CloseTimer.start()
 		$Audio_OpenClose.play()
 	pass
 
@@ -57,17 +55,20 @@ func _on_CloseTimer_timeout():
 
 
 func _on_Area_body_exited(body):
+	# We use layer mask to determine if they affect the door
 	if _does_body_activate_door(body):
 		num_bodies -= 1
 	pass
 
 
-func _does_body_activate_door(body):
+func _does_body_activate_door(body:Spatial):
+	#var layer = body.get_collision_layer()
+	
 	if body.is_in_group("droid"):
-		return true
-	if body.is_in_group("sterner"):
 		return true
 	if body.is_in_group("player"):
 		return true
-	
+	if body.is_in_group("sterner"):
+		return true
+
 	return false

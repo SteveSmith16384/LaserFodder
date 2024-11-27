@@ -23,6 +23,7 @@ size = 64
 font_data = ExtResource( 11 )
 
 [node name="PlayerUnit" type="KinematicBody"]
+collision_layer = 9
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

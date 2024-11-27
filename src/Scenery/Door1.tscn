@@ -31,6 +31,7 @@ script = ExtResource( 3 )
 
 [node name="RightDoor" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00600284, 0, 0 )
+collision_layer = 5
 
 [node name="MeshInstance" type="MeshInstance" parent="RightDoor"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29886, 0, -1.97275 )
@@ -42,6 +43,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.395013, 0.999259, -0.0189747
 shape = SubResource( 2 )
 
 [node name="LeftDoor" type="StaticBody" parent="."]
+collision_layer = 5
 
 [node name="MeshInstance" type="MeshInstance" parent="LeftDoor"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19647, 0, -1.97256 )
@@ -53,6 +55,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.390797, 0.992721, -0.018974
 shape = SubResource( 4 )
 
 [node name="Area" type="Area" parent="."]
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01189, 0 )

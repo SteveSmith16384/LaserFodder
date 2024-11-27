@@ -16,6 +16,7 @@ height = 1.4635
 radius = 0.414417
 
 [node name="EnemyDroid" type="KinematicBody" groups=["droid", "enemy"]]
+collision_layer = 9
 script = ExtResource( 2 )
 
 [node name="Rotator" type="Spatial" parent="."]

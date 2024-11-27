@@ -36,7 +36,7 @@ func _process_entity(_delta: float, droid:KinematicBody):
 		var can_see:bool = droid.can_see_target(can_shoot.current_target)
 		if can_see == false:
 			# Why?
-			#can_see = droid.can_see_target(can_shoot.current_target) # todo - remove
+			can_see = droid.can_see_target(can_shoot.current_target) # todo - remove
 			
 			#can_move.destination = can_shoot.current_target.translation
 			CanMove.set_destination(droid, can_move, can_shoot.current_target.translation)
