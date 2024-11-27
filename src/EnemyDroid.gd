@@ -1,7 +1,5 @@
 extends KinematicBody
 
-#signal selected
-
 const laser_class = preload("res://CarriedDroidLaser.tscn")
 const bullet_class = preload("res://Bullet.tscn")
 const droid_corpse_class = preload("res://DestroyedRobot.tscn")
@@ -38,7 +36,7 @@ func _physics_process(_delta):
 
 func turn_to_face(enemy:Spatial):
 	$Rotator.look_at(enemy.global_translation, Vector3.UP)
-	#$Rotator.rotation.y -= PI/2
+	$Rotator.rotation.y -= PI/2
 	pass
 	
 
@@ -70,5 +68,5 @@ func _on_CanBeShot_killed(_shooter:Spatial):
 
 
 func _on_CanBeShot_shot(_shooter:Spatial):
-	$Rotator/MeshInstance/Sparks.activate()
+	$Rotator/MakeCentre/MeshInstance/Sparks.activate()
 	pass

@@ -2091,6 +2091,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.2, 0, 1.6 )
 
 [node name="RoutePoints" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.098, 0, -6.10605 )
+visible = false
 
 [node name="RoutePoint1" type="CSGSphere" parent="RoutePoints"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6498, 0, 4.31907 )

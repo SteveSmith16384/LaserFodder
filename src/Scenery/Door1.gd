@@ -1,6 +1,5 @@
 extends Spatial
 
-#var pos_x = 0
 var opening = false
 var closing = true
 var closed = false
@@ -34,6 +33,11 @@ func _on_Area_body_entered(body):
 		return
 		
 	if _does_body_activate_door(body):
+		if closed:
+			var cm = body.find_node("CanMove", false)
+			if cm != null:
+				cm.pause_for = 0.8
+			
 		num_bodies += 1
 		opening = true
 		closing = false

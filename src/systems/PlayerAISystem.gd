@@ -12,7 +12,7 @@ func _physics_process(delta):
 	pass
 	
 
-func _process_player(player, _delta):
+func _process_player(player:KinematicBody, delta:float):
 	var can_be_shot = player.get_node("CanBeShot")
 
 	if can_be_shot.killed:
@@ -65,6 +65,11 @@ func _process_player(player, _delta):
 	if can_move.has_destination == false:
 		return
 	
+	if can_move.pause_for > 0:
+		player.idle_anim()
+		can_move.pause_for -= delta
+		return
+		
 	var next_dest: Vector3 = can_move.route_points[can_move.route_index]
 	
 	if can_move.route_index + 1 < can_move.route_points.size():

@@ -3,8 +3,6 @@ extends KinematicBody
 
 const SPEED = 20
 
-#var main #: Main
-#var dir : Vector3
 var is_gun
 var shooter
 
@@ -25,12 +23,8 @@ func _process(delta):
 		if col.collider != shooter:
 			var cbs = col.collider.find_node("CanBeShot", false)
 			if cbs != null:
-				cbs.dec_health(col.collider, is_gun.damage)
-				#col.collider.hit_by_bullet()
-				#main.small_explosion(col.collider)
-				#self.queue_free()
+				cbs.dec_health(shooter, is_gun.damage)
 			else:
-				#main.play_clang()
 				#main.tiny_explosion(self)
 				pass
 			queue_free()

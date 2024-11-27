@@ -21,15 +21,17 @@ script = ExtResource( 2 )
 [node name="Rotator" type="Spatial" parent="."]
 
 [node name="Muzzle" type="Spatial" parent="Rotator"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17032, -0.835943 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.676733, 1.03517, -0.000695884 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Rotator"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44667, 0.00878421, -1.36257 )
+[node name="MakeCentre" type="Spatial" parent="Rotator"]
+
+[node name="MeshInstance" type="MeshInstance" parent="Rotator/MakeCentre"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.34721, 0.00878421, -1.45239 )
 mesh = ExtResource( 1 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 material/0 = ExtResource( 3 )
 
-[node name="Sparks" parent="Rotator/MeshInstance" instance=ExtResource( 10 )]
+[node name="Sparks" parent="Rotator/MakeCentre/MeshInstance" instance=ExtResource( 10 )]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.723337, 0 )

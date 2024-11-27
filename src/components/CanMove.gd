@@ -13,6 +13,7 @@ var has_destination = false
 var route_points : PoolVector3Array 
 var route_ids # todo - remove
 var route_index = 0
+var pause_for : float = 0
 
 static func set_destination(player:Spatial, can_move, pos: Vector3):
 	pos.y = 0
@@ -30,15 +31,16 @@ static func set_destination(player:Spatial, can_move, pos: Vector3):
 
 		can_move.has_destination = true
 		
-		for t in Globals.to_remove:
-			t.queue_free()
-		Globals.to_remove.clear()
-		
-		for p in can_move.route_points:
-			var debug:Spatial = debuggingsphere_class.instance()
-			debug.translation = p
-			player.get_parent().add_child(debug)
-			Globals.to_remove.push_back(debug)
+		if Globals.SHOW_ASTAR_ROUTE:
+			for t in Globals.to_remove:
+				t.queue_free()
+			Globals.to_remove.clear()
+			
+			for p in can_move.route_points:
+				var debug:Spatial = debuggingsphere_class.instance()
+				debug.translation = p
+				player.get_parent().add_child(debug)
+				Globals.to_remove.push_back(debug)
 	else:
 		can_move.has_destination = false
 
