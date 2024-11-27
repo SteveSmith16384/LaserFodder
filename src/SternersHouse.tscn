@@ -2182,12 +2182,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23.736, 1, -20.695 )
 [node name="Position3D" type="Position3D" parent="GenerateAStar"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 62.4165, 0.68757, 46.0579 )
 
-[node name="Wall" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5368, 0, -4.76168 )
-
-[node name="Wall2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.8401, 0, -4.72474 )
-
 [node name="DebugImmedDest" type="CSGSphere" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -3 )
 visible = false

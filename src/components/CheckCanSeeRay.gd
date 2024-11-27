@@ -2,8 +2,7 @@ extends RayCast
 
 
 func _ready():
-	#self.exclude_parent = true
-	# todo self.enabled = false
+	self.enabled = false
 	pass
 	
 	

@@ -18,7 +18,9 @@ func _process(delta:float):
 	pass
 	
 
-func shoot(): # Return whether to play shoot anim
+func shoot(target_point: Vector3): # Return whether to play shoot anim
+	get_parent().turn_to_face(target_point)
+	
 	var is_gun = current_weapon.get_node("IsGun")
 	if is_gun.get_ammo() <= 0:
 		print("Out of ammo!")
@@ -40,10 +42,10 @@ func shoot(): # Return whether to play shoot anim
 	var bullet:Spatial = bullet_class.instance()
 	bullet.init(is_gun)
 	bullet.shooter = get_parent()
-	#bullet.transform = head.global_transform
-	var pos = get_parent().get_node("Rotator/Muzzle").global_translation
+	var origin = get_parent().get_node("Rotator/Muzzle").global_translation
 	#bullet.translation = get_parent().get_node("Muzzle").global_translation
-	bullet.look_at_from_position(pos, current_target.global_translation, Vector3.UP)
+	target_point.y = origin.y
+	bullet.look_at_from_position(origin, target_point, Vector3.UP)
 	self.get_parent().get_parent().add_child(bullet)
 	
 #	var tot_acc = accuracy * (is_gun.accuracy/100.0)

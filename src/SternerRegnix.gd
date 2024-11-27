@@ -40,8 +40,8 @@ func shoot_anim():
 	return
 	
 
-func turn_to_face(enemy:Spatial):
-	$Rotator.look_at(enemy.global_translation, Vector3.UP)
+func turn_to_face(point:Vector3):
+	$Rotator.look_at(point, Vector3.UP)
 	$Rotator.rotation.y -= PI/2
 	pass
 	
@@ -56,7 +56,7 @@ func _on_CanBeShot_killed(_shooter:Spatial):
 
 
 func _on_CanBeShot_shot(shooter:Spatial):
-	turn_to_face(shooter)
+	turn_to_face(shooter.global_translation)
 	model.shot()
 	
 	model.get_node("BloodSplatter").activate()

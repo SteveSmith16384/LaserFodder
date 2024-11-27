@@ -36,14 +36,14 @@ func _process_player(player:KinematicBody, delta:float):
 			
 		var can_see = player.can_see_target(can_shoot.current_target)
 		if can_see:
-			player.turn_to_face(can_shoot.current_target)
+			#player.turn_to_face(can_shoot.current_target)
 			
 			#var dist = self.global_translation.distance_to($CanShoot.current_target.global_translation)
 			#var is_gun = $CanShoot.current_weapon.get_node("IsGun")
 #			if dist < is_gun.distance:
 #			if is_player.selected == false:
 #				can_move.has_destination = false
-			var shot_fired = can_shoot.shoot()
+			var shot_fired = can_shoot.shoot(can_shoot.current_target.global_translation)
 			if shot_fired:
 				player.shoot_anim()
 				emit_signal("equipment_changed", self)

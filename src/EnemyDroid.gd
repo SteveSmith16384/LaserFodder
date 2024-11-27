@@ -34,8 +34,8 @@ func _physics_process(_delta):
 	pass
 
 
-func turn_to_face(enemy:Spatial):
-	$Rotator.look_at(enemy.global_translation, Vector3.UP)
+func turn_to_face(point:Vector3):
+	$Rotator.look_at(point, Vector3.UP)
 	$Rotator.rotation.y -= PI/2
 	pass
 	

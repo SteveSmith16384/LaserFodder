@@ -40,9 +40,6 @@ func _process(_delta):
 	
 func _physics_process(_delta):
 	if mouse_clicked_event != null:
-		if mouse_clicked_event.button_index != 1:
-			return
-			
 		if selected_unit == null:
 			return
 			
@@ -53,9 +50,14 @@ func _physics_process(_delta):
 		var result = get_world().direct_space_state.intersect_ray(from, to)
 		if result.size() > 0:
 			if result.collider.is_in_group("floor"):# == $City/Floor:
-				var can_move = selected_unit.get_node("CanMove")
-				CanMove.set_destination(selected_unit, can_move, result.position)
-				append_log("Destination set")
+				if mouse_clicked_event.button_index == 1:
+					var can_move = selected_unit.get_node("CanMove")
+					CanMove.set_destination(selected_unit, can_move, result.position)
+					append_log("Destination set")
+				else:
+					# Shoot!
+					var can_shoot = selected_unit.get_node("CanShoot")
+					can_shoot.shoot(result.position)
 			pass
 		mouse_clicked_event = null
 	pass

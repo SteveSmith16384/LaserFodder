@@ -35,6 +35,9 @@ func _process_entity(_delta: float, droid:KinematicBody):
 		
 		var can_see:bool = droid.can_see_target(can_shoot.current_target)
 		if can_see == false:
+			# Why?
+			#can_see = droid.can_see_target(can_shoot.current_target) # todo - remove
+			
 			#can_move.destination = can_shoot.current_target.translation
 			CanMove.set_destination(droid, can_move, can_shoot.current_target.translation)
 			can_shoot.current_target = null
@@ -43,12 +46,12 @@ func _process_entity(_delta: float, droid:KinematicBody):
 		can_move.has_destination = false
 		
 		# face target
-		droid.turn_to_face(can_shoot.current_target)
+		#droid.turn_to_face(can_shoot.current_target)
 
 		#var dist = entity.global_translation.distance_to(can_shoot.current_target.global_translation)
 		#var is_gun = can_shoot.current_weapon#.get_node("IsGun")
 		#if dist < is_gun.distance:
-		var shot_fired = can_shoot.shoot()
+		var shot_fired = can_shoot.shoot(can_shoot.current_target.global_translation)
 		#if shot_fired:
 			#entity.shoot_anim()
 			#return
