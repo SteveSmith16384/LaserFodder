@@ -48,6 +48,7 @@ func set_label(i:int):
 	
 	
 func turn_to_face(point:Vector3):
+	point.y = $Rotator.global_translation.y
 	$Rotator.look_at(point, Vector3.UP)
 	$Rotator.rotation.y -= PI/2
 	pass

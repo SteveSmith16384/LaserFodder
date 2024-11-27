@@ -3,7 +3,11 @@ extends Spatial
 var player_class = preload("res://PlayerUnit.tscn")
 
 var selected_unit: KinematicBody
-var mouse_clicked_event:InputEventMouseButton
+
+#var mouse_clicked_event:InputEventMouseButton
+var destination_clicked = false
+var shoot_clicked = false
+var mouse_pos := Vector2()
 
 func _ready():
 	# Create players
@@ -39,33 +43,43 @@ func _process(_delta):
 	
 	
 func _physics_process(_delta):
-	if mouse_clicked_event != null:
-		if selected_unit == null:
-			return
+	if selected_unit == null:
+		return
 			
+	if destination_clicked or shoot_clicked:# mouse_clicked_event != null:
 		var camera = $CameraController/Camera
-		var from = camera.project_ray_origin(mouse_clicked_event.position)
-		var to = from + camera.project_ray_normal(mouse_clicked_event.position) * 1000#ray_length
+		var from = camera.project_ray_origin(mouse_pos)
+		var to = from + camera.project_ray_normal(mouse_pos) * 1000#ray_length
 		#print("Click:" + str(to))
 		var result = get_world().direct_space_state.intersect_ray(from, to)
 		if result.size() > 0:
-			if result.collider.is_in_group("floor"):# == $City/Floor:
-				if mouse_clicked_event.button_index == 1:
+			if destination_clicked: #mouse_clicked_event.button_index == 1:
+				if result.collider.is_in_group("floor"):
 					var can_move = selected_unit.get_node("CanMove")
 					CanMove.set_destination(selected_unit, can_move, result.position)
 					append_log("Destination set")
-				else:
-					# Shoot!
-					var can_shoot = selected_unit.get_node("CanShoot")
-					can_shoot.shoot(result.position)
+					destination_clicked = false
+			elif shoot_clicked:
+				# Shoot!
+				var can_shoot = selected_unit.get_node("CanShoot")
+				can_shoot.shoot(result.position)
+				#print("Shooting!")
 			pass
-		mouse_clicked_event = null
+#		mouse_clicked_event = null
 	pass
 	
 
 func _unhandled_input(event):
-	if event is InputEventMouseButton and event.pressed:# and event.button_index == 1:
-		mouse_clicked_event = event
+	if event is InputEventMouse:
+		var ev: InputEventMouse = event
+		mouse_pos = ev.global_position
+	if event is InputEventMouseButton:# and event.pressed:# and event.button_index == 1:
+		var ev: InputEventMouseButton = event
+		if ev.button_mask == 1 and ev.button_index == 1:
+			destination_clicked = true
+		if ev.button_index == 2:
+			shoot_clicked = ev.pressed
+#		mouse_clicked_event = event
 	pass
 	
 	

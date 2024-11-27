@@ -7,7 +7,8 @@ var is_gun
 var shooter
 
 func _ready():
-	#main = get_tree().get_root().get_node("Main")
+	if shooter == null:
+		push_warning("No shooter!")
 	pass
 
 

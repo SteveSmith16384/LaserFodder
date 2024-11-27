@@ -12,7 +12,7 @@
 [ext_resource path="res://Sparks.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CylinderShape" id=1]
-height = 1.4635
+height = 1.50772
 radius = 0.414417
 
 [node name="EnemyDroid" type="KinematicBody" groups=["droid", "enemy"]]
@@ -27,15 +27,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.676733, 1.03517, -0.0006958
 [node name="MakeCentre" type="Spatial" parent="Rotator"]
 
 [node name="MeshInstance" type="MeshInstance" parent="Rotator/MakeCentre"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.34721, 0.00878421, -1.45239 )
+transform = Transform( -4.80825e-08, 0, 1.1, 0, 1.1, 0, -1.1, 0, -4.80825e-08, -1.455, 0.00878421, -1.57814 )
 mesh = ExtResource( 1 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 3 )
 
 [node name="Sparks" parent="Rotator/MakeCentre/MeshInstance" instance=ExtResource( 10 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.41265, 0.938866, 1.67395 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.723337, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.768248, 0 )
 shape = SubResource( 1 )
 
 [node name="Death_Timer" type="Timer" parent="."]
