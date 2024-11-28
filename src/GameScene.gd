@@ -46,14 +46,14 @@ func _physics_process(_delta):
 	if selected_unit == null:
 		return
 			
-	if destination_clicked or shoot_clicked:# mouse_clicked_event != null:
+	if destination_clicked or shoot_clicked or Input.is_action_just_pressed("grenade"):
 		var camera = $CameraController/Camera
 		var from = camera.project_ray_origin(mouse_pos)
 		var to = from + camera.project_ray_normal(mouse_pos) * 1000#ray_length
 		#print("Click:" + str(to))
 		var result = get_world().direct_space_state.intersect_ray(from, to)
 		if result.size() > 0:
-			if destination_clicked: #mouse_clicked_event.button_index == 1:
+			if destination_clicked:
 				if result.collider.is_in_group("floor"):
 					var can_move = selected_unit.get_node("CanMove")
 					CanMove.set_destination(selected_unit, can_move, result.position)
@@ -64,8 +64,10 @@ func _physics_process(_delta):
 				var can_shoot = selected_unit.get_node("CanShoot")
 				can_shoot.shoot(result.position)
 				#print("Shooting!")
+			elif Input.is_action_just_pressed("grenade"):
+				selected_unit.throw_grenade(result.position)
 			pass
-#		mouse_clicked_event = null
+
 	pass
 	
 
@@ -80,6 +82,10 @@ func _unhandled_input(event):
 		if ev.button_index == 2:
 			shoot_clicked = ev.pressed
 #		mouse_clicked_event = event
+
+#	if event is InputEventKey:
+#		var ev: InputEventKey = event
+#		if ev.scancode == KEY_G:
 	pass
 	
 	

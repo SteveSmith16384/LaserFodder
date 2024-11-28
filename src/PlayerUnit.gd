@@ -1,12 +1,9 @@
 extends KinematicBody
 
 const pistol_class = preload("res://CarriedPistol.tscn")
-
-#signal stats_changed
+const grenade_class = preload("res://Grenade.tscn")
 
 onready var model = $Rotator/Spacesuit
-#var has_destination = false
-#var destination: Vector3
 
 func _ready():
 	var pistol = pistol_class.instance()
@@ -14,9 +11,6 @@ func _ready():
 	$CanShoot.current_weapon = $CanCarry.get_first_gun()
 
 	model.idle()
-	
-	#call_deferred("emit_signal", "stats_changed", self)
-	#call_deferred("emit_signal", "equipment_changed", self)
 	pass
 
 
@@ -24,11 +18,8 @@ func _physics_process(_delta):
 	pass
 	
 
-func set_target(enemy:KinematicBody):
+func set_target(enemy:KinematicBody): # todo - inline
 	$CanShoot.current_target = enemy
-#	var can_see = $CheckCanSeeRay.can_see($CanShoot.current_target)
-#	if can_see == false:
-#		self.set_destination(enemy.global_translation, false)
 	pass
 	
 
@@ -81,39 +72,17 @@ func _on_CanBeShot_shot(shooter:Spatial):
 	
 	if $IsPlayer.selected == false:
 		$CanShoot.current_target = shooter # todo - check priority of current target against new one?
-
-	#todo emit_signal("stats_changed", self)
 	pass
 
 
-#func _on_CheckForEnemyTimer_timeout():
-#	if $CanShoot.current_target == null:
-#		_check_for_enemy()
-#	pass
-#
-#
-#func _check_for_enemy():
-#	var closest: KinematicBody = null
-#	var closest_dist: float = 9999
-#
-#	var enemy_units = has_ai.get_potential_enemies()
-#	for enemy_unit in enemy_units:
-#		var can_see:bool = entity.can_see(enemy_unit)
-#		if can_see:
-#			var cbs = enemy_unit.get_node("CanBeShot")
-#			if cbs.killed:
-#				continue
-#			# check distance
-#			var dist = entity.global_translation.distance_to(enemy_unit.global_translation)
-#			if dist > Globals.AI_VIEW_DISTANCE:
-#				continue
-#			if dist < closest_dist:
-#				closest_dist = dist
-#				closest = enemy_unit
-#
-#	can_shoot.current_target = closest
-#	pass
-
+func throw_grenade(dest:Vector3):
+	var g:RigidBody = grenade_class.instance()
+	g.apply_central_impulse(Vector3(0, 12, 0))
+	g.translation = self.translation
+	g.translation.x += 2
+	self.get_parent().add_child(g)
+	pass
+	
 
 func idle_anim():
 	$Rotator/Spacesuit.idle()
