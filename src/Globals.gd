@@ -4,7 +4,7 @@ const VERSION = "1.0"
 const RELEASE_MODE = false
 
 const SHOW_FPS = true and !RELEASE_MODE
-const SHOW_ASTAR_ROUTE = true and !RELEASE_MODE
+const SHOW_ASTAR_ROUTE = false and !RELEASE_MODE
 
 var astar: AStar
 var rnd : RandomNumberGenerator

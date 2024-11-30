@@ -1,7 +1,7 @@
 extends Node
 
-signal player_selected
-signal enemy_selected
+#signal player_selected
+#signal enemy_selected
 
 func player_selected(_player:Spatial):
 	#emit_signal("player_selected", player)

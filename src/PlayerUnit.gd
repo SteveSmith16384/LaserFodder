@@ -76,10 +76,15 @@ func _on_CanBeShot_shot(shooter:Spatial):
 
 
 func throw_grenade(dest:Vector3):
+	var offset:Vector3 = dest - self.global_translation
+	offset.y = 0
+	offset = offset.normalized()
 	var g:RigidBody = grenade_class.instance()
-	g.apply_central_impulse(Vector3(0, 12, 0))
-	g.translation = self.translation
-	g.translation.x += 2
+	var force = offset * 8
+	force.y = 3
+	g.apply_central_impulse(force)
+	g.translation = self.global_translation + offset
+	g.translation.y += 1
 	self.get_parent().add_child(g)
 	pass
 	

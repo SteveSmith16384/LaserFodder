@@ -126,7 +126,7 @@ func _check_for_enemy(entity, can_shoot):
 
 func _stop_walking(player, can_move):
 	can_move.has_destination = false
-	#emit_signal("reached_destination")
+	can_move.dest_arrow.visible = false
 	player.idle_anim()
 	pass
 	

@@ -20,11 +20,10 @@ margin_right = 55.0
 margin_bottom = 152.0
 theme = ExtResource( 2 )
 
-[node name="SelectAllButton" type="Button" parent="Commands"]
-visible = false
-margin_right = 101.0
-margin_bottom = 18.0
-text = "Select All"
+[node name="CheckButton" type="CheckButton" parent="Commands"]
+margin_right = 129.0
+margin_bottom = 32.0
+text = "  Pause"
 
 [node name="Log" type="TextEdit" parent="."]
 margin_left = 9.0
@@ -40,5 +39,3 @@ Hello!
 Hello!"
 readonly = true
 script = ExtResource( 1 )
-
-[connection signal="pressed" from="Commands/SelectAllButton" to="." method="_on_SelectAllButton_pressed"]

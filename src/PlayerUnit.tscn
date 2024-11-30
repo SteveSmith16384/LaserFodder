@@ -9,7 +9,7 @@
 [ext_resource path="res://BloodSplatter.tscn" type="PackedScene" id=7]
 [ext_resource path="res://components/CanShoot.tscn" type="PackedScene" id=8]
 [ext_resource path="res://components/CanCarry.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Assets/sprites/sf_arrow.png" type="Texture" id=10]
+[ext_resource path="res://3DArrow.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/Fonts/kenvector_future_thin.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://components/CanMove.tscn" type="PackedScene" id=12]
 [ext_resource path="res://components/IsPlayer.tscn" type="PackedScene" id=13]
@@ -58,15 +58,8 @@ transform = Transform( 1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0.0653133
 
 [node name="CanCarry" parent="." instance=ExtResource( 9 )]
 
-[node name="SelectedArrow" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.04542, 0 )
-visible = false
-cast_shadow = 0
-opacity = 0.5
-pixel_size = 0.05
-billboard = 2
-double_sided = false
-texture = ExtResource( 10 )
+[node name="SelectedArrow" parent="." instance=ExtResource( 10 )]
+modulate = Color( 0, 1, 1, 1 )
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128136, 2.22635, 0 )

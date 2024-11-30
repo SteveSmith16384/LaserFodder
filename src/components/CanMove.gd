@@ -2,6 +2,7 @@ class_name CanMove
 extends Spatial
 
 const debuggingsphere_class = preload("res://DebuggingSphere.tscn")
+const destarrow_class = preload("res://3DArrow.tscn")
 
 enum Mode {WALK, GUARD}
 
@@ -14,7 +15,16 @@ var route_points : PoolVector3Array
 var route_ids # todo - remove
 var route_index = 0
 var pause_for : float = 0
+var dest_arrow: Spatial
 
+func _ready():
+	dest_arrow = destarrow_class.instance()
+	dest_arrow.visible = false
+	dest_arrow.modulate = Color.green
+	get_parent().get_parent().call_deferred("add_child", dest_arrow)
+	pass
+	
+	
 static func set_destination(player:Spatial, can_move, pos: Vector3):
 	pos.y = 0
 	var start_point:int = Globals.astar.get_closest_point(player.translation)
@@ -30,6 +40,9 @@ static func set_destination(player:Spatial, can_move, pos: Vector3):
 			can_move.route_index = 1 # First point is sometimes in the wrong direction
 
 		can_move.has_destination = true
+		can_move.dest_arrow.visible = true
+		can_move.dest_arrow.translation = pos
+		can_move.dest_arrow.translation.y = 2
 		
 		if Globals.SHOW_ASTAR_ROUTE:
 			for t in Globals.to_remove:
@@ -43,7 +56,7 @@ static func set_destination(player:Spatial, can_move, pos: Vector3):
 				Globals.to_remove.push_back(debug)
 	else:
 		can_move.has_destination = false
-
+		can_move.dest_arrow.visible = false
 #	if clear_target:
 #		can_shoot.current_target = null # Otherwise they won't move until they've killed the target
 	pass

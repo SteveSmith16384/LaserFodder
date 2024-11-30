@@ -16,12 +16,13 @@ func _ready():
 		_create_player(start_position.global_translation)
 		break # todo - remove
 		
-	EventBus.connect("player_selected", self, "_on_player_selected")
-	EventBus.connect("enemy_selected", self, "_on_enemy_selected")
+#	EventBus.connect("player_selected", self, "_on_player_selected")
+#	EventBus.connect("enemy_selected", self, "_on_enemy_selected")
 	
 	var players = get_tree().get_nodes_in_group("player")
 	_on_player_selected(players[0])
 	pass
+
 
 func _process(_delta):
 	if Input.is_action_just_pressed("unit_1"):
