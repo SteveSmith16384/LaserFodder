@@ -6,6 +6,10 @@ signal player_selected
 
 var player : KinematicBody
 
+func init(player_:Spatial):
+	player = player_
+	pass
+	
 
 func _on_SelectButton_pressed():
 	$VBoxContainer/SelectButton.accept_event()

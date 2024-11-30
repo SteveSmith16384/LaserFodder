@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://character_scenes/Spacesuit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PlayerUnit.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Assets/Fonts/kenvector_future_thin.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://components/CanMove.tscn" type="PackedScene" id=12]
 [ext_resource path="res://components/IsPlayer.tscn" type="PackedScene" id=13]
+[ext_resource path="res://components/UnitData.tscn" type="PackedScene" id=14]
 
 [sub_resource type="CylinderShape" id=1]
 height = 1.82962
@@ -69,6 +70,8 @@ text = "[TODO]"
 font = SubResource( 2 )
 
 [node name="IsPlayer" parent="." instance=ExtResource( 13 )]
+
+[node name="UnitData" parent="." instance=ExtResource( 14 )]
 
 [connection signal="input_event" from="." to="." method="_on_PlayerUnit_input_event"]
 [connection signal="killed" from="CanBeShot" to="." method="_on_CanBeShot_killed"]

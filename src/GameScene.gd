@@ -4,7 +4,6 @@ var player_class = preload("res://PlayerUnit.tscn")
 
 var selected_unit: KinematicBody
 
-#var mouse_clicked_event:InputEventMouseButton
 var destination_clicked = false
 var shoot_clicked = false
 var mouse_pos := Vector2()
