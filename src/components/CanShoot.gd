@@ -25,7 +25,7 @@ func shoot(target_point: Vector3): # Return whether to play shoot anim
 	if is_gun.get_ammo() <= 0:
 		print("Out of ammo!")
 		return false
-	if time_until_next_shot > 0:# < gun.reload_time:
+	if time_until_next_shot > 0:
 		return false
 		
 	is_gun.dec_ammo()

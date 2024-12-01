@@ -26,8 +26,8 @@ func _process_entity(_delta: float, droid:KinematicBody):
 			can_shoot.current_target = null
 			return
 			
-		var cbs = can_shoot.current_target.get_node("CanBeShot")
-		if cbs.killed:
+		var ud = can_shoot.current_target.get_node("UnitData")
+		if ud.killed:
 			# Target destroyed
 			can_shoot.current_target = null
 			return
@@ -79,7 +79,7 @@ func _process_entity(_delta: float, droid:KinematicBody):
 	next_dest.y = droid.translation.y
 
 	var dir:Vector3 = next_dest - droid.translation
-	if dir.length() < .5: # Reached point
+	if dir.length() < .2: # Reached point
 		can_move.route_index += 1
 		if can_move.route_index >= can_move.route_points.size():
 			 # Reached destination
