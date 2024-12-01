@@ -13,9 +13,8 @@ func _physics_process(delta):
 	
 
 func _process_player(player:KinematicBody, delta:float):
-	var can_be_shot = player.get_node("CanBeShot")
-
-	if can_be_shot.killed:
+	var unit_data = player.get_node("UnitData")
+	if unit_data.killed:
 		# We're dead
 		return
 

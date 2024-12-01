@@ -115,9 +115,12 @@ func _on_enemy_selected(enemy:KinematicBody):
 
 
 func _create_player(pos: Vector3):
+	var idx = get_tree().get_nodes_in_group("player").size()
+	
 	var player:Spatial = player_class.instance()
 	player.translation = pos
-	
+	player.get_node("UnitData").init(Globals.get_unit_name(idx))
+
 	#self.call_deferred("add_child", player)
 	$SternersHouse.add_child(player)
 	

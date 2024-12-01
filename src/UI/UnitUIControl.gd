@@ -8,6 +8,9 @@ var player : KinematicBody
 
 func init(player_:Spatial):
 	player = player_
+	
+	var unit_data = player.get_node("UnitData")
+	$VBoxContainer/SelectButton.text = unit_data.unit_name
 	pass
 	
 

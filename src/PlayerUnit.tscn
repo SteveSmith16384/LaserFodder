@@ -53,7 +53,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 [node name="CanMove" parent="." instance=ExtResource( 12 )]
 
 [node name="CanBeShot" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0.0653133, 1.46831, -2.22045e-16 )
 
 [node name="CanShoot" parent="." instance=ExtResource( 8 )]
 
@@ -74,5 +73,5 @@ font = SubResource( 2 )
 [node name="UnitData" parent="." instance=ExtResource( 14 )]
 
 [connection signal="input_event" from="." to="." method="_on_PlayerUnit_input_event"]
-[connection signal="killed" from="CanBeShot" to="." method="_on_CanBeShot_killed"]
-[connection signal="shot" from="CanBeShot" to="." method="_on_CanBeShot_shot"]
+[connection signal="killed" from="UnitData" to="." method="_on_UnitData_killed"]
+[connection signal="shot" from="UnitData" to="." method="_on_UnitData_shot"]

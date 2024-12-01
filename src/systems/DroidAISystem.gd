@@ -12,9 +12,8 @@ func _process(delta):
 
 func _process_entity(_delta: float, droid:KinematicBody):
 	#return # todo
-	
-	var our_cbs = droid.get_node("CanBeShot")
-	if our_cbs.killed:
+	var unit_data = droid.get_node("UnitData")
+	if unit_data.killed:
 		# We're dead!
 		return
 	
@@ -51,7 +50,7 @@ func _process_entity(_delta: float, droid:KinematicBody):
 		#var dist = entity.global_translation.distance_to(can_shoot.current_target.global_translation)
 		#var is_gun = can_shoot.current_weapon#.get_node("IsGun")
 		#if dist < is_gun.distance:
-		var shot_fired = can_shoot.shoot(can_shoot.current_target.global_translation)
+		var _shot_fired = can_shoot.shoot(can_shoot.current_target.global_translation)
 		#if shot_fired:
 			#entity.shoot_anim()
 			#return

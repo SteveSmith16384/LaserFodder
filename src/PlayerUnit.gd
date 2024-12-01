@@ -54,26 +54,6 @@ func _on_PlayerUnit_input_event(_camera, event, _position, _normal, _shape_idx):
 	pass
 	
 
-func _on_CanBeShot_killed(shooter:Spatial):
-	#_stop_walking()
-	$Rotator.look_at(shooter.global_translation, Vector3.UP)
-	$Rotator.rotation_degrees.y -= 90
-	model.killed()
-	#todo emit_signal("stats_changed", self)
-	pass
-
-
-func _on_CanBeShot_shot(shooter:Spatial):
-	#_stop_walking()
-	$Rotator.look_at(shooter.global_translation, Vector3.UP)
-	$Rotator.rotation_degrees.y -= 90
-	model.shot()
-	model.get_node("BloodSplatter").activate()
-	
-	if $IsPlayer.selected == false:
-		$CanShoot.current_target = shooter # todo - check priority of current target against new one?
-	pass
-
 
 func throw_grenade(dest:Vector3):
 	var offset:Vector3 = dest - self.global_translation
@@ -103,3 +83,24 @@ func shoot_anim():
 	$Rotator/Spacesuit.shoot()
 	pass
 	
+
+
+func _on_UnitData_shot(shooter:Spatial):
+	#_stop_walking()
+	$Rotator.look_at(shooter.global_translation, Vector3.UP)
+	$Rotator.rotation_degrees.y -= 90
+	model.shot()
+	model.get_node("BloodSplatter").activate()
+	
+	if $IsPlayer.selected == false:
+		$CanShoot.current_target = shooter # todo - check priority of current target against new one?
+	pass
+	
+
+func _on_UnitData_killed(shooter:Spatial):
+	#_stop_walking()
+	$Rotator.look_at(shooter.global_translation, Vector3.UP)
+	$Rotator.rotation_degrees.y -= 90
+	model.killed()
+	#todo emit_signal("stats_changed", self)
+	pass

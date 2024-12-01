@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/models/the_assassins/enemy_droid.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://EnemyDroid.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://components/CanMove.tscn" type="PackedScene" id=8]
 [ext_resource path="res://components/IsGun.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Sparks.tscn" type="PackedScene" id=10]
+[ext_resource path="res://components/UnitData.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CylinderShape" id=1]
 height = 1.50772
@@ -54,7 +55,7 @@ shape = SubResource( 1 )
 [node name="CheckCanSeeRay" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
+[node name="UnitData" parent="." instance=ExtResource( 11 )]
+
 [connection signal="input_event" from="." to="." method="_on_EnemyDroid_input_event"]
 [connection signal="timeout" from="Death_Timer" to="." method="_on_Death_Timer_timeout"]
-[connection signal="killed" from="CanBeShot" to="." method="_on_CanBeShot_killed"]
-[connection signal="shot" from="CanBeShot" to="." method="_on_CanBeShot_shot"]
