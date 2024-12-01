@@ -3,7 +3,7 @@ extends Node
 const SPEED = 3#1.65
 const ENEMY_TARGET_CHECK_INTERVAL :int = 1
 
-signal equipment_changed
+#signal equipment_changed
 
 func _physics_process(delta):
 	var players = get_tree().get_nodes_in_group("player")
@@ -45,7 +45,7 @@ func _process_player(player:KinematicBody, delta:float):
 			var shot_fired = can_shoot.shoot(can_shoot.current_target.global_translation)
 			if shot_fired:
 				player.shoot_anim()
-				emit_signal("equipment_changed", self)
+				player.emit_signal("equipment_changed", self)
 #			return
 #			else:
 #				# Walk towards them

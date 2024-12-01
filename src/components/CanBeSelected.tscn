@@ -1,17 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://components/CanBeSelected.gd" type="Script" id=1]
-
-[sub_resource type="PlaneMesh" id=1]
-
-[sub_resource type="SpatialMaterial" id=2]
-flags_unshaded = true
-albedo_color = Color( 1, 0, 0, 1 )
+[ext_resource path="res://Ring.tscn" type="PackedScene" id=2]
 
 [node name="CanBeSelected" type="Spatial"]
 script = ExtResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
+[node name="Ring" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.01, 0 )

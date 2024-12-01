@@ -1,9 +1,11 @@
 extends KinematicBody
 
 const pistol_class = preload("res://CarriedPistol.tscn")
+const rocketlauncher_class = preload("res://CarriedRocketLauncher.tscn")
 const grenade_class = preload("res://Grenade.tscn")
 
 signal health_changed
+signal equipment_changed
 
 onready var model = $Rotator/Spacesuit
 
@@ -94,7 +96,7 @@ func _on_UnitData_shot(shooter:Spatial):
 	if $IsPlayer.selected == false:
 		$CanShoot.current_target = shooter # todo - check priority of current target against new one?
 
-	emit_signal("health_changed", self)
+	emit_signal("health_changed")
 	pass
 	
 

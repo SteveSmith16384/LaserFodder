@@ -62,8 +62,11 @@ func _physics_process(_delta):
 			elif shoot_clicked:
 				# Shoot!
 				var can_shoot = selected_unit.get_node("CanShoot")
-				can_shoot.shoot(result.position)
-				#print("Shooting!")
+				var shot_fired = can_shoot.shoot(result.position)
+				if shot_fired:
+					selected_unit.shoot_anim()
+					selected_unit.emit_signal("equipment_changed", self)
+					#print("Shooting!")
 			elif Input.is_action_just_pressed("grenade"):
 				selected_unit.throw_grenade(result.position)
 			pass
@@ -138,13 +141,3 @@ func _on_UI_player_selected(player:KinematicBody):
 	_on_player_selected(player)
 	pass
 
-
-func _on_player_equipment_changed(player):
-	$GameUI.update_player_equipment(player)
-	pass
-	
-	
-func _on_player_stats_changed(player):
-	$GameUI.update_player_stats(player)
-	pass
-	

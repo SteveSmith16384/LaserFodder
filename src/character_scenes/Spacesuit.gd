@@ -21,6 +21,10 @@ func shoot():
 
 
 func shot():
+	var curr_anim = $AnimationPlayer.current_animation
+	if curr_anim == "Gun_Shoot":
+		return
+		
 	if Globals.rnd.randi_range(1, 2) == 1:
 		$AnimationPlayer.play("HitRecieve")
 	else:

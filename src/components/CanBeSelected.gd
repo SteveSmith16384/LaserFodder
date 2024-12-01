@@ -5,17 +5,17 @@ func _ready():
 	parent.connect("mouse_entered", self, "_on_mouse_entered")
 	parent.connect("mouse_exited", self, "_on_mouse_exited")
 
-	$MeshInstance.visible = false
+	$Ring.visible = false
 	pass
 	
 	
 func _on_mouse_entered():
-	$MeshInstance.visible = true
+	$Ring.visible = true
 	pass
 	
 
 func _on_mouse_exited():
-	$MeshInstance.visible = false
+	$Ring.visible = false
 	pass
 	
 	

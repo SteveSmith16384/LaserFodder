@@ -19,30 +19,39 @@ top_radius = 0.4
 bottom_radius = 0.4
 height = 0.8
 radial_segments = 8
+rings = 2
 
 [sub_resource type="CylinderMesh" id=4]
 material = ExtResource( 12 )
 top_radius = 0.4
 bottom_radius = 0.4
 height = 0.2
+radial_segments = 8
+rings = 2
 
 [sub_resource type="CylinderMesh" id=5]
 material = ExtResource( 12 )
 top_radius = 0.2
 bottom_radius = 0.4
 height = 0.3
+radial_segments = 8
+rings = 2
 
 [sub_resource type="CylinderMesh" id=6]
 material = ExtResource( 12 )
 top_radius = 0.1
 bottom_radius = 0.1
 height = 1.5
+radial_segments = 6
+rings = 2
 
 [sub_resource type="CylinderMesh" id=7]
 material = ExtResource( 12 )
 top_radius = 0.1
 bottom_radius = 0.1
 height = 0.5
+radial_segments = 8
+rings = 2
 
 [sub_resource type="CylinderShape" id=1]
 height = 1.50772
@@ -55,7 +64,7 @@ script = ExtResource( 2 )
 [node name="Rotator" type="Spatial" parent="."]
 
 [node name="Muzzle" type="Spatial" parent="Rotator"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.676733, 1.03517, -0.000695884 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.841787, 1.72179, -0.000695884 )
 
 [node name="MakeCentre" type="Spatial" parent="Rotator"]
 
@@ -65,9 +74,6 @@ visible = false
 mesh = ExtResource( 1 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 3 )
-
-[node name="Sparks" parent="Rotator/MakeCentre/MeshInstance" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.41265, 0.938866, 1.67395 )
 
 [node name="Spatial" type="Spatial" parent="Rotator/MakeCentre"]
 transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0 )
@@ -91,6 +97,9 @@ mesh = SubResource( 6 )
 [node name="Gun" type="MeshInstance" parent="Rotator/MakeCentre/Spatial"]
 transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.422537, 1.44891, 0 )
 mesh = SubResource( 7 )
+
+[node name="Sparks" parent="Rotator/MakeCentre/Spatial" instance=ExtResource( 10 )]
+transform = Transform( 1.20206e-07, 0, -0.916667, 0, 0.916667, 0, 0.916667, 0, 1.20206e-07, 0.321954, 0.867947, -0.0201876 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.768248, 0 )
