@@ -13,6 +13,7 @@ func init(player_:Spatial):
 	$VBoxContainer/SelectButton.text = unit_data.unit_name
 	
 	player.connect("health_changed", self, "_on_health_changed")
+	player.connect("equipment_changed", self, "_on_equipment_changed")
 	pass
 	
 
@@ -30,6 +31,11 @@ func _on_health_changed():
 	pass
 	
 
+func _on_equipment_changed():
+	#todo
+	pass
+	
+	
 func update_equipment():
 	for icon in $VBoxContainer/CarriedItems.get_children():
 		icon.queue_free()

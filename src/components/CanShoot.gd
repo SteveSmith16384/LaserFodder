@@ -1,8 +1,6 @@
 extends Spatial
 
-const bullet_class = preload("res://Bullet.tscn")
-
-export var accuracy : float = 90
+#const bullet_class = preload("res://Bullet.tscn")
 
 var current_target : Spatial
 var current_weapon # IsGun
@@ -39,7 +37,7 @@ func shoot(target_point: Vector3): # Return whether to play shoot anim
 	$Audio_Shoot.stream = is_gun.shot_sfx
 	$Audio_Shoot.play()
 	
-	var bullet:Spatial = bullet_class.instance()
+	var bullet:Spatial = is_gun.bullet_class.instance()# bullet_class.instance()
 	bullet.init(is_gun)
 	bullet.shooter = get_parent()
 	var origin = get_parent().get_node("Rotator/Muzzle").global_translation

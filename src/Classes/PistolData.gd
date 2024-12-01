@@ -1,4 +1,4 @@
-class_name PistolData
+class_name PistolData # todo - delete
 extends AbstractGunData
 
 func _init():

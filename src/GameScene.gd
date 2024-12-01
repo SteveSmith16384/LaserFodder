@@ -1,6 +1,7 @@
 extends Spatial
 
 var player_class = preload("res://PlayerUnit.tscn")
+var explosion_class = preload("res://Explosion.tscn")
 
 var selected_unit: KinematicBody
 
@@ -15,8 +16,7 @@ func _ready():
 		_create_player(start_position.global_translation)
 		break # todo - remove
 		
-#	EventBus.connect("player_selected", self, "_on_player_selected")
-#	EventBus.connect("enemy_selected", self, "_on_enemy_selected")
+	EventBus.connect("explosion", self, "_on_explosion")
 	
 	var players = get_tree().get_nodes_in_group("player")
 	_on_player_selected(players[0])
@@ -65,7 +65,7 @@ func _physics_process(_delta):
 				var shot_fired = can_shoot.shoot(result.position)
 				if shot_fired:
 					selected_unit.shoot_anim()
-					selected_unit.emit_signal("equipment_changed", self)
+					selected_unit.emit_signal("equipment_changed")
 					#print("Shooting!")
 			elif Input.is_action_just_pressed("grenade"):
 				selected_unit.throw_grenade(result.position)
@@ -141,3 +141,11 @@ func _on_UI_player_selected(player:KinematicBody):
 	_on_player_selected(player)
 	pass
 
+
+func _on_explosion(pos:Vector3):
+	var explosion:Spatial = explosion_class.instance()
+	explosion.translation = pos
+	add_child(explosion)
+	pass
+	
+	

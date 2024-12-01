@@ -10,13 +10,14 @@ signal equipment_changed
 onready var model = $Rotator/Spacesuit
 
 func _ready():
-	var pistol = pistol_class.instance()
+	var pistol = rocketlauncher_class.instance()# pistol_class.instance()
 	$CanCarry.items.push_back(pistol)
 	$CanShoot.current_weapon = $CanCarry.get_first_gun()
 
 	model.idle()
 	
 	call_deferred("emit_signal", "health_changed")
+	call_deferred("emit_signal", "equipment_changed")
 	pass
 
 
@@ -68,6 +69,8 @@ func throw_grenade(dest:Vector3):
 	g.translation = self.global_translation + offset
 	g.translation.y += 1
 	self.get_parent().add_child(g)
+	
+	emit_signal("equipment_changed")
 	pass
 	
 

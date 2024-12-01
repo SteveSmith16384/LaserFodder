@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/sfx/shots/pistol.wav" type="AudioStream" id=1]
 [ext_resource path="res://components/IsGun.tscn" type="PackedScene" id=2]
 [ext_resource path="res://components/IsItem.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Bullet.tscn" type="PackedScene" id=4]
 
 [node name="CarriedPistol" type="Node"]
 
@@ -10,6 +11,7 @@
 reload_time = 2.0
 damage = 10.0
 shot_sfx = ExtResource( 1 )
+bullet_class = ExtResource( 4 )
 
 [node name="IsItem" parent="." instance=ExtResource( 3 )]
 item_name = "Pistol"

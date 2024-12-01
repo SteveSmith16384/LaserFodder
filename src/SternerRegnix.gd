@@ -1,14 +1,8 @@
 extends KinematicBody
 
-# These will shoot at any gang members or anyone who shoots at them (i.e police)
-
-#export(HasAI.Mode) var current_mode
-
 const SPEED = 1.65
 
 const pistol_class = preload("res://CarriedPistol.tscn")
-
-signal selected
 
 onready var model:Spatial = $Rotator/Swat
 

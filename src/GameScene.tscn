@@ -48,4 +48,3 @@ shadow_color = Color( 0.156863, 0.156863, 0.156863, 1 )
 [node name="SternersHouse" parent="." instance=ExtResource( 1 )]
 
 [connection signal="player_selected" from="GameUI" to="." method="_on_UI_player_selected"]
-[connection signal="select_all" from="GameUI" to="." method="_on_UI_select_all"]
