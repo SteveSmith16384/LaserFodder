@@ -3,6 +3,8 @@ extends KinematicBody
 const pistol_class = preload("res://CarriedPistol.tscn")
 const grenade_class = preload("res://Grenade.tscn")
 
+signal health_changed
+
 onready var model = $Rotator/Spacesuit
 
 func _ready():
@@ -11,12 +13,10 @@ func _ready():
 	$CanShoot.current_weapon = $CanCarry.get_first_gun()
 
 	model.idle()
-	pass
-
-
-func _physics_process(_delta):
-	pass
 	
+	call_deferred("emit_signal", "health_changed")
+	pass
+
 
 func set_target(enemy:KinematicBody): # todo - inline
 	$CanShoot.current_target = enemy
@@ -82,7 +82,6 @@ func walk_anim():
 func shoot_anim():
 	$Rotator/Spacesuit.shoot()
 	pass
-	
 
 
 func _on_UnitData_shot(shooter:Spatial):
@@ -94,6 +93,8 @@ func _on_UnitData_shot(shooter:Spatial):
 	
 	if $IsPlayer.selected == false:
 		$CanShoot.current_target = shooter # todo - check priority of current target against new one?
+
+	emit_signal("health_changed", self)
 	pass
 	
 
@@ -102,5 +103,5 @@ func _on_UnitData_killed(shooter:Spatial):
 	$Rotator.look_at(shooter.global_translation, Vector3.UP)
 	$Rotator.rotation_degrees.y -= 90
 	model.killed()
-	#todo emit_signal("stats_changed", self)
+	emit_signal("health_changed", self)
 	pass

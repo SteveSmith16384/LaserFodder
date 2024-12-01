@@ -11,6 +11,8 @@ func init(player_:Spatial):
 	
 	var unit_data = player.get_node("UnitData")
 	$VBoxContainer/SelectButton.text = unit_data.unit_name
+	
+	player.connect("health_changed", self, "_on_health_changed")
 	pass
 	
 
@@ -21,9 +23,10 @@ func _on_SelectButton_pressed():
 	pass
 
 
-func update_stats():
-	var cbs = player.get_node("CanBeShot")
-	$VBoxContainer/HealthProgressBar.value = cbs.health
+func _on_health_changed():
+	var ud = player.get_node("UnitData")
+	$VBoxContainer/HealthProgressBar.max_value = ud.max_health
+	$VBoxContainer/HealthProgressBar.value = ud.health
 	pass
 	
 

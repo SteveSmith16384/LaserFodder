@@ -2,7 +2,7 @@ class_name CanMove
 extends Spatial
 
 const debuggingsphere_class = preload("res://DebuggingSphere.tscn")
-const destarrow_class = preload("res://3DArrow.tscn")
+const destarrow_class = preload("res://Ring.tscn")
 
 enum Mode {WALK, GUARD}
 
@@ -42,7 +42,7 @@ static func set_destination(player:Spatial, can_move, pos: Vector3):
 		can_move.has_destination = true
 		can_move.dest_arrow.visible = true
 		can_move.dest_arrow.translation = pos
-		can_move.dest_arrow.translation.y = 2
+		can_move.dest_arrow.translation.y = .01
 		
 		if Globals.SHOW_ASTAR_ROUTE:
 			for t in Globals.to_remove:

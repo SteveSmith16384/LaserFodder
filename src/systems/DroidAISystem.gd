@@ -105,8 +105,8 @@ func _check_for_enemy(entity, can_shoot):
 	for enemy_unit in enemy_units:
 		var can_see:bool = entity.can_see_target(enemy_unit)
 		if can_see:
-			var cbs = enemy_unit.get_node("CanBeShot")
-			if cbs.killed:
+			var ud = enemy_unit.get_node("UnitData")
+			if ud.killed:
 				continue
 			# check distance
 			var dist = entity.global_translation.distance_to(enemy_unit.global_translation)

@@ -5,6 +5,7 @@ signal killed
 
 var unit_name: String
 var armour : float = 50 # Reduces damage by this percent
+var max_health : float = 100
 var health : float = 100
 var killed = false
 

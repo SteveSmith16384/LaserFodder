@@ -128,10 +128,6 @@ func _create_player(pos: Vector3):
 	player.set_label(num)
 	
 	$GameUI.add_player_icon(player)
-	
-	#player.connect("selected", self, "_on_player_selected")
-	#player.connect("stats_changed", self, "_on_player_stats_changed")
-	#player.connect("equipment_changed", self, "_on_player_equipment_changed")
 
 	if selected_unit == null:
 		_on_player_selected(player)
