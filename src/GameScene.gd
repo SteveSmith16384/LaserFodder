@@ -146,6 +146,13 @@ func _on_explosion(pos:Vector3):
 	var explosion:Spatial = explosion_class.instance()
 	explosion.translation = pos
 	add_child(explosion)
+	
+	explosion.connect("finished_changing_map", self, "_on_finished_changing_map")
+	pass
+	
+	
+func _on_finished_changing_map():
+	$SternersHouse.generate_astar()
 	pass
 	
 	

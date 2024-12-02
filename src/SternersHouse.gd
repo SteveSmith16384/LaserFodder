@@ -1,12 +1,17 @@
 extends Spatial
 
 func _ready():
-	$GenerateAStar.generate_astar(1.6)
-
+	generate_astar()
+	
 	place_droids()
 	place_sterner()
 	pass
 
+
+func generate_astar():
+	$GenerateAStar.generate_astar(1.6)
+	pass
+	
 
 func place_droids():
 	var droid_start_positions = $DroidStartPositions

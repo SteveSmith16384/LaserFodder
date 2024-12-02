@@ -34,8 +34,10 @@ func shoot(target_point: Vector3): # Return whether to play shoot anim
 		num_left_in_burst = Globals.rnd.randi_range(3, 5)
 	else:
 		time_until_next_shot = Globals.rnd.randf_range(0.2, 0.3)
-	$Audio_Shoot.stream = is_gun.shot_sfx
-	$Audio_Shoot.play()
+		
+	if is_gun.shot_sfx != null:
+		$Audio_Shoot.stream = is_gun.shot_sfx
+		$Audio_Shoot.play()
 	
 	var bullet:Spatial = is_gun.bullet_class.instance()# bullet_class.instance()
 	bullet.init(is_gun)
