@@ -1,8 +1,9 @@
 extends KinematicBody
 
+const carriedgrenade_class = preload("res://CarriedGrenade.tscn")
 const pistol_class = preload("res://CarriedPistol.tscn")
 const rocketlauncher_class = preload("res://CarriedRocketLauncher.tscn")
-const grenade_class = preload("res://Grenade.tscn")
+const throwngrenade_class = preload("res://ThrownGrenade.tscn")
 
 signal health_changed
 signal equipment_changed
@@ -10,7 +11,7 @@ signal equipment_changed
 onready var model = $Rotator/Spacesuit
 
 func _ready():
-	var pistol = rocketlauncher_class.instance()# pistol_class.instance()
+	var pistol = pistol_class.instance()#rocketlauncher_class.instance()# 
 	$CanCarry.items.push_back(pistol)
 	$CanShoot.current_weapon = $CanCarry.get_first_gun()
 
@@ -61,13 +62,15 @@ func _on_PlayerUnit_input_event(_camera, event, _position, _normal, _shape_idx):
 func throw_grenade(dest:Vector3):
 	var offset:Vector3 = dest - self.global_translation
 	offset.y = 0
-	offset = offset.normalized()
-	var g:RigidBody = grenade_class.instance()
-	var force = offset * 8
+	#offset = offset.normalized()
+	var force:Vector3 = offset * 1.4
+	force = force.limit_length(20)
 	force.y = 3
+
+	var g:RigidBody = throwngrenade_class.instance()
 	g.apply_central_impulse(force)
-	g.translation = self.global_translation + offset
-	g.translation.y += 1
+	g.translation = self.global_translation + offset.normalized()
+	g.translation.y = 1
 	self.get_parent().add_child(g)
 	
 	emit_signal("equipment_changed")

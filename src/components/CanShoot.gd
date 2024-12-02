@@ -1,7 +1,5 @@
 extends Spatial
 
-#const bullet_class = preload("res://Bullet.tscn")
-
 var current_target : Spatial
 var current_weapon # IsGun
 var weapon_drawn = false

@@ -24,7 +24,7 @@ shape = SubResource( 1 )
 [node name="Rotator" type="Spatial" parent="."]
 
 [node name="Swat" parent="Rotator" instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+transform = Transform( -5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, 0, 0, 0 )
 
 [node name="BloodSplatter" parent="Rotator/Swat" instance=ExtResource( 9 )]
 

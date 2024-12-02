@@ -14,7 +14,7 @@ func _ready():
 
 func _physics_process(_delta):
 	frame_count += 1
-	if frame_count == 2:
+	if frame_count == 3:
 		_check_for_hits()
 		emit_signal("finished_changing_map")
 	pass

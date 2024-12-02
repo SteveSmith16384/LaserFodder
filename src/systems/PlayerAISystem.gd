@@ -1,7 +1,7 @@
 extends Node
 
 const SPEED = 3#1.65
-const ENEMY_TARGET_CHECK_INTERVAL :int = 1
+const ENEMY_TARGET_CHECK_INTERVAL :float = 1.0
 
 func _physics_process(delta):
 	var players = get_tree().get_nodes_in_group("player")

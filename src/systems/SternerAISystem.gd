@@ -1,24 +1,24 @@
 extends Node
 
 const SPEED = 2
-const ENEMY_TARGET_CHECK_INTERVAL :float = 1.0
+const ENEMY_TARGET_CHECK_INTERVAL :float = 0.8
 
 func _process(delta):
-	var droids = get_tree().get_nodes_in_group("droid")
-	for droid in droids:
-		_process_entity(delta, droid)
+	var sterners = get_tree().get_nodes_in_group("sterner")
+	for sterner in sterners:
+		_process_entity(delta, sterner)
 	pass
 	
 
-func _process_entity(_delta: float, droid:KinematicBody):
+func _process_entity(_delta: float, sterner:KinematicBody):
 	#return # todo
-	var unit_data = droid.get_node("UnitData")
+	var unit_data = sterner.get_node("UnitData")
 	if unit_data.killed:
 		# We're dead!
 		return
 	
-	var can_move = droid.get_node("CanMove")
-	var can_shoot = droid.get_node("CanShoot")
+	var can_move = sterner.get_node("CanMove")
+	var can_shoot = sterner.get_node("CanShoot")
 	
 	if can_shoot.current_target != null:
 		if is_instance_valid(can_shoot.current_target) == false:
@@ -32,13 +32,13 @@ func _process_entity(_delta: float, droid:KinematicBody):
 			can_shoot.current_target = null
 			return
 		
-		var can_see:bool = droid.can_see_target(can_shoot.current_target)
+		var can_see:bool = sterner.can_see_target(can_shoot.current_target)
 		if can_see == false:
 			# Why?
-			can_see = droid.can_see_target(can_shoot.current_target) # todo - remove
+			can_see = sterner.can_see_target(can_shoot.current_target) # todo - remove
 			
 			#can_move.destination = can_shoot.current_target.translation
-			CanMove.set_destination(droid, can_move, can_shoot.current_target.translation)
+			CanMove.set_destination(sterner, can_move, can_shoot.current_target.translation)
 			can_shoot.current_target = null
 			return
 		
@@ -58,7 +58,7 @@ func _process_entity(_delta: float, droid:KinematicBody):
 #			can_move.destination = can_shoot.current_target.translation
 	else:
 		if can_shoot.time_until_target_check <= 0:
-			_check_for_enemy(droid, can_shoot)
+			_check_for_enemy(sterner, can_shoot)
 			can_shoot.time_until_target_check = ENEMY_TARGET_CHECK_INTERVAL
 			pass
 	pass
@@ -76,9 +76,9 @@ func _process_entity(_delta: float, droid:KinematicBody):
 			can_move.route_index += 1
 			next_dest = can_move.route_points[can_move.route_index]
 			
-	next_dest.y = droid.translation.y
+	next_dest.y = sterner.translation.y
 
-	var dir:Vector3 = next_dest - droid.translation
+	var dir:Vector3 = next_dest - sterner.translation
 	if dir.length() < .2: # Reached point
 		can_move.route_index += 1
 		if can_move.route_index >= can_move.route_points.size():
@@ -87,13 +87,13 @@ func _process_entity(_delta: float, droid:KinematicBody):
 		return # Loop around next time
 		
 	var offset :Vector3 = dir.normalized() * SPEED
-	var old_pos:= Vector2(droid.translation.x, droid.translation.z)
-	droid.move_and_slide(offset)
+	var old_pos:= Vector2(sterner.translation.x, sterner.translation.z)
+	sterner.move_and_slide(offset)
 		
 	# Rotate based on new position
-	var new_pos:= Vector2(droid.translation.x, droid.translation.z)
+	var new_pos:= Vector2(sterner.translation.x, sterner.translation.z)
 	var ang:float = old_pos.angle_to_point(new_pos)
-	droid.get_node("Rotator").rotation.y = -ang
+	sterner.get_node("Rotator").rotation.y = -ang
 	pass
 
 
