@@ -44,19 +44,6 @@ func can_see(enemy:Spatial) -> bool:
 	return $CheckCanSeeRay.can_see(enemy)
 	
 
-func _on_CanBeShot_killed(_shooter:Spatial):
-	model.killed()
-	pass
-
-
-func _on_CanBeShot_shot(shooter:Spatial):
-	turn_to_face(shooter.global_translation)
-	model.shot()
-	
-	model.get_node("BloodSplatter").activate()
-	pass
-
-
 func _on_EnemyAgent_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == 2 and event.pressed:
@@ -65,3 +52,14 @@ func _on_EnemyAgent_input_event(_camera, event, _position, _normal, _shape_idx):
 	pass
 
 
+func _on_UnitData_shot(shooter:Spatial):
+	turn_to_face(shooter.global_translation)
+	model.shot()
+	
+	model.get_node("BloodSplatter").activate()
+	pass
+
+
+func _on_UnitData_killed(_shooter:Spatial):
+	model.killed()
+	pass

@@ -58,15 +58,20 @@ func _on_EnemyDroid_input_event(_camera, event, _position, _normal, _shape_idx):
 	pass
 
 
-func _on_CanBeShot_killed(_shooter:Spatial):
+func caught_in_explosion():
+	# todo
+	pass
+
+
+func _on_UnitData_shot(_shooter):
+	$Rotator/MakeCentre/MeshInstance/Sparks.activate()
+	pass
+
+
+func _on_UnitData_killed(_shooter):
 	var corpse: Spatial = droid_corpse_class.instance()
 	corpse.translation = self.translation
 	get_parent().add_child(corpse)
 	
 	self.queue_free()
-	pass
-
-
-func _on_CanBeShot_shot(_shooter:Spatial):
-	$Rotator/MakeCentre/MeshInstance/Sparks.activate()
 	pass

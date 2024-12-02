@@ -4,7 +4,7 @@
 [ext_resource path="res://Resources/JetParticles.tres" type="CubeMesh" id=3]
 
 [sub_resource type="SphereShape" id=1]
-radius = 10.0
+radius = 7.0
 
 [node name="Explosion" type="Spatial"]
 script = ExtResource( 1 )

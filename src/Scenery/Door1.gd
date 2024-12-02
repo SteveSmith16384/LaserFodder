@@ -5,10 +5,6 @@ var closing = true
 var closed = false
 var num_bodies = 0
 
-func _ready():
-	pass
-
-
 func _process(delta):
 	if opening:
 		closed = false
@@ -16,7 +12,6 @@ func _process(delta):
 		if $RightDoor.translation.x > 1:
 			$RightDoor.translation.x = 1
 			opening = false
-			#$CloseTimer.start()
 	elif closing:
 		$RightDoor.translation.x -= delta
 		if $RightDoor.translation.x < 0:
@@ -55,7 +50,6 @@ func _on_CloseTimer_timeout():
 
 
 func _on_Area_body_exited(body):
-	# We use layer mask to determine if they affect the door
 	if _does_body_activate_door(body):
 		num_bodies -= 1
 	pass
@@ -72,3 +66,5 @@ func _does_body_activate_door(body:Spatial):
 		return true
 
 	return false
+
+

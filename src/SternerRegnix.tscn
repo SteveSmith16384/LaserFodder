@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://character_scenes/Swat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://SternerRegnix.gd" type="Script" id=2]
 [ext_resource path="res://components/CheckCanSeeRay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://components/CanShoot.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/CanCarry.tscn" type="PackedScene" id=5]
-[ext_resource path="res://components/CanBeShot.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/UnitData.tscn" type="PackedScene" id=7]
 [ext_resource path="res://components/CanBeSelected.tscn" type="PackedScene" id=8]
 [ext_resource path="res://BloodSplatter.tscn" type="PackedScene" id=9]
@@ -39,8 +38,6 @@ cast_to = Vector3( 0, 0, 0 )
 
 [node name="CanCarry" parent="." instance=ExtResource( 5 )]
 
-[node name="CanBeShot" parent="." instance=ExtResource( 6 )]
-
 [node name="CanBeSelected" parent="." instance=ExtResource( 8 )]
 
 [node name="CanPause" parent="." instance=ExtResource( 10 )]
@@ -49,3 +46,5 @@ cast_to = Vector3( 0, 0, 0 )
 
 [connection signal="input_event" from="." to="." method="_on_EnemyAgent_input_event"]
 [connection signal="timeout" from="ChangeDirTimer" to="." method="_on_ChangeDirTimer_timeout"]
+[connection signal="killed" from="UnitData" to="." method="_on_UnitData_killed"]
+[connection signal="shot" from="UnitData" to="." method="_on_UnitData_shot"]

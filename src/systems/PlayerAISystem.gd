@@ -25,8 +25,8 @@ func _process_player(player:KinematicBody, delta:float):
 			# Target is dead
 			can_shoot.current_target = null
 			return
-		var cbs = can_shoot.current_target.get_node("CanBeShot")
-		if cbs.killed:
+		var target_unit_data = can_shoot.current_target.get_node("UnitData")
+		if target_unit_data.killed:
 			# Target is dead
 			can_shoot.current_target = null
 			return
@@ -106,8 +106,8 @@ func _check_for_enemy(entity, can_shoot):
 	for enemy_unit in enemy_units:
 		var can_see:bool = entity.can_see_target(enemy_unit)
 		if can_see:
-			var cbs = enemy_unit.get_node("CanBeShot")
-			if cbs.killed:
+			var unit_data = enemy_unit.get_node("UnitData")
+			if unit_data.killed:
 				continue
 			# check distance
 			var dist = entity.global_translation.distance_to(enemy_unit.global_translation)
