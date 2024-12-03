@@ -7,5 +7,6 @@
 
 [node name="IsItem" parent="." instance=ExtResource( 1 )]
 item_name = "Grenade"
+one_off = true
 
 [node name="IsGrenade" parent="." instance=ExtResource( 2 )]

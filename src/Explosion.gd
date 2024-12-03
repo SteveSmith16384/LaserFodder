@@ -6,6 +6,8 @@ var audio_node : AudioStreamPlayer3D
 var frame_count = 0
 
 func _ready():
+	$CPUParticles.emitting = true
+	
 	audio_node = get_node("AudioStreamPlayer")
 	if audio_node != null:
 		audio_node.play()

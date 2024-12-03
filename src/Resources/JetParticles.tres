@@ -15,4 +15,4 @@ emission_on_uv2 = false
 
 [resource]
 material = SubResource( 1 )
-size = Vector3( 0.1, 0.1, 0.1 )
+size = Vector3( 0.2, 0.2, 0.2 )

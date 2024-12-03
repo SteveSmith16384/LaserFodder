@@ -63,16 +63,15 @@ func _physics_process(_delta):
 				# Shoot!
 				var can_carry = selected_unit.get_node("CanCarry")
 				if can_carry.current_item != null:
+					if can_carry.current_item.get_node("IsItem").one_off:
+						shoot_clicked = false
 					var can_shoot = selected_unit.get_node("CanShoot")
 					var shot_fired = can_shoot.use_item(can_carry.current_item, result.position)
 					if shot_fired:
 						selected_unit.shoot_anim()
 						selected_unit.emit_signal_equipment_changed()#emit_signal("equipment_changed")
 					#print("Shooting!")
-#			elif Input.is_action_just_pressed("grenade"):
-#				selected_unit.throw_grenade(result.position)
 			pass
-
 	pass
 	
 
