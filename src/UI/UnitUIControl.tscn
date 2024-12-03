@@ -40,3 +40,4 @@ margin_bottom = 53.0
 columns = 2
 
 [connection signal="pressed" from="VBoxContainer/SelectButton" to="." method="_on_SelectButton_pressed"]
+[connection signal="item_selected" from="VBoxContainer/CarriedItems" to="." method="_on_CarriedItems_item_selected"]

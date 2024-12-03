@@ -13,7 +13,7 @@ onready var model = $Rotator/Spacesuit
 func _ready():
 	var pistol = pistol_class.instance()#rocketlauncher_class.instance()# 
 	$CanCarry.items.push_back(pistol)
-	$CanShoot.current_weapon = $CanCarry.get_first_gun()
+	$CanCarry.current_item = $CanCarry.get_first_gun()
 
 	var grenade = carriedgrenade_class.instance()
 	$CanCarry.items.push_back(grenade)

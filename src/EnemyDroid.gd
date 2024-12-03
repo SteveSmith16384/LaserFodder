@@ -8,8 +8,8 @@ const droid_corpse_class = preload("res://DestroyedRobot.tscn")
 func _ready():
 #	$CanShoot.current_weapon = #$CanShoot/IsGun
 	var laser = laser_class.instance()
-#	$CanCarry.items.push_back(pistol)
-	$CanShoot.current_weapon = laser#$CanCarry.get_first_gun()
+	$CanCarry.items.push_back(laser)
+	$CanCarry.current_item = laser#$CanCarry.get_first_gun()
 	pass
 	
 	

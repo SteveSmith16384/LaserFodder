@@ -72,4 +72,5 @@ func _on_CarriedItems_item_focused(index):
 
 
 func _on_CarriedItems_item_selected(index):
-	pass # Replace with function body.
+	
+	pass

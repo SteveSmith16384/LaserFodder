@@ -50,9 +50,11 @@ func _process_entity(_delta: float, sterner:KinematicBody):
 		#var dist = entity.global_translation.distance_to(can_shoot.current_target.global_translation)
 		#var is_gun = can_shoot.current_weapon#.get_node("IsGun")
 		#if dist < is_gun.distance:
-		var _shot_fired = can_shoot.shoot(can_shoot.current_target.global_translation)
-		#if shot_fired:
-			#entity.shoot_anim()
+		var can_carry = sterner.get_node("CanCarry")
+		if can_carry.current_item != null:
+			var shot_fired = can_shoot.use_item(can_carry.current_item, can_shoot.current_target.global_translation)
+			if shot_fired:
+				sterner.shoot_anim()
 			#return
 #		else:
 #			can_move.destination = can_shoot.current_target.translation
@@ -72,7 +74,7 @@ func _process_entity(_delta: float, sterner:KinematicBody):
 	
 	if can_move.route_index + 1 < can_move.route_points.size():
 		# Can we see ahead?
-		if droid.can_see_point(can_move.route_points[can_move.route_index+1]):
+		if sterner.can_see_point(can_move.route_points[can_move.route_index+1]):
 			can_move.route_index += 1
 			next_dest = can_move.route_points[can_move.route_index]
 			

@@ -50,7 +50,8 @@ func _process_entity(_delta: float, droid:KinematicBody):
 		#var dist = entity.global_translation.distance_to(can_shoot.current_target.global_translation)
 		#var is_gun = can_shoot.current_weapon#.get_node("IsGun")
 		#if dist < is_gun.distance:
-		var _shot_fired = can_shoot.shoot(can_shoot.current_target.global_translation)
+		var can_carry = droid.get_node("CanCarry")
+		var _shot_fired = can_shoot.use_item(can_carry.current_item, can_shoot.current_target.global_translation)
 		#if shot_fired:
 			#entity.shoot_anim()
 			#return

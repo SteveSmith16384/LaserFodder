@@ -9,7 +9,7 @@ onready var model:Spatial = $Rotator/Swat
 func _ready():
 	var pistol = pistol_class.instance()
 	$CanCarry.items.push_back(pistol)
-	$CanShoot.current_weapon = $CanCarry.get_first_gun()
+	$CanCarry.current_item = $CanCarry.get_first_gun()
 	#$HasAI.current_mode = current_mode
 	pass
 

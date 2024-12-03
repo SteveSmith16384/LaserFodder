@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/models/the_assassins/enemy_droid.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://EnemyDroid.gd" type="Script" id=2]
 [ext_resource path="res://Resources/Cyan_Material.tres" type="Material" id=3]
+[ext_resource path="res://components/CanCarry.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/CanShoot.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/CanBeSelected.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/CheckCanSeeRay.tscn" type="PackedScene" id=7]
@@ -121,6 +122,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 [node name="UnitData" parent="." instance=ExtResource( 11 )]
 
 [node name="CanPause" parent="." instance=ExtResource( 13 )]
+
+[node name="CanCarry" parent="." instance=ExtResource( 4 )]
 
 [connection signal="input_event" from="." to="." method="_on_EnemyDroid_input_event"]
 [connection signal="timeout" from="Death_Timer" to="." method="_on_Death_Timer_timeout"]

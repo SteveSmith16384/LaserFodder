@@ -1,12 +1,12 @@
 extends Spatial
 
 var current_target : Spatial
-var current_weapon # IsGun
-var weapon_drawn = false
+#var current_weapon # IsGun
 
 var time_until_next_shot:float = 0
 var time_until_target_check: float
 var num_left_in_burst: int = 3
+
 
 func _process(delta:float):
 	time_until_next_shot -= delta
@@ -14,7 +14,7 @@ func _process(delta:float):
 	pass
 	
 
-func shoot(target_point: Vector3): # Return whether to play shoot anim
+func use_item(current_weapon, target_point: Vector3): # Return whether to play shoot anim
 	get_parent().turn_to_face(target_point)
 	
 	var is_gun = current_weapon.get_node("IsGun")
