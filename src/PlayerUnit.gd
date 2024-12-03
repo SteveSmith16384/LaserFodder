@@ -3,7 +3,6 @@ extends KinematicBody
 const carriedgrenade_class = preload("res://CarriedGrenade.tscn")
 const pistol_class = preload("res://CarriedPistol.tscn")
 const rocketlauncher_class = preload("res://CarriedRocketLauncher.tscn")
-const throwngrenade_class = preload("res://ThrownGrenade.tscn")
 
 signal health_changed
 signal equipment_changed2
@@ -58,25 +57,6 @@ func _on_PlayerUnit_input_event(_camera, event, _position, _normal, _shape_idx):
 			EventBus.player_selected(self)
 			#emit_signal("selected", self)
 		pass
-	pass
-	
-
-
-func throw_grenade(dest:Vector3):
-	var offset:Vector3 = dest - self.global_translation
-	offset.y = 0
-	#offset = offset.normalized()
-	var force:Vector3 = offset * 1.4
-	force = force.limit_length(20)
-	force.y = 3
-
-	var g:RigidBody = throwngrenade_class.instance()
-	g.apply_central_impulse(force)
-	g.translation = self.global_translation + offset.normalized()
-	g.translation.y = 1
-	self.get_parent().add_child(g)
-	
-	emit_signal("equipment_changed2")
 	pass
 	
 

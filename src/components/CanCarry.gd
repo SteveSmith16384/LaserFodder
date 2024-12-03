@@ -10,3 +10,12 @@ func get_first_gun():
 			
 	return null
 	
+
+func use_up_current_item():
+	items.erase(current_item)
+	if items.size() > 0:
+		current_item = items[0]
+	else:
+		current_item = null
+	pass
+	

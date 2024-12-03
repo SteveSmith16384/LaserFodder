@@ -67,10 +67,7 @@ func _get_item_text(item):
 		return is_item.item_name
 
 
-func _on_CarriedItems_item_focused(index):
-	pass # Replace with function body.
-
-
 func _on_CarriedItems_item_selected(index):
-	
+	var can_carry = player.get_node("CanCarry")
+	can_carry.current_item = can_carry.items[index]
 	pass
