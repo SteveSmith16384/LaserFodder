@@ -30,7 +30,6 @@ func _physics_process(delta):
 				ud.dec_health(shooter, is_gun.damage)
 			else:
 				var sparks:Spatial = sparks_class.instance()
-				#sparks.translation = self.translation
 				sparks.look_at_from_position(self.translation, self.shooter.translation, Vector3.UP)
 				self.get_parent().add_child(sparks)
 				sparks.activate()

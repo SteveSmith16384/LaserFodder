@@ -10,6 +10,8 @@ func _ready():
 	var laser = laser_class.instance()
 	$CanCarry.items.push_back(laser)
 	$CanCarry.current_item = laser#$CanCarry.get_first_gun()
+	
+	self.visible = false
 	pass
 	
 	

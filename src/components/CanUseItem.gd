@@ -19,10 +19,9 @@ func _process(delta:float):
 	
 
 func use_item(current_weapon, target_point: Vector3): # Return whether to play shoot anim
-	get_parent().turn_to_face(target_point)
-	
 	var is_gun = current_weapon.find_node("IsGun")
 	if is_gun != null:
+		get_parent().turn_to_face(target_point)
 		if is_gun.get_ammo() <= 0:
 			print("Out of ammo!")
 			return false
@@ -64,6 +63,7 @@ func use_item(current_weapon, target_point: Vector3): # Return whether to play s
 	# throw_grenade?
 	var is_gren = current_weapon.find_node("IsGrenade")
 	if is_gren != null:
+		#get_parent().turn_to_face(target_point)
 		var offset:Vector3 = target_point - get_parent().global_translation
 		offset.y = 0
 		#offset = offset.normalized()
@@ -81,6 +81,11 @@ func use_item(current_weapon, target_point: Vector3): # Return whether to play s
 		var can_carry = get_parent().get_node("CanCarry")
 		can_carry.use_up_current_item()
 		return true
+
+	var is_medi = current_weapon.find_node("IsMediKit")
+	if is_medi != null:
+		var stats = get_parent().get_node("UnitData")
+		stats.reset_health()
 	pass
 	
 

@@ -24,6 +24,11 @@ func dec_health(shooter:Spatial, amt:float):
 	else:
 		emit_signal("shot", shooter)
 	pass
+	
 
+func reset_health():
+	health = max_health
+	get_parent().emit_signal("health_changed")
+	pass
 	
 	

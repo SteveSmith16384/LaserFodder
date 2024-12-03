@@ -10,7 +10,8 @@ func _ready():
 	var pistol = pistol_class.instance()
 	$CanCarry.items.push_back(pistol)
 	$CanCarry.current_item = $CanCarry.get_first_gun()
-	#$HasAI.current_mode = current_mode
+	
+	self.visible = false
 	pass
 
 

@@ -46,7 +46,7 @@ func _physics_process(_delta):
 	if selected_unit == null:
 		return
 			
-	if destination_clicked or shoot_clicked or Input.is_action_just_pressed("grenade"):
+	if destination_clicked or shoot_clicked:# or Input.is_action_just_pressed("grenade"):
 		var camera = $CameraController/Camera
 		var from = camera.project_ray_origin(mouse_pos)
 		var to = from + camera.project_ray_normal(mouse_pos) * 1000#ray_length

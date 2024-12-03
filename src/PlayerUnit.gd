@@ -1,8 +1,9 @@
 extends KinematicBody
 
+const carriedpistol_class = preload("res://CarriedPistol.tscn")
 const carriedgrenade_class = preload("res://CarriedGrenade.tscn")
-const pistol_class = preload("res://CarriedPistol.tscn")
-const rocketlauncher_class = preload("res://CarriedRocketLauncher.tscn")
+const carriedrocketlauncher_class = preload("res://CarriedRocketLauncher.tscn")
+const carriedmedikit_class = preload("res://CarriedMediKit.tscn")
 
 signal health_changed
 signal equipment_changed2
@@ -10,12 +11,15 @@ signal equipment_changed2
 onready var model = $Rotator/Spacesuit
 
 func _ready():
-	var pistol = pistol_class.instance()#rocketlauncher_class.instance()# 
+	var pistol = carriedpistol_class.instance()#rocketlauncher_class.instance()# 
 	$CanCarry.items.push_back(pistol)
 	$CanCarry.current_item = $CanCarry.get_first_gun()
 
 	var grenade = carriedgrenade_class.instance()
 	$CanCarry.items.push_back(grenade)
+
+	var medikit = carriedmedikit_class.instance()
+	$CanCarry.items.push_back(medikit)
 
 	model.idle()
 	
