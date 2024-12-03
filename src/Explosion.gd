@@ -28,10 +28,6 @@ func _on_Timer_timeout():
 func _check_for_hits():
 	var nodes = $Area.get_overlapping_bodies()
 	for node in nodes:
-#		var cie = node.find_node("CaughtInExplosion")
-#		if cie == null:
-#			continue
-#		cie.caught_in_explosion()
 		if node.has_method("caught_in_explosion"):
 			node.caught_in_explosion()
 	pass

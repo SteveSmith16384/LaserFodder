@@ -28,10 +28,15 @@ rect_min_size = Vector2( 0, 5 )
 value = 50.0
 percent_visible = false
 
-[node name="CarriedItems" type="GridContainer" parent="VBoxContainer"]
+[node name="CarriedItems" type="OptionButton" parent="VBoxContainer"]
 margin_top = 31.0
 margin_right = 64.0
-margin_bottom = 31.0
+margin_bottom = 49.0
+
+[node name="CarriedItems_Unused" type="GridContainer" parent="VBoxContainer"]
+margin_top = 53.0
+margin_right = 64.0
+margin_bottom = 53.0
 columns = 2
 
 [connection signal="pressed" from="VBoxContainer/SelectButton" to="." method="_on_SelectButton_pressed"]

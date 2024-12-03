@@ -75,30 +75,30 @@ mesh = ExtResource( 1 )
 skeleton = NodePath("../../..")
 material/0 = ExtResource( 3 )
 
-[node name="Spatial" type="Spatial" parent="Rotator/MakeCentre"]
+[node name="NewModel" type="Spatial" parent="Rotator/MakeCentre"]
 transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0 )
 
-[node name="Body" type="MeshInstance" parent="Rotator/MakeCentre/Spatial"]
+[node name="Body" type="MeshInstance" parent="Rotator/MakeCentre/NewModel"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.772707, 0 )
 mesh = SubResource( 2 )
 
-[node name="Feet" type="MeshInstance" parent="Rotator/MakeCentre/Spatial"]
+[node name="Feet" type="MeshInstance" parent="Rotator/MakeCentre/NewModel"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.120552, 0 )
 mesh = SubResource( 4 )
 
-[node name="Head" type="MeshInstance" parent="Rotator/MakeCentre/Spatial"]
+[node name="Head" type="MeshInstance" parent="Rotator/MakeCentre/NewModel"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46515, 0 )
 mesh = SubResource( 5 )
 
-[node name="Spine" type="MeshInstance" parent="Rotator/MakeCentre/Spatial"]
+[node name="Spine" type="MeshInstance" parent="Rotator/MakeCentre/NewModel"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.820119, 0 )
 mesh = SubResource( 6 )
 
-[node name="Gun" type="MeshInstance" parent="Rotator/MakeCentre/Spatial"]
+[node name="Gun" type="MeshInstance" parent="Rotator/MakeCentre/NewModel"]
 transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.422537, 1.44891, 0 )
 mesh = SubResource( 7 )
 
-[node name="Sparks" parent="Rotator/MakeCentre/Spatial" instance=ExtResource( 10 )]
+[node name="Sparks" parent="Rotator/MakeCentre/NewModel" instance=ExtResource( 10 )]
 transform = Transform( 1.20206e-07, 0, -0.916667, 0, 0.916667, 0, 0.916667, 0, 1.20206e-07, 0.321954, 0.867947, -0.0201876 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

@@ -7,6 +7,7 @@ func init(item):
 	if is_gun:
 		$VBoxContainer/AmmoProgressBar.max_value = is_gun.max_ammo
 		$VBoxContainer/AmmoProgressBar.value = is_gun.get_ammo()
+		$VBoxContainer/Name.text += " " + str(is_gun.get_ammo()) + "/" + str(is_gun.max_ammo)
 		pass
 	else:
 		$VBoxContainer/AmmoProgressBar.visible = false

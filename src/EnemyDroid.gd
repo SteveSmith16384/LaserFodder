@@ -64,7 +64,7 @@ func caught_in_explosion():
 
 
 func _on_UnitData_shot(_shooter):
-	$Rotator/MakeCentre/MeshInstance/Sparks.activate()
+	$Rotator/MakeCentre/NewModel/Sparks.activate()
 	pass
 
 

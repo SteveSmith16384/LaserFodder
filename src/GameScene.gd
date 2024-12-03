@@ -65,7 +65,7 @@ func _physics_process(_delta):
 				var shot_fired = can_shoot.shoot(result.position)
 				if shot_fired:
 					selected_unit.shoot_anim()
-					selected_unit.emit_signal("equipment_changed")
+					selected_unit.emit_signal_equipment_changed()#emit_signal("equipment_changed")
 					#print("Shooting!")
 			elif Input.is_action_just_pressed("grenade"):
 				selected_unit.throw_grenade(result.position)

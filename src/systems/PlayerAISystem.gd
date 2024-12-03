@@ -43,7 +43,7 @@ func _process_player(player:KinematicBody, delta:float):
 			var shot_fired = can_shoot.shoot(can_shoot.current_target.global_translation)
 			if shot_fired:
 				player.shoot_anim()
-				player.emit_signal("equipment_changed", self)
+				player.emit_signal("equipment_changed2", self)
 #			return
 #			else:
 #				# Walk towards them

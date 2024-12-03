@@ -6,7 +6,7 @@ const rocketlauncher_class = preload("res://CarriedRocketLauncher.tscn")
 const throwngrenade_class = preload("res://ThrownGrenade.tscn")
 
 signal health_changed
-signal equipment_changed
+signal equipment_changed2
 
 onready var model = $Rotator/Spacesuit
 
@@ -15,10 +15,13 @@ func _ready():
 	$CanCarry.items.push_back(pistol)
 	$CanShoot.current_weapon = $CanCarry.get_first_gun()
 
+	var grenade = carriedgrenade_class.instance()
+	$CanCarry.items.push_back(grenade)
+
 	model.idle()
 	
 	call_deferred("emit_signal", "health_changed")
-	call_deferred("emit_signal", "equipment_changed")
+	call_deferred("emit_signal", "equipment_changed2")
 	pass
 
 
@@ -73,7 +76,7 @@ func throw_grenade(dest:Vector3):
 	g.translation.y = 1
 	self.get_parent().add_child(g)
 	
-	emit_signal("equipment_changed")
+	emit_signal("equipment_changed2")
 	pass
 	
 
@@ -113,3 +116,9 @@ func _on_UnitData_killed(shooter:Spatial):
 	model.killed()
 	emit_signal("health_changed", self)
 	pass
+
+
+func emit_signal_equipment_changed():
+	emit_signal("equipment_changed2")
+	pass
+	
