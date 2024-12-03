@@ -2,8 +2,9 @@ extends Spatial
 
 const throwngrenade_class = preload("res://ThrownGrenade.tscn")
 
+export var bullet_colour: Color = Color.white
+
 var current_target : Spatial
-#var current_weapon # IsGun
 
  # todo - move these to IsGun
 var time_until_next_shot:float = 0
@@ -42,7 +43,7 @@ func use_item(current_weapon, target_point: Vector3): # Return whether to play s
 			$Audio_Shoot.play()
 		
 		var bullet:Spatial = is_gun.bullet_class.instance()# bullet_class.instance()
-		bullet.init(is_gun)
+		bullet.init(is_gun, bullet_colour)
 		bullet.shooter = get_parent()
 		var origin = get_parent().get_node("Rotator/Muzzle").global_translation
 		#bullet.translation = get_parent().get_node("Muzzle").global_translation

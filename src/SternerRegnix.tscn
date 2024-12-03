@@ -35,6 +35,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 cast_to = Vector3( 0, 0, 0 )
 
 [node name="CanShoot" parent="." instance=ExtResource( 4 )]
+bullet_colour = Color( 1, 0, 0.937255, 1 )
 
 [node name="CanCarry" parent="." instance=ExtResource( 5 )]
 

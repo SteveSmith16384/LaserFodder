@@ -14,8 +14,9 @@ func _ready():
 	pass
 
 
-func init(gun_data):
+func init(gun_data, col:Color):
 	is_gun = gun_data
+	$MeshInstance.get_surface_material(0).albedo_color = col
 	pass
 	
 	
