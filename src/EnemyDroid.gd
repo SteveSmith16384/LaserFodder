@@ -6,7 +6,6 @@ const droid_corpse_class = preload("res://DestroyedRobot.tscn")
 
 
 func _ready():
-#	$CanShoot.current_weapon = #$CanShoot/IsGun
 	var laser = laser_class.instance()
 	$CanCarry.items.push_back(laser)
 	$CanCarry.current_item = laser#$CanCarry.get_first_gun()
@@ -52,11 +51,11 @@ func can_see_point(point:Vector3) -> bool:
 	
 		
 func _on_EnemyDroid_input_event(_camera, event, _position, _normal, _shape_idx):
-	if event is InputEventMouseButton:
-		if event.button_index == 2 and event.pressed:
-			EventBus.enemy_selected(self)
+#	if event is InputEventMouseButton:
+#		if event.button_index == 2 and event.pressed:
+			#EventBus.enemy_selected(self)
 			#emit_signal("selected", self)
-		pass
+#		pass
 	pass
 
 

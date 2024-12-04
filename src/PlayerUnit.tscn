@@ -52,7 +52,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="CanMove" parent="." instance=ExtResource( 12 )]
 
-[node name="CanShoot" parent="." instance=ExtResource( 8 )]
+[node name="CanUseItem" parent="." instance=ExtResource( 8 )]
 bullet_colour = Color( 1, 0.984314, 0, 1 )
 
 [node name="CanCarry" parent="." instance=ExtResource( 9 )]

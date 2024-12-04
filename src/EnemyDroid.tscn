@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/models/the_assassins/enemy_droid.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://EnemyDroid.gd" type="Script" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://components/CanBeSelected.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/CheckCanSeeRay.tscn" type="PackedScene" id=7]
 [ext_resource path="res://components/CanMove.tscn" type="PackedScene" id=8]
-[ext_resource path="res://components/IsGun.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Sparks.tscn" type="PackedScene" id=10]
 [ext_resource path="res://components/UnitData.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Resources/DroidMaterial.tres" type="Material" id=12]
@@ -112,10 +111,8 @@ shape = SubResource( 1 )
 
 [node name="CanBeSelected" parent="." instance=ExtResource( 6 )]
 
-[node name="CanShoot" parent="." instance=ExtResource( 5 )]
+[node name="CanUseItem" parent="." instance=ExtResource( 5 )]
 bullet_colour = Color( 1, 0, 0, 1 )
-
-[node name="IsGun" parent="CanShoot" instance=ExtResource( 9 )]
 
 [node name="CheckCanSeeRay" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )

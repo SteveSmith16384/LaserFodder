@@ -65,7 +65,7 @@ func _physics_process(_delta):
 				if can_carry.current_item != null:
 					if can_carry.current_item.get_node("IsItem").one_off:
 						shoot_clicked = false
-					var can_shoot = selected_unit.get_node("CanShoot")
+					var can_shoot = selected_unit.get_node("CanUseItem")
 					var shot_fired = can_shoot.use_item(can_carry.current_item, result.position)
 					if shot_fired:
 						selected_unit.shoot_anim()

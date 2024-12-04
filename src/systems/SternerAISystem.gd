@@ -18,7 +18,7 @@ func _process_entity(_delta: float, sterner:KinematicBody):
 		return
 	
 	var can_move = sterner.get_node("CanMove")
-	var can_shoot = sterner.get_node("CanShoot")
+	var can_shoot = sterner.get_node("CanUseItem")
 	
 	if can_shoot.current_target != null:
 		if is_instance_valid(can_shoot.current_target) == false:

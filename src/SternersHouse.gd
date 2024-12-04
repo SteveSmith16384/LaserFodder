@@ -15,23 +15,23 @@ func generate_astar():
 
 func place_droids():
 	var droid_start_positions = $DroidStartPositions
-	var droids = get_tree().get_nodes_in_group("droid")
-	var i:int = 1
-	for droid in droids:
-		if i == 1:
-			var idx = Globals.rnd.randi_range(0, droid_start_positions.get_child_count()-1)
-			droid.translation = droid_start_positions.get_child(idx).global_translation;
-			droid_start_positions.remove_child(droid_start_positions.get_child(idx))
-		else:
-			droid.queue_free()
-		i += 1
+	#var droids = get_tree().get_nodes_in_group("droid")
+	#var i:int = 1
+	for i in 5:
+		var droid:KinematicBody = CreateUnits.get_droid()# droid_class.instance()
+		var idx = Globals.rnd.randi_range(0, droid_start_positions.get_child_count()-1)
+		droid.translation = droid_start_positions.get_child(idx).global_translation;
+		droid_start_positions.remove_child(droid_start_positions.get_child(idx))
+		self.add_child(droid)
 	pass
 
 
 func place_sterner():
 	var sterner_start_positions = $SternerStartPositions
+	var sterner:KinematicBody = CreateUnits.get_sterner() #sterner_class.instance()
 	var idx = Globals.rnd.randi_range(0, sterner_start_positions.get_child_count()-1)
-	$Units/SternerRegnix.translation = sterner_start_positions.get_child(idx).global_translation;
+	sterner.translation = sterner_start_positions.get_child(idx).global_translation;
+	self.add_child(sterner)
 	pass
 
 
@@ -52,4 +52,4 @@ func get_route(start, end):
 func get_player_start_points():
 	return $PlayerStartPositions.get_children()
 	
-	
+

@@ -18,7 +18,7 @@ func _process_player(player:KinematicBody, delta:float):
 
 	var is_player = player.get_node("IsPlayer")
 	var can_move = player.get_node("CanMove")
-	var can_shoot = player.get_node("CanShoot")
+	var can_shoot = player.get_node("CanUseItem")
 	
 	if can_shoot.current_target != null:
 		if is_instance_valid(can_shoot.current_target) == false:
@@ -35,8 +35,8 @@ func _process_player(player:KinematicBody, delta:float):
 		if can_see:
 			#player.turn_to_face(can_shoot.current_target)
 			
-			#var dist = self.global_translation.distance_to($CanShoot.current_target.global_translation)
-			#var is_gun = $CanShoot.current_weapon.get_node("IsGun")
+			#var dist = self.global_translation.distance_to($CanUseItem.current_target.global_translation)
+			#var is_gun = $CanUseItem.current_weapon.get_node("IsGun")
 #			if dist < is_gun.distance:
 #			if is_player.selected == false:
 #				can_move.has_destination = false
@@ -49,7 +49,7 @@ func _process_player(player:KinematicBody, delta:float):
 #			return
 #			else:
 #				# Walk towards them
-#				set_destination($CanShoot.current_target.translation, false)
+#				set_destination($CanUseItem.current_target.translation, false)
 		else:
 			# Walk towards them - todo?
 			#set_destination(can_move, can_shoot.current_target.translation, false)

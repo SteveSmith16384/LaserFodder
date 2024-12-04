@@ -29,7 +29,7 @@ func _ready():
 
 
 func set_target(enemy:KinematicBody): # todo - inline
-	$CanShoot.current_target = enemy
+	$CanUseItem.current_target = enemy
 	pass
 	
 
@@ -87,7 +87,7 @@ func _on_UnitData_shot(shooter:Spatial):
 	model.get_node("BloodSplatter").activate()
 	
 	if $IsPlayer.selected == false:
-		$CanShoot.current_target = shooter # todo - check priority of current target against new one?
+		$CanUseItem.current_target = shooter # todo - check priority of current target against new one?
 
 	emit_signal("health_changed")
 	pass

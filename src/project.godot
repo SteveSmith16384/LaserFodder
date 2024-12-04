@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
-"class": "AbstractGunData",
-"language": "GDScript",
-"path": "res://Classes/AbstractGunData.gd"
-}, {
 "base": "KinematicBody",
 "class": "Bullet",
 "language": "GDScript",
@@ -24,22 +19,27 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://components/CanMove.gd"
 }, {
+"base": "Node",
+"class": "CreateUnits",
+"language": "GDScript",
+"path": "res://CreateUnits.gd"
+}, {
 "base": "KinematicBody",
 "class": "FiredRocket",
 "language": "GDScript",
 "path": "res://FiredRocket.gd"
 }, {
-"base": "AbstractGunData",
-"class": "PistolData",
+"base": "Node",
+"class": "UnitData",
 "language": "GDScript",
-"path": "res://Classes/PistolData.gd"
+"path": "res://components/UnitData.gd"
 } ]
 _global_script_class_icons={
-"AbstractGunData": "",
 "Bullet": "",
 "CanMove": "",
+"CreateUnits": "",
 "FiredRocket": "",
-"PistolData": ""
+"UnitData": ""
 }
 
 [application]

@@ -1,3 +1,4 @@
+class_name UnitData
 extends Node
 
 signal shot

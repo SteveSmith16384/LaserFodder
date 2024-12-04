@@ -18,7 +18,7 @@ func _process_entity(_delta: float, droid:KinematicBody):
 		return
 	
 	var can_move = droid.get_node("CanMove")
-	var can_shoot = droid.get_node("CanShoot")
+	var can_shoot = droid.get_node("CanUseItem")
 	
 	if can_shoot.current_target != null:
 		if is_instance_valid(can_shoot.current_target) == false:
