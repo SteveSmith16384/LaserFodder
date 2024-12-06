@@ -19,7 +19,7 @@ func _process(delta:float):
 	
 
 func use_item(current_weapon, target_point: Vector3): # Return whether to play shoot anim
-	var is_gun = current_weapon.find_node("IsGun")
+	var is_gun:IsGun = current_weapon.find_node("IsGun")
 	if is_gun != null:
 		get_parent().turn_to_face(target_point)
 		if is_gun.get_ammo() <= 0:
@@ -41,23 +41,21 @@ func use_item(current_weapon, target_point: Vector3): # Return whether to play s
 			$Audio_Shoot.stream = is_gun.shot_sfx
 			$Audio_Shoot.play()
 		
-		var bullet:Bullet = is_gun.bullet_class.instance()# bullet_class.instance()
+		var bullet:Bullet = is_gun.bullet_class.instance()
 		bullet.init(get_parent(), is_gun, bullet_colour)
-		#bullet.shooter = get_parent()
 		var origin = get_parent().get_node("Rotator/Muzzle").global_translation
 		#bullet.translation = get_parent().get_node("Muzzle").global_translation
 		target_point.y = origin.y
 		bullet.look_at_from_position(origin, target_point, Vector3.UP)
+		
+		var unit_data = get_parent().get_node("UnitData")
+		var acc: float = 100 * (is_gun.accuracy/100.0) * (unit_data.accuracy/100.0)
+		var rnd:float = Globals.rnd.randf_range(0, 100)
+		if rnd > acc:
+			var diff = (rnd - acc) / 2.0
+			bullet.rotation_degrees.y += Globals.rnd.randf_range(-diff, diff)
 		self.get_parent().get_parent().add_child(bullet)
 		
-	#	var tot_acc = accuracy * (is_gun.accuracy/100.0)
-	#	var r = Globals.rnd.randi_range(1, 100)
-	#	if r < tot_acc:
-	#		var cbs = current_target.get_node("CanBeShot")
-	#		cbs.dec_health(self.get_parent(), is_gun.damage)
-	#	else:
-	#		#print("Missed!")
-	#		pass
 		return true
 	
 	# throw_grenade?
@@ -84,8 +82,8 @@ func use_item(current_weapon, target_point: Vector3): # Return whether to play s
 
 	var is_medi = current_weapon.find_node("IsMediKit")
 	if is_medi != null:
-		var stats = get_parent().get_node("UnitData")
-		stats.reset_health()
+		var unit_data = get_parent().get_node("UnitData")
+		unit_data.reset_health()
 	pass
 	
 

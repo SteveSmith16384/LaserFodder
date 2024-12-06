@@ -8,6 +8,7 @@ var unit_name: String
 var armour : float = 50 # Reduces damage by this percent
 var max_health : float = 100
 var health : float = 100
+var accuracy : float = 70
 var killed = false
 
 func init(name: String):
