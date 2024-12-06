@@ -50,7 +50,7 @@ func can_see_point(point:Vector3) -> bool:
 	return can_see == null
 	
 		
-func _on_EnemyDroid_input_event(_camera, event, _position, _normal, _shape_idx):
+func _on_EnemyDroid_input_event(_camera, _event, _position, _normal, _shape_idx):
 #	if event is InputEventMouseButton:
 #		if event.button_index == 2 and event.pressed:
 			#EventBus.enemy_selected(self)

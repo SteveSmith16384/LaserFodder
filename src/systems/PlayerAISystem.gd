@@ -56,9 +56,10 @@ func _process_player(player:KinematicBody, delta:float):
 			pass
 	else:
 		if is_player.selected == false: # Only auto-select target if not selected
-			if can_shoot.time_until_target_check <= 0:
+			unit_data.time_until_target_check -= delta
+			if unit_data.time_until_target_check <= 0:
 				_check_for_enemy(player, can_shoot)
-				can_shoot.time_until_target_check = ENEMY_TARGET_CHECK_INTERVAL
+				unit_data.time_until_target_check = ENEMY_TARGET_CHECK_INTERVAL
 				pass
 		
 	if can_move.has_destination == false:

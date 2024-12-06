@@ -59,9 +59,10 @@ func _process_entity(_delta: float, sterner:KinematicBody):
 #		else:
 #			can_move.destination = can_shoot.current_target.translation
 	else:
-		if can_shoot.time_until_target_check <= 0:
+		unit_data.time_until_target_check -= delta
+		if unit_data.time_until_target_check <= 0:
 			_check_for_enemy(sterner, can_shoot)
-			can_shoot.time_until_target_check = ENEMY_TARGET_CHECK_INTERVAL
+			unit_data.time_until_target_check = ENEMY_TARGET_CHECK_INTERVAL
 			pass
 	pass
 	

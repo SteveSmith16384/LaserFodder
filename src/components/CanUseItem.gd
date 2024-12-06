@@ -6,16 +6,9 @@ export var bullet_colour: Color = Color.white
 
 var current_target : Spatial
 
- # todo - move these to IsGun
-var time_until_next_shot:float = 0
-var time_until_target_check: float
-var num_left_in_burst: int = 3
-
-
-func _process(delta:float):
-	time_until_next_shot -= delta
-	time_until_target_check -= delta
-	pass
+#func _process(delta:float):
+#	time_until_next_shot -= delta
+#	pass
 	
 
 func use_item(current_weapon, target_point: Vector3): # Return whether to play shoot anim
@@ -25,17 +18,17 @@ func use_item(current_weapon, target_point: Vector3): # Return whether to play s
 		if is_gun.get_ammo() <= 0:
 			print("Out of ammo!")
 			return false
-		if time_until_next_shot > 0:
+		if is_gun.time_of_next_shot > Time.get_ticks_msec():
 			return false
 			
 		is_gun.dec_ammo()
-		num_left_in_burst -= 1
-		if num_left_in_burst <= 0:
-			time_until_next_shot = is_gun.reload_time
+		is_gun.num_left_in_burst -= 1
+		if is_gun.num_left_in_burst <= 0:
+			is_gun.time_of_next_shot = Time.get_ticks_msec() + is_gun.reload_time_millis
 			$Audio_Reload.play()
-			num_left_in_burst = Globals.rnd.randi_range(3, 5)
+			is_gun.num_left_in_burst = is_gun.burst_size
 		else:
-			time_until_next_shot = Globals.rnd.randf_range(0.2, 0.3)
+			is_gun.time_of_next_shot = Time.get_ticks_msec() + Globals.rnd.randf_range(200, 300)
 			
 		if is_gun.shot_sfx != null:
 			$Audio_Shoot.stream = is_gun.shot_sfx
@@ -49,7 +42,7 @@ func use_item(current_weapon, target_point: Vector3): # Return whether to play s
 		bullet.look_at_from_position(origin, target_point, Vector3.UP)
 		
 		var unit_data = get_parent().get_node("UnitData")
-		var acc: float = 100 * (is_gun.accuracy/100.0) * (unit_data.accuracy/100.0)
+		var acc: float = 100.0 * (is_gun.accuracy/100.0) * (unit_data.accuracy/100.0)
 		var rnd:float = Globals.rnd.randf_range(0, 100)
 		if rnd > acc:
 			var diff = (rnd - acc) / 2.0

@@ -11,6 +11,8 @@ var health : float = 100
 var accuracy : float = 70
 var killed = false
 
+var time_until_target_check: float
+
 func init(name: String):
 	unit_name = name
 	pass

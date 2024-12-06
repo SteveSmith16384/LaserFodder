@@ -15,10 +15,9 @@ func generate_astar():
 
 func place_droids():
 	var droid_start_positions = $DroidStartPositions
-	#var droids = get_tree().get_nodes_in_group("droid")
-	#var i:int = 1
 	for i in 5:
-		var droid:KinematicBody = CreateUnits.get_droid()# droid_class.instance()
+		var droid:KinematicBody = CreateUnits.get_droid()
+		droid.get_node("UnitData").init("Droid " + str(i))
 		var idx = Globals.rnd.randi_range(0, droid_start_positions.get_child_count()-1)
 		droid.translation = droid_start_positions.get_child(idx).global_translation;
 		droid_start_positions.remove_child(droid_start_positions.get_child(idx))
@@ -27,8 +26,9 @@ func place_droids():
 
 
 func place_sterner():
-	var sterner_start_positions = $SternerStartPositions
 	var sterner:KinematicBody = CreateUnits.get_sterner() #sterner_class.instance()
+	sterner.get_node("UnitData").init("Sterner Regnix")
+	var sterner_start_positions = $SternerStartPositions
 	var idx = Globals.rnd.randi_range(0, sterner_start_positions.get_child_count()-1)
 	sterner.translation = sterner_start_positions.get_child(idx).global_translation;
 	self.add_child(sterner)

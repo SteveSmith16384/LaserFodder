@@ -10,8 +10,7 @@ func _process(delta):
 	pass
 	
 
-func _process_entity(_delta: float, droid:KinematicBody):
-	#return # todo
+func _process_entity(delta: float, droid:KinematicBody):
 	var unit_data = droid.get_node("UnitData")
 	if unit_data.killed:
 		# We're dead!
@@ -58,9 +57,10 @@ func _process_entity(_delta: float, droid:KinematicBody):
 #		else:
 #			can_move.destination = can_shoot.current_target.translation
 	else:
-		if can_shoot.time_until_target_check <= 0:
+		unit_data.time_until_target_check -= delta
+		if unit_data.time_until_target_check <= 0:
 			_check_for_enemy(droid, can_shoot)
-			can_shoot.time_until_target_check = ENEMY_TARGET_CHECK_INTERVAL
+			unit_data.time_until_target_check = ENEMY_TARGET_CHECK_INTERVAL
 			pass
 	pass
 	

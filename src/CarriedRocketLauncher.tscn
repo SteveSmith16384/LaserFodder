@@ -11,5 +11,5 @@ item_name = "Rocket Launcher"
 
 [node name="IsGun" parent="." instance=ExtResource( 2 )]
 opp_fire = false
-reload_time = 10.0
+burst_size = 1
 bullet_class = ExtResource( 3 )
