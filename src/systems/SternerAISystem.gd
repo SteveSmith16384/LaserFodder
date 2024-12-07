@@ -10,8 +10,7 @@ func _process(delta):
 	pass
 	
 
-func _process_entity(_delta: float, sterner:KinematicBody):
-	#return # todo
+func _process_entity(delta: float, sterner:KinematicBody):
 	var unit_data = sterner.get_node("UnitData")
 	if unit_data.killed:
 		# We're dead!
@@ -67,8 +66,6 @@ func _process_entity(_delta: float, sterner:KinematicBody):
 	pass
 	
 	if can_move.has_destination == false:
-		# todo - wander?
-	#	if can_move.current_mode == CanMove.Mode.WALK:
 		return
 	
 	var next_dest: Vector3 = can_move.route_points[can_move.route_index]

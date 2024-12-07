@@ -63,6 +63,7 @@ func use_item(current_weapon, target_point: Vector3): # Return whether to play s
 		force.y = 3
 
 		var g:RigidBody = throwngrenade_class.instance()
+		g.init(is_gren.radius, is_gren.damage)
 		g.apply_central_impulse(force)
 		g.translation = get_parent().global_translation + offset.normalized()
 		g.translation.y = 1

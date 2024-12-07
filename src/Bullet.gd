@@ -15,6 +15,9 @@ func _ready():
 
 
 func init(shooter_, gun_data, col:Color):
+	if shooter_ == null:
+		push_warning("No shooter!")
+		
 	shooter = shooter_
 	is_gun = gun_data
 	$MeshInstance.get_surface_material(0).albedo_color = col
@@ -26,14 +29,15 @@ func _physics_process(delta):
 	var col : KinematicCollision = move_and_collide(dir)
 	if col:
 		if col.collider != shooter:
-			var ud = col.collider.find_node("UnitData", false)
+			var ud :UnitData= col.collider.find_node("UnitData", false)
 			if ud != null:
 				ud.dec_health(shooter, is_gun.damage)
 			else:
-				var sparks:Spatial = sparks_class.instance()
-				sparks.look_at_from_position(self.translation, self.shooter.translation, Vector3.UP)
-				self.get_parent().add_child(sparks)
-				sparks.activate()
+				if is_instance_valid(self.shooter):
+					var sparks:Spatial = sparks_class.instance()
+					sparks.look_at_from_position(self.translation, self.shooter.translation, Vector3.UP)
+					self.get_parent().add_child(sparks)
+					sparks.activate()
 				pass
 			queue_free()
 	pass

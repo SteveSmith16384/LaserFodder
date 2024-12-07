@@ -98,22 +98,22 @@ func _process_entity(delta: float, droid:KinematicBody):
 	pass
 
 
-func _check_for_enemy(entity, can_shoot):
-	entity.visible = false # Only show us if we can see an enemy
+func _check_for_enemy(droid, can_shoot):
+	droid.visible = false # Only show us if we can see an enemy
 	
 	var closest: KinematicBody = null
 	var closest_dist: float = 9999
 	
 	var enemy_units = get_tree().get_nodes_in_group("player")
 	for enemy_unit in enemy_units:
-		var can_see:bool = entity.can_see_target(enemy_unit)
+		var can_see:bool = droid.can_see_target(enemy_unit)
 		if can_see:
 			var ud = enemy_unit.get_node("UnitData")
 			if ud.killed:
 				continue
-			entity.visible = true
+			droid.visible = true
 			# check distance
-			var dist = entity.global_translation.distance_to(enemy_unit.global_translation)
+			var dist = droid.global_translation.distance_to(enemy_unit.global_translation)
 			#if dist > Globals.AI_VIEW_DISTANCE:
 			#	continue
 			if dist < closest_dist:

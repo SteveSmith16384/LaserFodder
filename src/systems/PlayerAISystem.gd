@@ -45,13 +45,13 @@ func _process_player(player:KinematicBody, delta:float):
 				var shot_fired = can_shoot.use_item(can_carry.current_item, can_shoot.current_target.global_translation)
 				if shot_fired:
 					player.shoot_anim()
-					player.emit_signal("equipment_changed2", self)
+					player.emit_signal("equipment_changed2")
 #			return
 #			else:
 #				# Walk towards them
 #				set_destination($CanUseItem.current_target.translation, false)
 		else:
-			# Walk towards them - todo?
+			# Walk towards them?
 			#set_destination(can_move, can_shoot.current_target.translation, false)
 			pass
 	else:
@@ -129,6 +129,4 @@ func _stop_walking(player, can_move):
 	can_move.dest_arrow.visible = false
 	player.idle_anim()
 	pass
-	
-	
 

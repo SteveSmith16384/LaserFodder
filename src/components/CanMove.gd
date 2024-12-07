@@ -4,11 +4,13 @@ extends Spatial
 const debuggingsphere_class = preload("res://DebuggingSphere.tscn")
 const destarrow_class = preload("res://Ring.tscn")
 
-enum Mode {WALK, GUARD}
+export var show_destination = false
+
+#enum Mode {WALK, GUARD}
 
 var speed = 1.65
 
-var current_mode = Mode.WALK # Default
+#var current_mode = Mode.WALK # Default
 
 var has_destination = false
 var route_points : PoolVector3Array 
@@ -18,10 +20,11 @@ var pause_for : float = 0
 var dest_arrow: Spatial
 
 func _ready():
-	dest_arrow = destarrow_class.instance()
-	dest_arrow.visible = false
-	dest_arrow.modulate = Color.green
-	get_parent().get_parent().call_deferred("add_child", dest_arrow)
+	if show_destination:
+		dest_arrow = destarrow_class.instance()
+		dest_arrow.visible = false
+		dest_arrow.modulate = Color.green
+		get_parent().get_parent().call_deferred("add_child", dest_arrow)
 	pass
 	
 	

@@ -4,7 +4,18 @@ signal finished_changing_map
 
 var audio_node : AudioStreamPlayer3D
 var frame_count = 0
+var radius: float
+var damage: float
 
+func init(rad:float, dmg: float):
+	radius = rad
+	damage = dmg
+	
+	var sphere: SphereShape = $Area/CollisionShape.shape
+	sphere.radius = radius
+	pass
+	
+	
 func _ready():
 	$CPUParticles.emitting = true
 	
@@ -32,6 +43,9 @@ func _check_for_hits():
 	for node in nodes:
 		if node.has_method("caught_in_explosion"):
 			node.caught_in_explosion()
+		var unit_data:UnitData = node.find_node("UnitData")
+		if unit_data != null:
+			unit_data.dec_health(null, self.damage)
 	pass
 	
 	

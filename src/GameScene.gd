@@ -14,7 +14,6 @@ func _ready():
 	var start_positions = $SternersHouse.get_player_start_points()
 	for start_position in start_positions:
 		_create_player(start_position.global_translation)
-		break # todo - remove
 		
 	EventBus.connect("explosion", self, "_on_explosion")
 	
@@ -143,8 +142,9 @@ func _on_UI_player_selected(player:KinematicBody):
 	pass
 
 
-func _on_explosion(pos:Vector3):
+func _on_explosion(pos:Vector3, rad:float, dmg:float):
 	var explosion:Spatial = explosion_class.instance()
+	explosion.init(rad, dmg)
 	explosion.translation = pos
 	add_child(explosion)
 	

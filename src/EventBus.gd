@@ -2,8 +2,8 @@ extends Node
 
 signal explosion
 
-func explosion(pos:Vector3):
-	emit_signal("explosion", pos)
+func explosion(pos:Vector3, rad:float, dmg:float):
+	emit_signal("explosion", pos, rad, dmg)
 	pass
 	
 	

@@ -59,11 +59,6 @@ func _on_EnemyDroid_input_event(_camera, _event, _position, _normal, _shape_idx)
 	pass
 
 
-func caught_in_explosion():
-	# todo
-	pass
-
-
 func _on_UnitData_shot(_shooter):
 	$Rotator/MakeCentre/NewModel/Sparks.activate()
 	pass

@@ -13,7 +13,7 @@ roughness = 0.5
 extents = Vector3( 0.813411, 0.416661, 0.14477 )
 
 [sub_resource type="BoxShape" id=3]
-extents = Vector3( 0.804636, 0.153003, 0.165971 )
+extents = Vector3( 0.804636, 0.153003, 0.148304 )
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.240981, 0.516484, 0.143523 )

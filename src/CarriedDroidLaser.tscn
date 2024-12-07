@@ -7,6 +7,9 @@
 [node name="CarriedDroidLaser" type="Node"]
 
 [node name="IsGun" parent="." instance=ExtResource( 1 )]
+damage = 50.0
+burst_size = 1
+max_ammo = 99
 bullet_class = ExtResource( 3 )
 
 [node name="IsItem" parent="." instance=ExtResource( 2 )]

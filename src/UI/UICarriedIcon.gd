@@ -1,4 +1,4 @@
-extends Control
+extends Control # todo - delete?
 
 func init(item):
 	var is_item = item.get_node("IsItem")

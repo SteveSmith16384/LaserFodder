@@ -5,7 +5,7 @@ signal shot
 signal killed
 
 var unit_name: String
-var armour : float = 50 # Reduces damage by this percent
+var armour : float = 50.0 # Reduces damage by this percent
 var max_health : float = 100
 var health : float = 100
 var accuracy : float = 70
@@ -19,7 +19,7 @@ func init(name: String):
 
 
 func dec_health(shooter:Spatial, amt:float):
-	amt = amt * armour / 100
+	amt = amt * armour / 100.0
 	health -= amt
 	if health <= 0:
 		killed = true

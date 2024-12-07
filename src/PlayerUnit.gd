@@ -1,7 +1,9 @@
 extends KinematicBody
 
 const carriedpistol_class = preload("res://CarriedPistol.tscn")
-const carriedgrenade_class = preload("res://CarriedGrenade.tscn")
+const carriedap25grenade_class = preload("res://CarriedAP25Grenade.tscn")
+const carriedap50grenade_class = preload("res://CarriedAP50Grenade.tscn")
+const carriedap100grenade_class = preload("res://CarriedAP100Grenade.tscn")
 const carriedrocketlauncher_class = preload("res://CarriedRocketLauncher.tscn")
 const carriedmedikit_class = preload("res://CarriedMediKit.tscn")
 
@@ -15,7 +17,7 @@ func _ready():
 	$CanCarry.items.push_back(pistol)
 	$CanCarry.current_item = $CanCarry.get_first_gun()
 
-	var grenade = carriedgrenade_class.instance()
+	var grenade = carriedap50grenade_class.instance()
 	$CanCarry.items.push_back(grenade)
 
 	var medikit = carriedmedikit_class.instance()
@@ -55,12 +57,11 @@ func turn_to_face(point:Vector3):
 	pass
 	
 
-func _on_PlayerUnit_input_event(_camera, event, _position, _normal, _shape_idx):
-	if event is InputEventMouseButton:
-		if event.button_index == 1 and event.pressed:
-			EventBus.player_selected(self)
-			#emit_signal("selected", self)
-		pass
+func _on_PlayerUnit_input_event(_camera, _event, _position, _normal, _shape_idx):
+#	if event is InputEventMouseButton:
+#		if event.button_index == 1 and event.pressed:
+#			EventBus.player_selected(self)
+#		pass
 	pass
 	
 
@@ -95,10 +96,13 @@ func _on_UnitData_shot(shooter:Spatial):
 
 func _on_UnitData_killed(shooter:Spatial):
 	#_stop_walking()
-	$Rotator.look_at(shooter.global_translation, Vector3.UP)
-	$Rotator.rotation_degrees.y -= 90
+	if shooter != null:
+		$Rotator.look_at(shooter.global_translation, Vector3.UP)
+		$Rotator.rotation_degrees.y -= 90
+		pass
+		
 	model.killed()
-	emit_signal("health_changed", self)
+	emit_signal("health_changed")
 	pass
 
 

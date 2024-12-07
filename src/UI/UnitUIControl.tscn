@@ -6,7 +6,7 @@
 [node name="UnitUIControl" type="Control"]
 margin_right = 80.0
 margin_bottom = 63.0
-rect_min_size = Vector2( 80, 63 )
+rect_min_size = Vector2( 160, 63 )
 mouse_filter = 1
 script = ExtResource( 1 )
 

@@ -22,7 +22,7 @@ func _physics_process(delta):
 	var col : KinematicCollision = move_and_collide(dir)
 	if col:
 		if col.collider != shooter:
-			EventBus.explosion(self.global_translation)
+			EventBus.explosion(self.global_translation, 7, 75)
 			queue_free()
 	pass
 
