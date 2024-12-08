@@ -4,6 +4,9 @@ const SPEED = 2
 const ENEMY_TARGET_CHECK_INTERVAL :float = 0.8
 
 func _process(delta):
+	if Globals.game_paused:
+		return
+		
 	var sterners = get_tree().get_nodes_in_group("sterner")
 	for sterner in sterners:
 		_process_entity(delta, sterner)

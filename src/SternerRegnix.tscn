@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://character_scenes/Swat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://SternerRegnix.gd" type="Script" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://components/UnitData.tscn" type="PackedScene" id=7]
 [ext_resource path="res://components/CanBeSelected.tscn" type="PackedScene" id=8]
 [ext_resource path="res://BloodSplatter.tscn" type="PackedScene" id=9]
-[ext_resource path="res://components/CanPause.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.414686
@@ -40,8 +39,6 @@ bullet_colour = Color( 1, 0, 0.937255, 1 )
 [node name="CanCarry" parent="." instance=ExtResource( 5 )]
 
 [node name="CanBeSelected" parent="." instance=ExtResource( 8 )]
-
-[node name="CanPause" parent="." instance=ExtResource( 10 )]
 
 [node name="UnitData" parent="." instance=ExtResource( 7 )]
 

@@ -102,6 +102,7 @@ func _on_player_selected(player:KinematicBody):
 	player.get_node("IsPlayer").selected = true
 
 	$CameraController.target_aim = player.global_translation
+	$CameraController.target_aim.z += 7
 	append_log("Unit selected")
 	pass
 	
@@ -122,7 +123,7 @@ func _create_player(pos: Vector3):
 	
 	var player:Spatial = player_class.instance()
 	player.translation = pos
-	player.get_node("UnitData").init(Globals.get_unit_name(idx))
+	player.get_node("UnitData").init(Globals.get_unit_name(idx), Globals.SIDE_PLAYER)
 
 	#self.call_deferred("add_child", player)
 	$SternersHouse.add_child(player)
@@ -155,5 +156,12 @@ func _on_explosion(pos:Vector3, rad:float, dmg:float):
 func _on_finished_changing_map():
 	$SternersHouse.generate_astar()
 	pass
-	
-	
+
+
+func _on_GameUI_pause_changed():
+	if Globals.game_paused:
+		append_log("Game paused")
+	else:
+		append_log("Game unpaused")
+	pass
+

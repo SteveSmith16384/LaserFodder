@@ -4,6 +4,9 @@ const SPEED = 3#1.65
 const ENEMY_TARGET_CHECK_INTERVAL :float = 1.0
 
 func _physics_process(delta):
+	if Globals.game_paused:
+		return
+		
 	var players = get_tree().get_nodes_in_group("player")
 	for player in players:
 		_process_player(player, delta)
@@ -81,7 +84,7 @@ func _process_player(player:KinematicBody, delta:float):
 	next_dest.y = player.translation.y
 
 	var dir:Vector3 = next_dest - player.translation
-	if dir.length() < .2: # Reached point
+	if dir.length() < .05: # Reached point
 		can_move.route_index += 1
 		if can_move.route_index >= can_move.route_points.size():
 			 # Reached destination

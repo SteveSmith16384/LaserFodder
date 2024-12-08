@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/models/the_assassins/enemy_droid.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://EnemyDroid.gd" type="Script" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://Sparks.tscn" type="PackedScene" id=10]
 [ext_resource path="res://components/UnitData.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Resources/DroidMaterial.tres" type="Material" id=12]
-[ext_resource path="res://components/CanPause.tscn" type="PackedScene" id=13]
 
 [sub_resource type="CylinderMesh" id=2]
 material = ExtResource( 12 )
@@ -118,8 +117,6 @@ bullet_colour = Color( 1, 0, 0, 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="UnitData" parent="." instance=ExtResource( 11 )]
-
-[node name="CanPause" parent="." instance=ExtResource( 13 )]
 
 [node name="CanCarry" parent="." instance=ExtResource( 4 )]
 

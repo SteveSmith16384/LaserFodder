@@ -81,9 +81,9 @@ func shoot_anim():
 
 
 func _on_UnitData_shot(shooter:Spatial):
-	#_stop_walking()
-	$Rotator.look_at(shooter.global_translation, Vector3.UP)
-	$Rotator.rotation_degrees.y -= 90
+	if shooter != null:
+		$Rotator.look_at(shooter.global_translation, Vector3.UP)
+		$Rotator.rotation_degrees.y -= 90
 	model.shot()
 	model.get_node("BloodSplatter").activate()
 	

@@ -6,11 +6,6 @@ export var bullet_colour: Color = Color.white
 
 var current_target : Spatial
 
-#func _process(delta:float):
-#	time_until_next_shot -= delta
-#	pass
-	
-
 func use_item(current_weapon, target_point: Vector3): # Return whether to play shoot anim
 	var is_gun:IsGun = current_weapon.find_node("IsGun")
 	if is_gun != null:
@@ -34,14 +29,14 @@ func use_item(current_weapon, target_point: Vector3): # Return whether to play s
 			$Audio_Shoot.stream = is_gun.shot_sfx
 			$Audio_Shoot.play()
 		
+		var unit_data:UnitData = get_parent().get_node("UnitData")
 		var bullet:Bullet = is_gun.bullet_class.instance()
-		bullet.init(get_parent(), is_gun, bullet_colour)
+		bullet.init(get_parent(), unit_data.side, is_gun, bullet_colour)
 		var origin = get_parent().get_node("Rotator/Muzzle").global_translation
 		#bullet.translation = get_parent().get_node("Muzzle").global_translation
 		target_point.y = origin.y
 		bullet.look_at_from_position(origin, target_point, Vector3.UP)
 		
-		var unit_data = get_parent().get_node("UnitData")
 		var acc: float = 100.0 * (is_gun.accuracy/100.0) * (unit_data.accuracy/100.0)
 		var rnd:float = Globals.rnd.randf_range(0, 100)
 		if rnd > acc:

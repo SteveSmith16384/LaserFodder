@@ -54,7 +54,8 @@ func _on_EnemyAgent_input_event(_camera, event, _position, _normal, _shape_idx):
 
 
 func _on_UnitData_shot(shooter:Spatial):
-	turn_to_face(shooter.global_translation)
+	if shooter != null:
+		turn_to_face(shooter.global_translation)
 	model.shot()
 	
 	model.get_node("BloodSplatter").activate()

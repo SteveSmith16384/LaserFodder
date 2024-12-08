@@ -4,6 +4,9 @@ const SPEED = 2
 const ENEMY_TARGET_CHECK_INTERVAL :float = 1.0
 
 func _process(delta):
+	if Globals.game_paused:
+		return
+		
 	var droids = get_tree().get_nodes_in_group("droid")
 	for droid in droids:
 		_process_entity(delta, droid)

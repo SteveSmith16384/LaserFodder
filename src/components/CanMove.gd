@@ -6,11 +6,7 @@ const destarrow_class = preload("res://Ring.tscn")
 
 export var show_destination = false
 
-#enum Mode {WALK, GUARD}
-
 var speed = 1.65
-
-#var current_mode = Mode.WALK # Default
 
 var has_destination = false
 var route_points : PoolVector3Array 
@@ -43,9 +39,10 @@ static func set_destination(player:Spatial, can_move, pos: Vector3):
 			can_move.route_index = 1 # First point is sometimes in the wrong direction
 
 		can_move.has_destination = true
-		can_move.dest_arrow.visible = true
-		can_move.dest_arrow.translation = pos
-		can_move.dest_arrow.translation.y = .01
+		if can_move.dest_arrow != null:
+			can_move.dest_arrow.visible = true
+			can_move.dest_arrow.translation = pos
+			can_move.dest_arrow.translation.y = .01
 		
 		if Globals.SHOW_ASTAR_ROUTE:
 			for t in Globals.to_remove:
@@ -60,8 +57,6 @@ static func set_destination(player:Spatial, can_move, pos: Vector3):
 	else:
 		can_move.has_destination = false
 		can_move.dest_arrow.visible = false
-#	if clear_target:
-#		can_shoot.current_target = null # Otherwise they won't move until they've killed the target
 	pass
 
 

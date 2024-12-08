@@ -10,6 +10,7 @@ func init(rad:float, dmg: float):
 	
 	
 func _on_ExplodeTimer_timeout():
+	# todo - pause
 	EventBus.explosion(self.global_translation, radius, damage)
 	self.queue_free()
 	pass

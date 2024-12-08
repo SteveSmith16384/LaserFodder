@@ -20,10 +20,10 @@ var num_left_in_burst: int = 3
 
 func get_ammo():
 	if infinite_ammo:
-		return 99
+		return max_ammo
 	if _ammo < 0:
 		_ammo = max_ammo
-	return _ammo # _ammo
+	return _ammo
 
 
 func dec_ammo():

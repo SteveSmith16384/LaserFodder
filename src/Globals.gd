@@ -6,8 +6,12 @@ const RELEASE_MODE = false
 const SHOW_FPS = true and !RELEASE_MODE
 const SHOW_ASTAR_ROUTE = false and !RELEASE_MODE
 
+const SIDE_PLAYER = 0
+const SIDE_STERNER = 1
+
 var astar: AStar
 var rnd : RandomNumberGenerator
+var game_paused = false
 
 var to_remove = [] # Hack!
 

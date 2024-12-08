@@ -55,29 +55,13 @@ func _process(delta):
 	pass
 
 
-func _physics_process(_delta):
-#	var new_hidden = []
-#	var coll = $RayCast.get_collider()
-#	if coll != null:
-#		# Should only be a building
-#		coll.visible = false
-#		new_hidden.push_back(coll)
-#
-#	for sp in hidden_spatials:
-#		if new_hidden.has(sp) == false:
-#			sp.visible = true
-#
-#	hidden_spatials = new_hidden
-	pass
-	
-	
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_WHEEL_DOWN and event.pressed:
 			#print("Left button was clicked at ", event.position)
-			height -= 0.5
+			height += 0.5
 		if event.button_index == BUTTON_WHEEL_UP and event.pressed:
 			#print("Wheel up")
-			height += 0.5
+			height -= 0.5
 	pass
 

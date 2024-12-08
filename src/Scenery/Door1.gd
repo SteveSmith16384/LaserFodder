@@ -64,6 +64,8 @@ func _does_body_activate_door(body:Spatial):
 		return true
 	if body.is_in_group("sterner"):
 		return true
+	if body.is_in_group("deaddroid"):
+		return true
 
 	return false
 

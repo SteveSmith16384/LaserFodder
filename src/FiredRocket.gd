@@ -18,6 +18,9 @@ func init(gun_data):
 	
 	
 func _physics_process(delta):
+	if Globals.game_paused:
+		return
+		
 	var dir = global_transform.basis.z * delta * -1 * SPEED
 	var col : KinematicCollision = move_and_collide(dir)
 	if col:
@@ -28,5 +31,6 @@ func _physics_process(delta):
 
 
 func _on_RemoveTimer_timeout():
+	# todo - pause!
 	queue_free()
 	pass

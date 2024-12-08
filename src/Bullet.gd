@@ -7,6 +7,7 @@ const sparks_class = preload("res://Sparks.tscn")
 
 var is_gun
 var shooter:Spatial
+var side: int
 
 func _ready():
 	if shooter == null:
@@ -14,24 +15,29 @@ func _ready():
 	pass
 
 
-func init(shooter_, gun_data, col:Color):
+func init(shooter_, side_, gun_data, col:Color):
 	if shooter_ == null:
 		push_warning("No shooter!")
 		
 	shooter = shooter_
+	side = side_
 	is_gun = gun_data
 	$MeshInstance.get_surface_material(0).albedo_color = col
 	pass
 	
 	
 func _physics_process(delta):
+	if Globals.game_paused:
+		return
+		
 	var dir = global_transform.basis.z * delta * -1 * SPEED
 	var col : KinematicCollision = move_and_collide(dir)
 	if col:
 		if col.collider != shooter:
 			var ud :UnitData= col.collider.find_node("UnitData", false)
 			if ud != null:
-				ud.dec_health(shooter, is_gun.damage)
+				if ud.side != side:
+					ud.dec_health(shooter, is_gun.damage)
 			else:
 				if is_instance_valid(self.shooter):
 					var sparks:Spatial = sparks_class.instance()
