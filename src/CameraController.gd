@@ -3,7 +3,7 @@ extends Spatial
 const SPEED:float = 15.0
 const distance : float = 10.0
 
-var target_aim : Vector3
+var _target_aim : Vector3
 var current_aim: Vector3
 
 var height : float = 16.0
@@ -11,28 +11,28 @@ var height : float = 16.0
 var hidden_spatials = []
 
 func _process(delta):
-	if target_aim == null:
+	if _target_aim == null:
 		return
 		
-	current_aim = lerp(current_aim, target_aim, 0.5)
+	current_aim = lerp(current_aim, _target_aim, 0.5)
 	
 	if Input.is_action_pressed("ui_left"):
-		target_aim.x -= delta * SPEED
+		_target_aim.x -= delta * SPEED
 		#self.translation.x += delta * SPEED
 		#angle -= delta * SPEED
 		pass
 	elif Input.is_action_pressed("ui_right"):
-		target_aim.x += delta * SPEED
+		_target_aim.x += delta * SPEED
 		#self.translation.x -= delta * SPEED
 		#angle += delta * SPEED
 		pass
 		
 	if Input.is_action_pressed("ui_up"):
-		target_aim.z -= delta * SPEED
+		_target_aim.z -= delta * SPEED
 #		distance -= delta * SPEED
 #		#self.translation.z += delta * SPEED
 	elif Input.is_action_pressed("ui_down"):
-		target_aim.z += delta * SPEED
+		_target_aim.z += delta * SPEED
 #		#self.translation.z -= delta * SPEED
 #		distance += delta * SPEED
 	
@@ -65,3 +65,8 @@ func _input(event):
 			height -= 0.5
 	pass
 
+
+func set_target_aim(pos:Vector3):
+	_target_aim = pos
+	return
+	

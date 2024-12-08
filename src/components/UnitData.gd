@@ -11,12 +11,16 @@ var max_health : float = 100
 var health : float = 100
 var accuracy : float = 70
 var killed = false
-
 var time_until_target_check: float
+
+# Droid data
+var guard : bool = true
 
 func init(name: String, side_:int):
 	unit_name = name
 	side = side_
+	if Globals.rnd.randi_range(1, 2) == 1:
+		guard = false
 	pass
 
 

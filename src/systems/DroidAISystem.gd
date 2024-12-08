@@ -3,10 +3,21 @@ extends Node
 const SPEED = 2
 const ENEMY_TARGET_CHECK_INTERVAL :float = 1.0
 
+var shared_target: Spatial
+
 func _process(delta):
 	if Globals.game_paused:
 		return
 		
+	if is_instance_valid(shared_target) == false:
+		# Target destroyed
+		shared_target = null
+	else:
+		var ud = shared_target.get_node("UnitData")
+		if ud.killed:
+			# Target destroyed
+			shared_target = null
+
 	var droids = get_tree().get_nodes_in_group("droid")
 	for droid in droids:
 		_process_entity(delta, droid)
@@ -14,7 +25,7 @@ func _process(delta):
 	
 
 func _process_entity(delta: float, droid:KinematicBody):
-	var unit_data = droid.get_node("UnitData")
+	var unit_data:UnitData = droid.get_node("UnitData")
 	if unit_data.killed:
 		# We're dead!
 		return
@@ -68,8 +79,9 @@ func _process_entity(delta: float, droid:KinematicBody):
 	pass
 	
 	if can_move.has_destination == false:
-		# todo - wander?
-	#	if can_move.current_mode == CanMove.Mode.WALK:
+		if can_shoot.current_target == null:
+			if unit_data.guard == false and shared_target != null:
+				can_shoot.current_target = shared_target
 		return
 	
 	var next_dest: Vector3 = can_move.route_points[can_move.route_index]
@@ -124,5 +136,8 @@ func _check_for_enemy(droid, can_shoot):
 				closest = enemy_unit
 				
 	can_shoot.current_target = closest
+	
+	if shared_target == null:
+		shared_target = closest
 	pass
 

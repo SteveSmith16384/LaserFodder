@@ -44,6 +44,11 @@ func _process(_delta):
 func _physics_process(_delta):
 	if selected_unit == null:
 		return
+	
+	var pos = selected_unit.global_translation
+	pos.x += (mouse_pos.x - 612)/35
+	pos.z += (mouse_pos.y - 300)/35
+	$CameraController.set_target_aim(pos)
 			
 	if destination_clicked or shoot_clicked:# or Input.is_action_just_pressed("grenade"):
 		var camera = $CameraController/Camera
@@ -101,8 +106,8 @@ func _on_player_selected(player:KinematicBody):
 	player.get_node("SelectedArrow").visible = true
 	player.get_node("IsPlayer").selected = true
 
-	$CameraController.target_aim = player.global_translation
-	$CameraController.target_aim.z += 7
+#	$CameraController.target_aim = player.global_translation
+#	$CameraController.target_aim.z += 7
 	append_log("Unit selected")
 	pass
 	
