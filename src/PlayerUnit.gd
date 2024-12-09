@@ -12,9 +12,6 @@ signal equipment_changed2
 
 onready var model = $Rotator/Spacesuit
 
-onready var csgpolygon = $CSGPolygon
-var curve: Curve3D# Path
-
 func _ready():
 	var pistol = carriedpistol_class.instance()#rocketlauncher_class.instance()# 
 	$CanCarry.items.push_back(pistol)
@@ -31,11 +28,6 @@ func _ready():
 	call_deferred("emit_signal", "health_changed")
 	call_deferred("emit_signal", "equipment_changed2")
 	
-#	csgpolygon = CSGPolygon.new()
-#	csgpolygon.mode = CSGPolygon.MODE_PATH
-#	get_parent().add_child(csgpolygon)
-	self.remove_child(csgpolygon)
-	get_parent().call_deferred("add_child", csgpolygon)
 	pass
 
 
@@ -120,15 +112,3 @@ func emit_signal_equipment_changed():
 	pass
 	
 
-func set_path():
-	var can_move:CanMove = get_node("CanMove")
-	curve = Curve3D.new()
-	for p in can_move.route_points:
-		p.y = 0.2
-		curve.add_point(p)
-	
-	#var path:Path = Path.new()
-	$Path.curve = curve
-	csgpolygon.path_node = $Path.get_path()
-	pass
-	

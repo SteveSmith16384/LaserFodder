@@ -46,13 +46,18 @@ func _process(_delta):
 func _physics_process(_delta):
 	if selected_unit == null:
 		return
-	
+		
 	var pos = selected_unit.global_translation
 	pos.x += (mouse_pos.x - 612)/35
 	pos.z += (mouse_pos.y - 300)/35
 	$CameraController.set_target_aim(pos)
 			
-	if destination_clicked or shoot_clicked:# or Input.is_action_just_pressed("grenade"):
+	var unit_data: UnitData = selected_unit.get_node("UnitData")
+	if unit_data.killed:
+		selected_unit = null
+		return
+		
+	if destination_clicked or shoot_clicked:
 		var camera = $CameraController/Camera
 		var from = camera.project_ray_origin(mouse_pos)
 		var to = from + camera.project_ray_normal(mouse_pos) * 1000#ray_length
@@ -91,11 +96,6 @@ func _unhandled_input(event):
 			destination_clicked = true
 		if ev.button_index == 2:
 			shoot_clicked = ev.pressed
-#		mouse_clicked_event = event
-
-#	if event is InputEventKey:
-#		var ev: InputEventKey = event
-#		if ev.scancode == KEY_G:
 	pass
 	
 	
