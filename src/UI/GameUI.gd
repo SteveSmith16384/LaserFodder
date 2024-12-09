@@ -23,8 +23,18 @@ func _on_player_selected(player):
 	pass
 	
 
-
 func _on_PauseButton_toggled(button_pressed):
 	Globals.game_paused = button_pressed
 	emit_signal("pause_changed")
 	pass
+
+
+func select_player(player):
+	for ch in $PlayerIcons.get_children():
+		if ch.player == player:
+			ch.set_pressed(true)
+		else:
+			ch.set_pressed(false)
+			break
+	pass
+	

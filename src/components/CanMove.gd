@@ -36,14 +36,15 @@ static func set_destination(player:Spatial, can_move, pos: Vector3):
 	var end_point:int = Globals.astar.get_closest_point(pos)
 	can_move.route_points = Globals.astar.get_point_path(start_point, end_point)
 	if can_move.route_points.size() > 0:
-		can_move.route_points.push_back(pos) # Add point clicked!
+		can_move.route_points.push_back(pos) # Add point clicked!  todo - doesn't work!
 		
-		# For debbugging:
-		#can_move.route_ids = Globals.astar.get_id_path(start_point, end_point)
-
 		can_move.route_index = 0
 		if can_move.route_points.size() > 1:
-			can_move.route_index = 1 # First point is sometimes in the wrong direction
+			#can_move.route_index = 1 # First point is sometimes in the wrong direction
+			var array = [can_move.route_points]
+			var pool_array = array[0]
+			pool_array.push_back(pos)
+			can_move.route_points = pool_array
 
 		can_move.has_destination = true
 #		if can_move.dest_arrow != null:

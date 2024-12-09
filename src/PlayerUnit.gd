@@ -104,6 +104,9 @@ func _on_UnitData_killed(shooter:Spatial):
 		
 	model.killed()
 	emit_signal("health_changed")
+	
+	$CanMove.has_destination = false
+	$CanMove.route_polygon.visible = false
 	pass
 
 

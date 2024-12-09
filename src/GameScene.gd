@@ -111,6 +111,8 @@ func _on_player_selected(player:KinematicBody):
 #	$CameraController.target_aim = player.global_translation
 #	$CameraController.target_aim.z += 7
 	append_log("Unit selected")
+	
+	$GameUI.select_player(player)
 	pass
 	
 

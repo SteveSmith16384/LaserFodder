@@ -7,6 +7,7 @@
 extents = Vector3( 0.437367, 0.56747, 0.496243 )
 
 [node name="Toilet" type="StaticBody"]
+collision_layer = 3
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, -0.209031, -1.02613 )
