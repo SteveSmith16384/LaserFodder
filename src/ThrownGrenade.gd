@@ -3,14 +3,21 @@ extends RigidBody
 var radius: float
 var damage: float
 
+var time_until_explode :float = 5.0
+
 func init(rad:float, dmg: float):
 	radius = rad
 	damage = dmg
 	pass
 	
 	
-func _on_ExplodeTimer_timeout():
-	# todo - pause
-	EventBus.explosion(self.global_translation, radius, damage)
-	self.queue_free()
-	pass
+func _physics_process(delta):
+	if Globals.game_paused:
+		return
+	
+	time_until_explode -= delta
+	if time_until_explode <= 0:
+		EventBus.explosion(self.global_translation, radius, damage)
+		queue_free()
+		return
+		

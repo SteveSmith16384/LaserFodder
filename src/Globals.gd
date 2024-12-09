@@ -13,7 +13,7 @@ var astar: AStar
 var rnd : RandomNumberGenerator
 var game_paused = false
 
-var to_remove = [] # Hack!
+#var to_remove = [] # Hack!
 
 
 func _ready():

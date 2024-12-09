@@ -36,7 +36,7 @@ func generate_astar(sq_size:float):
 			
 			if x > sx:
 				# Check West
-				var can_see = can_see_point(Vector3(-sq_size, 0, 0))
+				var can_see = _can_see_point(Vector3(-sq_size, 0, 0))
 				if can_see == null:
 					astar.connect_points(pointid, pointid - 1)
 #					if pointid == 488:
@@ -47,7 +47,7 @@ func generate_astar(sq_size:float):
 				
 			# Check North
 			if z > sz:
-				var can_see = can_see_point(Vector3(0, 0, -sq_size))
+				var can_see = _can_see_point(Vector3(0, 0, -sq_size))
 				if can_see == null:
 					astar.connect_points(pointid, pointid - points_per_row)
 				else:
@@ -60,12 +60,10 @@ func generate_astar(sq_size:float):
 		z += sq_size
 		
 	Globals.astar = astar
-	
-	#var path = astar.get_point_path(1, 5+points_per_row)
 	pass
 	
 	
-func can_see_point(point:Vector3):
+func _can_see_point(point:Vector3):
 	#self.enabled = true
 	$RayCast.cast_to = point
 	$RayCast.cast_to.y = 0

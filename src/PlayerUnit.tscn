@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://character_scenes/Spacesuit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PlayerUnit.gd" type="Script" id=2]
@@ -21,6 +21,14 @@ radius = 0.436268
 [sub_resource type="DynamicFont" id=2]
 size = 64
 font_data = ExtResource( 11 )
+
+[sub_resource type="SpatialMaterial" id=3]
+
+[sub_resource type="Curve3D" id=4]
+_data = {
+"points": PoolVector3Array(  ),
+"tilts": PoolRealArray(  )
+}
 
 [node name="PlayerUnit" type="KinematicBody"]
 collision_layer = 9
@@ -70,6 +78,22 @@ font = SubResource( 2 )
 [node name="IsPlayer" parent="." instance=ExtResource( 13 )]
 
 [node name="UnitData" parent="." instance=ExtResource( 14 )]
+
+[node name="CSGPolygon" type="CSGPolygon" parent="."]
+mode = 2
+path_node = NodePath("")
+path_interval_type = 0
+path_interval = 3.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource( 3 )
+
+[node name="Path" type="Path" parent="."]
+curve = SubResource( 4 )
 
 [connection signal="input_event" from="." to="." method="_on_PlayerUnit_input_event"]
 [connection signal="killed" from="UnitData" to="." method="_on_UnitData_killed"]

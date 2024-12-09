@@ -5,6 +5,7 @@ const SPEED = 15.0
 
 var is_gun
 var shooter:Spatial
+var time_until_explode :float = 5.0
 
 func _ready():
 	if shooter == null:
@@ -20,6 +21,11 @@ func init(gun_data):
 func _physics_process(delta):
 	if Globals.game_paused:
 		return
+	
+	time_until_explode -= delta
+	if time_until_explode <= 0:
+		queue_free()
+		return
 		
 	var dir = global_transform.basis.z * delta * -1 * SPEED
 	var col : KinematicCollision = move_and_collide(dir)
@@ -29,8 +35,3 @@ func _physics_process(delta):
 			queue_free()
 	pass
 
-
-func _on_RemoveTimer_timeout():
-	# todo - pause!
-	queue_free()
-	pass

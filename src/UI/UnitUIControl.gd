@@ -1,7 +1,5 @@
 extends Control
 
-#var carriedicon_class = preload("res://UI/UICarriedIcon.tscn")
-
 signal player_selected
 
 var player : KinematicBody

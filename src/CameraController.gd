@@ -18,40 +18,19 @@ func _process(delta):
 	
 	if Input.is_action_pressed("ui_left"):
 		_target_aim.x -= delta * SPEED
-		#self.translation.x += delta * SPEED
-		#angle -= delta * SPEED
 		pass
 	elif Input.is_action_pressed("ui_right"):
 		_target_aim.x += delta * SPEED
-		#self.translation.x -= delta * SPEED
-		#angle += delta * SPEED
 		pass
 		
 	if Input.is_action_pressed("ui_up"):
 		_target_aim.z -= delta * SPEED
-#		distance -= delta * SPEED
-#		#self.translation.z += delta * SPEED
 	elif Input.is_action_pressed("ui_down"):
 		_target_aim.z += delta * SPEED
-#		#self.translation.z -= delta * SPEED
-#		distance += delta * SPEED
-	
-#	if angle < 0:
-#		angle += PI*2
-#	elif angle > PI*2:
-#		angle -= PI*2
-	#print("Angle=" + str(angle))
-	
-#	var x = cos(angle) * distance
-#	var z = sin(angle) * distance
+
 	self.translation.x = current_aim.x# + x
 	self.translation.y = height
 	self.translation.z = current_aim.z+5# + z
-	
-#	$Camera.look_at(current_aim, Vector3.UP)
-	
-#	var dir:Vector3 = self.global_translation - current_aim
-#	$RayCast.cast_to = dir
 	pass
 
 

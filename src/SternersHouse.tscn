@@ -2061,25 +2061,25 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.098, 0, -6.10605 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.6, 0, 3.2 )
 
 [node name="DroidStartPosition2" type="Spatial" parent="DroidStartPositions"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6.4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63605, 0, -4.44441 )
 
 [node name="DroidStartPosition3" type="Spatial" parent="DroidStartPositions"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.4, 0, -3.2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45.3291, 0, -3.2 )
 
 [node name="DroidStartPosition4" type="Spatial" parent="DroidStartPositions"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.4, 0, 1.6 )
 
 [node name="DroidStartPosition5" type="Spatial" parent="DroidStartPositions"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4, 0, 19.2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.037, 0, 19.2 )
 
 [node name="DroidStartPosition6" type="Spatial" parent="DroidStartPositions"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 19.2 )
 
 [node name="DroidStartPosition7" type="Spatial" parent="DroidStartPositions"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4, 0, 12.8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8786, 0, 11.3276 )
 
 [node name="DroidStartPosition8" type="Spatial" parent="DroidStartPositions"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4, 0, -1.6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.308, 0, -1.6 )
 
 [node name="DroidStartPosition9" type="Spatial" parent="DroidStartPositions"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8, 0, 3.2 )

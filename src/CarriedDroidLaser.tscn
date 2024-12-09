@@ -7,6 +7,7 @@
 [node name="CarriedDroidLaser" type="Node"]
 
 [node name="IsGun" parent="." instance=ExtResource( 1 )]
+reload_time_millis = 700.0
 damage = 50.0
 burst_size = 1
 max_ammo = 99

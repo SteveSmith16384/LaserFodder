@@ -19,6 +19,8 @@ func _ready():
 	
 	var players = get_tree().get_nodes_in_group("player")
 	_on_player_selected(players[0])
+
+	$CameraController.set_target_aim(selected_unit.global_translation)
 	pass
 
 

@@ -28,12 +28,5 @@ mesh = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.647828, -2.83175e-08 )
 mesh = SubResource( 3 )
 
-[node name="RemoveTimer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-autostart = true
-
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 2 )
-
-[connection signal="timeout" from="RemoveTimer" to="." method="_on_RemoveTimer_timeout"]

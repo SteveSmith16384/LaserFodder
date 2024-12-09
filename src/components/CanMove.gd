@@ -10,10 +10,11 @@ var speed = 1.65
 
 var has_destination = false
 var route_points : PoolVector3Array 
-var route_ids # todo - remove
+#var route_ids # todo - for debugging - remove
 var route_index = 0
 var pause_for : float = 0
 var dest_arrow: Spatial
+var path: Curve
 
 func _ready():
 	if show_destination:
@@ -32,7 +33,8 @@ static func set_destination(player:Spatial, can_move, pos: Vector3):
 	if can_move.route_points.size() > 0:
 		can_move.route_points.push_back(pos) # Add point clicked!
 		
-		can_move.route_ids = Globals.astar.get_id_path(start_point, end_point)
+		# For debbugging:
+		#can_move.route_ids = Globals.astar.get_id_path(start_point, end_point)
 
 		can_move.route_index = 0
 		if can_move.route_points.size() > 1:
@@ -44,6 +46,9 @@ static func set_destination(player:Spatial, can_move, pos: Vector3):
 			can_move.dest_arrow.translation = pos
 			can_move.dest_arrow.translation.y = .01
 		
+		if can_move.show_destination:
+			player.set_path()
+			
 		if Globals.SHOW_ASTAR_ROUTE:
 			for t in Globals.to_remove:
 				t.queue_free()
