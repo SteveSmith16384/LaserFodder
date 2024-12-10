@@ -104,6 +104,10 @@ func _on_player_selected(player:KinematicBody):
 		pl.get_node("SelectedArrow").visible = false
 		pl.get_node("IsPlayer").selected = false
 
+	var unit_data: UnitData = player.get_node("UnitData")
+	if unit_data.killed:
+		return
+		
 	selected_unit = player
 	player.get_node("SelectedArrow").visible = true
 	player.get_node("IsPlayer").selected = true

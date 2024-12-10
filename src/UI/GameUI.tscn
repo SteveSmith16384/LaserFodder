@@ -14,16 +14,17 @@ margin_right = 61.0
 margin_bottom = 59.0
 
 [node name="Commands" type="GridContainer" parent="."]
-margin_left = 883.0
-margin_top = 16.0
-margin_right = 1012.0
-margin_bottom = 56.0
+margin_left = 11.0
+margin_top = 194.0
+margin_right = 140.0
+margin_bottom = 234.0
 theme = ExtResource( 2 )
 
 [node name="PauseButton" type="CheckButton" parent="Commands"]
 margin_right = 129.0
 margin_bottom = 32.0
 text = "  Pause"
+flat = true
 
 [node name="Log" type="TextEdit" parent="."]
 margin_left = 9.0

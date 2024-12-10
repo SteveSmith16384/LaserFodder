@@ -24,8 +24,12 @@ func _on_SelectButton_pressed():
 
 func _on_health_changed():
 	var ud = player.get_node("UnitData")
-	$VBoxContainer/HealthProgressBar.max_value = ud.max_health
-	$VBoxContainer/HealthProgressBar.value = ud.health
+	if ud.health <= 0:
+		self.visible = false
+	else:
+		$VBoxContainer/HealthProgressBar.max_value = ud.max_health
+		$VBoxContainer/HealthProgressBar.value = ud.health
+	
 	pass
 	
 

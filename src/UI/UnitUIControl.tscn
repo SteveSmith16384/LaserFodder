@@ -6,7 +6,7 @@
 [node name="UnitUIControl" type="Control"]
 margin_right = 80.0
 margin_bottom = 63.0
-rect_min_size = Vector2( 160, 63 )
+rect_min_size = Vector2( 170, 63 )
 mouse_filter = 1
 script = ExtResource( 1 )
 
@@ -16,13 +16,15 @@ margin_bottom = 40.0
 theme = ExtResource( 2 )
 
 [node name="SelectButton" type="Button" parent="VBoxContainer"]
-margin_right = 64.0
+margin_right = 170.0
 margin_bottom = 18.0
+rect_min_size = Vector2( 170, 0 )
+toggle_mode = true
 text = "Select"
 
 [node name="HealthProgressBar" type="ProgressBar" parent="VBoxContainer"]
 margin_top = 22.0
-margin_right = 64.0
+margin_right = 170.0
 margin_bottom = 27.0
 rect_min_size = Vector2( 0, 5 )
 value = 50.0
@@ -30,14 +32,9 @@ percent_visible = false
 
 [node name="CarriedItems" type="OptionButton" parent="VBoxContainer"]
 margin_top = 31.0
-margin_right = 64.0
+margin_right = 170.0
 margin_bottom = 49.0
-
-[node name="CarriedItems_Unused" type="GridContainer" parent="VBoxContainer"]
-margin_top = 53.0
-margin_right = 64.0
-margin_bottom = 53.0
-columns = 2
+align = 1
 
 [connection signal="pressed" from="VBoxContainer/SelectButton" to="." method="_on_SelectButton_pressed"]
 [connection signal="item_selected" from="VBoxContainer/CarriedItems" to="." method="_on_CarriedItems_item_selected"]

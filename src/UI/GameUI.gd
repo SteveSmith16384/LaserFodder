@@ -35,6 +35,5 @@ func select_player(player):
 			ch.set_pressed(true)
 		else:
 			ch.set_pressed(false)
-			break
 	pass
 	

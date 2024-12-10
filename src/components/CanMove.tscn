@@ -13,6 +13,8 @@ _data = {
 script = ExtResource( 1 )
 
 [node name="RoutePolygon" parent="." instance=ExtResource( 2 )]
+path_interval = 1.0
+path_continuous_u = false
 
 [node name="Path" type="Path" parent="RoutePolygon"]
 curve = SubResource( 1 )
