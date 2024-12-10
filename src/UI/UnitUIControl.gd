@@ -22,9 +22,9 @@ func _on_SelectButton_pressed():
 	pass
 
 
-func _on_health_changed():
+func _on_health_changed(_pl):
 	var ud = player.get_node("UnitData")
-	if ud.health <= 0:
+	if ud.killed:
 		self.visible = false
 	else:
 		$VBoxContainer/HealthProgressBar.max_value = ud.max_health
@@ -65,7 +65,6 @@ func _on_CarriedItems_item_selected(index):
 
 
 func set_pressed(b:bool):
-	# todo - doesn't do anything
 	$VBoxContainer/SelectButton.set_pressed(b)
 	pass
 	

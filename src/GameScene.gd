@@ -52,11 +52,6 @@ func _physics_process(_delta):
 	pos.z += (mouse_pos.y - 300)/35
 	$CameraController.set_target_aim(pos)
 			
-	var unit_data: UnitData = selected_unit.get_node("UnitData")
-	if unit_data.killed:
-		selected_unit = null
-		return
-		
 	if destination_clicked or shoot_clicked:
 		var camera = $CameraController/Camera
 		var from = camera.project_ray_origin(mouse_pos)
@@ -106,6 +101,7 @@ func _on_player_selected(player:KinematicBody):
 
 	var unit_data: UnitData = player.get_node("UnitData")
 	if unit_data.killed:
+		append_log("That unit is dead")
 		return
 		
 	selected_unit = player
@@ -138,6 +134,7 @@ func _create_player(pos: Vector3):
 	player.translation = pos
 	player.get_node("UnitData").init(Globals.get_unit_name(idx), Globals.SIDE_PLAYER)
 
+	player.connect("health_changed", self, "_on_player_health_changed")
 	#self.call_deferred("add_child", player)
 	$SternersHouse.add_child(player)
 	
@@ -178,3 +175,13 @@ func _on_GameUI_pause_changed():
 		append_log("Game unpaused")
 	pass
 
+
+func _on_player_health_changed(player):
+	var unit_data: UnitData = player.get_node("UnitData")
+	if unit_data.killed:
+		if player == selected_unit:
+			selected_unit = null
+		append_log(unit_data.unit_name + " HAS BEEN KILLED!")
+	pass
+	
+	

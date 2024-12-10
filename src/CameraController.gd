@@ -14,7 +14,7 @@ func _process(delta):
 	if _target_aim == null:
 		return
 		
-	current_aim = lerp(current_aim, _target_aim, 0.5)
+	current_aim = lerp(current_aim, _target_aim, 0.1)
 	
 	if Input.is_action_pressed("ui_left"):
 		_target_aim.x -= delta * SPEED

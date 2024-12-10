@@ -25,9 +25,8 @@ func _ready():
 
 	model.idle()
 	
-	call_deferred("emit_signal", "health_changed")
+	call_deferred("emit_signal", "health_changed", self)
 	call_deferred("emit_signal", "equipment_changed2")
-	
 	pass
 
 
@@ -91,7 +90,7 @@ func _on_UnitData_shot(shooter:Spatial):
 	if $IsPlayer.selected == false:
 		$CanUseItem.current_target = shooter # todo - check priority of current target against new one?
 
-	emit_signal("health_changed")
+	emit_signal("health_changed", self)
 	pass
 	
 
@@ -103,7 +102,7 @@ func _on_UnitData_killed(shooter:Spatial):
 		pass
 		
 	model.killed()
-	emit_signal("health_changed")
+	emit_signal("health_changed", self)
 	
 	$CanMove.has_destination = false
 	$CanMove.route_polygon.visible = false
