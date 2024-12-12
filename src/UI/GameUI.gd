@@ -24,8 +24,7 @@ func _on_player_selected(player):
 	
 
 func _on_PauseButton_toggled(button_pressed):
-	Globals.game_paused = button_pressed
-	emit_signal("pause_changed")
+	emit_signal("pause_changed", button_pressed)
 	pass
 
 

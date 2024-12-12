@@ -25,6 +25,8 @@ func _ready():
 
 
 func _process(_delta):
+	if Input.is_action_just_pressed("pause"):
+		_set_pause(not Globals.game_paused)
 	if Input.is_action_just_pressed("unit_1"):
 		var players = get_tree().get_nodes_in_group("player")
 		_on_player_selected(players[0])
@@ -168,7 +170,14 @@ func _on_finished_changing_map():
 	pass
 
 
-func _on_GameUI_pause_changed():
+func _on_GameUI_pause_changed(button_pressed):
+	_set_pause(button_pressed)
+	pass
+	
+	
+func _set_pause(b:bool):
+	Globals.game_paused = b
+	$GameUI/Commands/PauseButton.set_pressed_no_signal(b)
 	if Globals.game_paused:
 		append_log("Game paused")
 	else:
