@@ -13,6 +13,9 @@ var accuracy : float = 70
 var killed = false
 var time_until_target_check: float
 
+# Player data
+var action_mode:  int = 0
+
 # Droid data
 var guard : bool = true
 

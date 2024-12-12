@@ -9,6 +9,11 @@ const SHOW_ASTAR_ROUTE = false and !RELEASE_MODE
 const SIDE_PLAYER = 0
 const SIDE_STERNER = 1
 
+# These must match dropdown in player ui:-
+const ACTION_STOP = 0
+const ACTION_WALK_SHOOT = 1
+const ACTION_RUN = 2
+
 var astar: AStar
 var rnd : RandomNumberGenerator
 var game_paused = false

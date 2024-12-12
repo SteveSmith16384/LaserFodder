@@ -30,11 +30,18 @@ rect_min_size = Vector2( 0, 5 )
 value = 50.0
 percent_visible = false
 
-[node name="CarriedItems" type="OptionButton" parent="VBoxContainer"]
+[node name="ActionMode" type="OptionButton" parent="VBoxContainer"]
 margin_top = 31.0
 margin_right = 170.0
 margin_bottom = 49.0
 align = 1
 
+[node name="CarriedItems" type="OptionButton" parent="VBoxContainer"]
+margin_top = 53.0
+margin_right = 170.0
+margin_bottom = 71.0
+align = 1
+
 [connection signal="pressed" from="VBoxContainer/SelectButton" to="." method="_on_SelectButton_pressed"]
+[connection signal="item_selected" from="VBoxContainer/ActionMode" to="." method="_on_ActionMode_item_selected"]
 [connection signal="item_selected" from="VBoxContainer/CarriedItems" to="." method="_on_CarriedItems_item_selected"]

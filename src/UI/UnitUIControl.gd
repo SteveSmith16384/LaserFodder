@@ -1,6 +1,7 @@
 extends Control
 
 signal player_selected
+#signal action_mode_changed
 
 var player : KinematicBody
 
@@ -12,12 +13,15 @@ func init(player_:Spatial):
 	
 	player.connect("health_changed", self, "_on_health_changed")
 	player.connect("equipment_changed2", self, "_on_equipment_changed")
+	
+	$VBoxContainer/ActionMode.add_item("Stop on Sight")
+	$VBoxContainer/ActionMode.add_item("Keep Moving")
+	$VBoxContainer/ActionMode.add_item("Run!")
 	pass
 	
 
 func _on_SelectButton_pressed():
 	$VBoxContainer/SelectButton.accept_event()
-	#get_tree().set_input_as_handled()
 	emit_signal("player_selected", player)
 	pass
 
@@ -25,7 +29,8 @@ func _on_SelectButton_pressed():
 func _on_health_changed(_pl):
 	var ud = player.get_node("UnitData")
 	if ud.killed:
-		self.visible = false
+		#self.visible = false
+		self.modulate.a = 0.3
 	else:
 		$VBoxContainer/HealthProgressBar.max_value = ud.max_health
 		$VBoxContainer/HealthProgressBar.value = ud.health
@@ -67,5 +72,11 @@ func _on_CarriedItems_item_selected(index):
 func set_pressed(b:bool):
 	$VBoxContainer/SelectButton.set_pressed(b)
 	pass
+
+
+func _on_ActionMode_item_selected(index):
+	var unit_data = player.get_node("UnitData")
+	unit_data.action_mode = index
+	#emit_signal("action_mode_changed", player, index)
 	
-	
+	pass

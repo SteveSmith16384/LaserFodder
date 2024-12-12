@@ -11,8 +11,8 @@ func add_player_icon(player:Spatial):
 	var icon = player_icon_class.instance()
 	icon.init(player)
 	$PlayerIcons.add_child(icon)
-	#icon.player = player
 	icon.connect("player_selected", self, "_on_player_selected")
+	#icon.connect("action_mode_changed", self, "_on_action_mode_changed")
 	
 	player_icons[player] = icon
 	pass
@@ -37,3 +37,4 @@ func select_player(player):
 			ch.set_pressed(false)
 	pass
 	
+

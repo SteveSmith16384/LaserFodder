@@ -23,7 +23,7 @@ func _process_player(player:KinematicBody, delta:float):
 	var can_move = player.get_node("CanMove")
 	var can_shoot = player.get_node("CanUseItem")
 	
-	if can_shoot.current_target != null:
+	if can_shoot.current_target != null and unit_data.action_mode != Globals.ACTION_RUN:
 		if is_instance_valid(can_shoot.current_target) == false:
 			# Target is dead
 			can_shoot.current_target = null
@@ -36,26 +36,18 @@ func _process_player(player:KinematicBody, delta:float):
 			
 		var can_see = player.can_see_target(can_shoot.current_target)
 		if can_see:
-			#player.turn_to_face(can_shoot.current_target)
-			
 			#var dist = self.global_translation.distance_to($CanUseItem.current_target.global_translation)
 			#var is_gun = $CanUseItem.current_weapon.get_node("IsGun")
 #			if dist < is_gun.distance:
-#			if is_player.selected == false:
-#				can_move.has_destination = false
 			var can_carry = player.get_node("CanCarry")
 			if can_carry.current_item != null:
 				var shot_fired = can_shoot.use_item(can_carry.current_item, can_shoot.current_target.global_translation)
 				if shot_fired:
 					player.shoot_anim()
 					player.emit_signal("equipment_changed2")
-#			return
-#			else:
-#				# Walk towards them
-#				set_destination($CanUseItem.current_target.translation, false)
+				if unit_data.action_mode == Globals.ACTION_STOP:
+					return
 		else:
-			# Walk towards them?
-			#set_destination(can_move, can_shoot.current_target.translation, false)
 			pass
 	else:
 		if is_player.selected == false: # Only auto-select target if not selected
@@ -92,6 +84,8 @@ func _process_player(player:KinematicBody, delta:float):
 		return # Loop around next time
 		
 	var offset :Vector3 = dir.normalized() * SPEED
+	if unit_data.action_mode == Globals.ACTION_RUN:
+		offset = offset * 1.5
 	var old_pos:= Vector2(player.translation.x, player.translation.z)
 	player.move_and_slide(offset)
 		
