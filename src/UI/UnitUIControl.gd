@@ -80,3 +80,4 @@ func _on_ActionMode_item_selected(index):
 	#emit_signal("action_mode_changed", player, index)
 	
 	pass
+

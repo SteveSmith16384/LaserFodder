@@ -23,7 +23,7 @@ func _process_player(player:KinematicBody, delta:float):
 	var can_move = player.get_node("CanMove")
 	var can_shoot = player.get_node("CanUseItem")
 	
-	if can_shoot.current_target != null and unit_data.action_mode != Globals.ACTION_RUN:
+	if can_shoot.current_target != null and (unit_data.action_mode != Globals.ACTION_RUN or can_move.has_destination == false):
 		if is_instance_valid(can_shoot.current_target) == false:
 			# Target is dead
 			can_shoot.current_target = null
@@ -76,7 +76,7 @@ func _process_player(player:KinematicBody, delta:float):
 	next_dest.y = player.translation.y
 
 	var dir:Vector3 = next_dest - player.translation
-	if dir.length() < .05: # Reached point
+	if dir.length() < .04: # Reached point
 		can_move.route_index += 1
 		if can_move.route_index >= can_move.route_points.size():
 			 # Reached destination

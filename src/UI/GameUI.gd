@@ -36,4 +36,3 @@ func select_player(player):
 			ch.set_pressed(false)
 	pass
 	
-

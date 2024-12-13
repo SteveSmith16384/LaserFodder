@@ -17,8 +17,7 @@ const ACTION_RUN = 2
 var astar: AStar
 var rnd : RandomNumberGenerator
 var game_paused = false
-
-#var to_remove = [] # Hack!
+#var centre_on_unit = false
 
 
 func _ready():

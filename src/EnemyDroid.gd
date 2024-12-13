@@ -10,7 +10,7 @@ func _ready():
 	$CanCarry.items.push_back(laser)
 	$CanCarry.current_item = laser#$CanCarry.get_first_gun()
 	
-	self.visible = false
+	#self.visible = false
 	pass
 	
 	

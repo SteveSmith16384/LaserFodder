@@ -14,10 +14,10 @@ margin_right = 61.0
 margin_bottom = 59.0
 
 [node name="Commands" type="GridContainer" parent="."]
-margin_left = 11.0
-margin_top = 194.0
-margin_right = 140.0
-margin_bottom = 234.0
+margin_left = 889.0
+margin_top = 18.0
+margin_right = 1018.0
+margin_bottom = 58.0
 theme = ExtResource( 2 )
 
 [node name="PauseButton" type="CheckButton" parent="Commands"]

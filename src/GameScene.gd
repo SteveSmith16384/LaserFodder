@@ -50,10 +50,16 @@ func _physics_process(_delta):
 		return
 		
 	var pos = selected_unit.global_translation
-	pos.x += (mouse_pos.x - 612)/35
-	pos.z += (mouse_pos.y - 300)/35
+	pos.z += 4.0
+	if mouse_pos.y > 130:
+		pos.x += (mouse_pos.x - 612)/35
+		pos.z += (mouse_pos.y - 300)/35
 	$CameraController.set_target_aim(pos)
-			
+		
+	var unit_data: UnitData = selected_unit.get_node("UnitData")
+	if unit_data.killed:
+		return
+
 	if destination_clicked or shoot_clicked:
 		var camera = $CameraController/Camera
 		var from = camera.project_ray_origin(mouse_pos)
@@ -188,8 +194,8 @@ func _set_pause(b:bool):
 func _on_player_health_changed(player):
 	var unit_data: UnitData = player.get_node("UnitData")
 	if unit_data.killed:
-		if player == selected_unit:
-			selected_unit = null
+#		if player == selected_unit:
+#			selected_unit = null
 		append_log(unit_data.unit_name + " HAS BEEN KILLED!")
 	pass
 	

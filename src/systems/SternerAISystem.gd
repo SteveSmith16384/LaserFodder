@@ -14,6 +14,8 @@ func _process(delta):
 	
 
 func _process_entity(delta: float, sterner:KinematicBody):
+	sterner.visible = true
+	
 	var unit_data = sterner.get_node("UnitData")
 	if unit_data.killed:
 		# We're dead!

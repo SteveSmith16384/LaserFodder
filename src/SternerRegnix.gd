@@ -11,7 +11,7 @@ func _ready():
 	$CanCarry.items.push_back(pistol)
 	$CanCarry.current_item = $CanCarry.get_first_gun()
 	
-	self.visible = false
+	#self.visible = false
 	pass
 
 
