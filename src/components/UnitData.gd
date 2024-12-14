@@ -12,6 +12,7 @@ var health : float = 100
 var accuracy : float = 70
 var killed = false
 var time_until_target_check: float
+#var wait_for: float = 0 # How long to wait for unblocking movement
 
 # Player data
 var action_mode:  int = 0

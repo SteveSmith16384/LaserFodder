@@ -10,22 +10,27 @@ var height : float = 16.0
 
 var hidden_spatials = []
 
+func _ready():
+	_target_aim = Vector3(-10, 0, 0)
+	pass
+	
+	
 func _process(delta):
 	if _target_aim == null:
 		return
 		
 	current_aim = lerp(current_aim, _target_aim, 0.1)
 	
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("left"):
 		_target_aim.x -= delta * SPEED
 		pass
-	elif Input.is_action_pressed("ui_right"):
+	elif Input.is_action_pressed("right"):
 		_target_aim.x += delta * SPEED
 		pass
 		
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("up"):
 		_target_aim.z -= delta * SPEED
-	elif Input.is_action_pressed("ui_down"):
+	elif Input.is_action_pressed("down"):
 		_target_aim.z += delta * SPEED
 
 	self.translation.x = current_aim.x# + x
