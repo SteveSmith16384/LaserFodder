@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://components/CanMove.gd"
 }, {
 "base": "Node",
+"class": "CreateEquipment",
+"language": "GDScript",
+"path": "res://CreateEquipment.gd"
+}, {
+"base": "Node",
 "class": "CreateUnits",
 "language": "GDScript",
 "path": "res://CreateUnits.gd"
@@ -42,6 +47,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Bullet": "",
 "CanMove": "",
+"CreateEquipment": "",
 "CreateUnits": "",
 "FiredRocket": "",
 "IsGun": "",

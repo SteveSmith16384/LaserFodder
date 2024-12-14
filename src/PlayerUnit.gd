@@ -1,11 +1,11 @@
 extends KinematicBody
 
-const carriedpistol_class = preload("res://CarriedPistol.tscn")
-const carriedap25grenade_class = preload("res://CarriedAP25Grenade.tscn")
-const carriedap50grenade_class = preload("res://CarriedAP50Grenade.tscn")
-const carriedap100grenade_class = preload("res://CarriedAP100Grenade.tscn")
-const carriedrocketlauncher_class = preload("res://CarriedRocketLauncher.tscn")
-const carriedmedikit_class = preload("res://CarriedMediKit.tscn")
+#const carriedpistol_class = preload("res://CarriedPistol.tscn")
+#const carriedap25grenade_class = preload("res://CarriedAP25Grenade.tscn")
+#const carriedap50grenade_class = preload("res://CarriedAP50Grenade.tscn")
+#const carriedap100grenade_class = preload("res://CarriedAP100Grenade.tscn")
+#const carriedrocketlauncher_class = preload("res://CarriedRocketLauncher.tscn")
+#const carriedmedikit_class = preload("res://CarriedMediKit.tscn")
 
 signal health_changed
 signal equipment_changed2
@@ -13,14 +13,14 @@ signal equipment_changed2
 onready var model = $Rotator/Spacesuit
 
 func _ready():
-	var pistol = carriedpistol_class.instance()#rocketlauncher_class.instance()# 
+	var pistol = CreateEquipment.get_equipment(CreateEquipment.EquipType.Pistol)# carriedpistol_class.instance()#rocketlauncher_class.instance()# 
 	$CanCarry.items.push_back(pistol)
 	$CanCarry.current_item = $CanCarry.get_first_gun()
 
-	var grenade = carriedap50grenade_class.instance()
+	var grenade = CreateEquipment.get_equipment(CreateEquipment.EquipType.AP50)
 	$CanCarry.items.push_back(grenade)
 
-	var medikit = carriedmedikit_class.instance()
+	var medikit = CreateEquipment.get_equipment(CreateEquipment.EquipType.MediKit)
 	$CanCarry.items.push_back(medikit)
 
 	model.idle()
