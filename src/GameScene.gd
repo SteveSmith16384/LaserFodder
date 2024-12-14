@@ -9,18 +9,22 @@ var destination_clicked = false
 var shoot_clicked = false
 var mouse_pos := Vector2()
 
+var units_left_to_deploy = 5
+
 func _ready():
 	# Create players
-	var start_positions = $SternersHouse.get_player_start_points()
-	for start_position in start_positions:
-		_create_player(start_position.global_translation)
+#	var start_positions = $SternersHouse.get_player_start_points()
+#	for start_position in start_positions:
+#		_create_player(start_position.global_translation)
 		
 	EventBus.connect("explosion", self, "_on_explosion")
 	
-	var players = get_tree().get_nodes_in_group("player")
-	_on_player_selected(players[0])
+#	var players = get_tree().get_nodes_in_group("player")
+#	_on_player_selected(players[0])
 
-	$CameraController.set_target_aim(selected_unit.global_translation)
+#	$CameraController.set_target_aim(selected_unit.global_translation)
+
+	append_log("Select location for unit " + str(6-units_left_to_deploy))
 	pass
 
 
@@ -45,7 +49,40 @@ func _process(_delta):
 	pass
 	
 	
-func _physics_process(_delta):
+func _physics_process(delta):
+	if Globals.game_stage == Globals.GameStage.DEPLOYMENT:
+		_physics_process_deploy(delta)
+	elif Globals.game_stage == Globals.GameStage.IN_GAME:
+		_physics_process_in_game(delta)
+	pass
+	
+
+func _physics_process_deploy(delta):
+#	if mouse_pos.x > 612:
+#	$CameraController.adj_target_aim((mouse_pos.x - 612) * delta * 0.1, 0)
+#	else:
+#		$CameraController.adj_target_aim(mouse_pos.x - 612)
+	
+	if destination_clicked:
+		destination_clicked = false
+
+		var camera = $CameraController/Camera
+		var from = camera.project_ray_origin(mouse_pos)
+		var to = from + camera.project_ray_normal(mouse_pos) * 1000
+		#print("Click:" + str(to))
+		var result = get_world().direct_space_state.intersect_ray(from, to)
+		if result.size() > 0:
+			if result.collider.is_in_group("floor"):
+				_create_player(result.position)
+				units_left_to_deploy -= 1
+				if units_left_to_deploy <= 0:
+					_start_game()
+				else:
+					append_log("Select location for unit " + str(6-units_left_to_deploy))
+	pass
+	
+	
+func _physics_process_in_game(_delta):
 	if selected_unit == null:
 		return
 		
@@ -63,7 +100,7 @@ func _physics_process(_delta):
 	if destination_clicked or shoot_clicked:
 		var camera = $CameraController/Camera
 		var from = camera.project_ray_origin(mouse_pos)
-		var to = from + camera.project_ray_normal(mouse_pos) * 1000#ray_length
+		var to = from + camera.project_ray_normal(mouse_pos) * 1000
 		#print("Click:" + str(to))
 		var result = get_world().direct_space_state.intersect_ray(from, to)
 		if result.size() > 0:
@@ -99,6 +136,19 @@ func _unhandled_input(event):
 			destination_clicked = true
 		if ev.button_index == 2:
 			shoot_clicked = ev.pressed
+	pass
+	
+
+func _start_game():
+	Globals.game_stage = Globals.GameStage.IN_GAME
+
+	var players = get_tree().get_nodes_in_group("player")
+	_on_player_selected(players[0])
+
+	$CameraController.set_target_aim(selected_unit.global_translation)
+	
+	append_log("MISSION STARTED!")
+	append_log("Press P to pause the action")
 	pass
 	
 	

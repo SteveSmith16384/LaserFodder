@@ -6,6 +6,9 @@ const ENEMY_TARGET_CHECK_INTERVAL :float = 1.0
 var shared_target: Spatial
 
 func _process(delta):
+	if Globals.game_stage != Globals.GameStage.IN_GAME:
+		return
+		
 	if Globals.game_paused:
 		return
 		

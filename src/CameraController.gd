@@ -49,3 +49,8 @@ func set_target_aim(pos:Vector3):
 	_target_aim = pos
 	return
 	
+func adj_target_aim(x: float, z:float):
+	_target_aim.x += x
+	_target_aim.z += z
+	return
+	

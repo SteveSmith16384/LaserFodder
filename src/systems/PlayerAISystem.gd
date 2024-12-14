@@ -4,6 +4,9 @@ const SPEED = 3#1.65
 const ENEMY_TARGET_CHECK_INTERVAL :float = 1.0
 
 func _physics_process(delta):
+	if Globals.game_stage != Globals.GameStage.IN_GAME:
+		return
+		
 	if Globals.game_paused:
 		return
 		

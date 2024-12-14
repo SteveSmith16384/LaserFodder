@@ -16,8 +16,10 @@ const ACTION_RUN = 2
 
 var astar: AStar
 var rnd : RandomNumberGenerator
-var game_paused = false
-#var centre_on_unit = false
+var game_paused = true # Start paused 
+
+enum GameStage {DEPLOYMENT, IN_GAME}
+var game_stage : int = GameStage.DEPLOYMENT
 
 
 func _ready():
