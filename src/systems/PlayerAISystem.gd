@@ -3,16 +3,23 @@ extends Node
 const SPEED = 3#1.65
 const ENEMY_TARGET_CHECK_INTERVAL :float = 1.0
 
+var time_until_next_pos_check : float = 1
+
 func _physics_process(delta):
 	if Globals.game_stage != Globals.GameStage.IN_GAME:
 		return
 		
 	if Globals.game_paused:
 		return
-		
+
+	time_until_next_pos_check -= delta
+	
 	var players = get_tree().get_nodes_in_group("player")
 	for player in players:
 		_process_player(player, delta)
+		
+	if time_until_next_pos_check < 0:
+		time_until_next_pos_check = 1
 	pass
 	
 
@@ -62,7 +69,14 @@ func _process_player(player:KinematicBody, delta:float):
 		
 	if can_move.has_destination == false:
 		return
-	
+		
+	if time_until_next_pos_check < 0:
+		var dist :Vector3= player.global_translation - can_move.prev_pos
+		if dist.length() < 0.2:
+			can_move.pause_for = 1
+		else:
+			can_move.prev_pos = player.global_translation
+
 	if can_move.pause_for > 0:
 		player.idle_anim()
 		can_move.pause_for -= delta
@@ -133,9 +147,14 @@ func _check_for_enemy(entity, can_shoot):
 
 func _stop_walking(player, can_move):
 	can_move.has_destination = false
-	#can_move.dest_arrow.visible = false
 	if can_move.show_destination:
 		can_move.route_polygon.visible = false
 	player.idle_anim()
 	pass
 
+
+func _on_DistanceCheckTimer_timeout():
+	var players = get_tree().get_nodes_in_group("player")
+	for player in players:
+		var can_move:CanMove = player.get_node("CanMove")
+	pass

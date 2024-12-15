@@ -57,11 +57,11 @@ func turn_to_face(point:Vector3):
 	pass
 	
 
-func _on_PlayerUnit_input_event(_camera, _event, _position, _normal, _shape_idx):
-#	if event is InputEventMouseButton:
-#		if event.button_index == 1 and event.pressed:
-#			EventBus.player_selected(self)
-#		pass
+func _on_PlayerUnit_input_event(_camera, event, _position, _normal, _shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == 1 and event.pressed:
+			EventBus.player_selected(self)
+		pass
 	pass
 	
 

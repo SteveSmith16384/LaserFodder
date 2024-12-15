@@ -12,17 +12,8 @@ var mouse_pos := Vector2()
 var units_left_to_deploy = 5
 
 func _ready():
-	# Create players
-#	var start_positions = $SternersHouse.get_player_start_points()
-#	for start_position in start_positions:
-#		_create_player(start_position.global_translation)
-		
 	EventBus.connect("explosion", self, "_on_explosion")
-	
-#	var players = get_tree().get_nodes_in_group("player")
-#	_on_player_selected(players[0])
-
-#	$CameraController.set_target_aim(selected_unit.global_translation)
+	EventBus.connect("player_selected", self, "_on_player_selected")
 
 	append_log("Select location for unit " + str(6-units_left_to_deploy))
 	pass
@@ -177,6 +168,7 @@ func append_log(s:String):
 	pass
 	
 	
+# todo - is this used?
 func _on_enemy_selected(enemy:KinematicBody):
 	selected_unit.set_target(enemy)
 	append_log("Target selected")
