@@ -10,16 +10,15 @@ var speed = 1.65
 
 var has_destination = false
 var route_points : PoolVector3Array 
-#var route_ids # todo - for debugging - remove
 var route_index = 0
 var pause_for : float = 0
-#var dest_arrow: Spatial
 
-onready var route_polygon = $RoutePolygon
-
+var route_polygon:CSGPolygon# = $RoutePolygon_GETS_MOVED
+#
 
 func _ready():
-	self.remove_child(route_polygon)
+	route_polygon = $RoutePolygon_GETS_MOVED#.duplicate(0)
+	self.remove_child($RoutePolygon_GETS_MOVED)
 	if show_destination:
 #		dest_arrow = destarrow_class.instance()
 #		dest_arrow.visible = false
@@ -84,3 +83,10 @@ func set_path():
 	route_polygon.visible = true
 	pass
 
+
+func set_route_colour(col:Color):
+	if route_polygon != null:
+		var mat: SpatialMaterial = route_polygon.material
+		mat.albedo_color = col
+	pass
+	

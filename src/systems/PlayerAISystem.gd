@@ -93,11 +93,11 @@ func _process_player(player:KinematicBody, delta:float):
 	player.move_and_slide(offset)
 	
 	# if blocked by another player, wait
-	if player.get_slide_count() > 0:
-		var coll:KinematicCollision = player.get_slide_collision(0)
-		var other = coll.collider
-		if other.is_in_group("player"):
-			can_move.pause_for = 1.0
+#	if player.get_slide_count() > 0:
+#		var coll:KinematicCollision = player.get_slide_collision(0)
+#		var other = coll.collider
+#		if other.is_in_group("player"):
+#			can_move.pause_for = 1.0
 		
 	# Rotate based on new position
 	var new_pos:= Vector2(player.translation.x, player.translation.z)

@@ -114,3 +114,19 @@ func emit_signal_equipment_changed():
 	pass
 	
 
+func selected():
+	get_node("SelectedArrow").visible = true
+	get_node("IsPlayer").selected = true
+	
+	var can_move = get_node("CanMove")
+	can_move.set_route_colour(Color.green)
+	pass
+	
+	
+func deselected():
+	get_node("SelectedArrow").visible = false
+	get_node("IsPlayer").selected = false
+	var can_move = get_node("CanMove")
+	can_move.set_route_colour(Color.gray)
+	pass
+

@@ -154,8 +154,7 @@ func _start_game():
 	
 func _on_player_selected(player:KinematicBody):
 	for pl in get_tree().get_nodes_in_group("player"):
-		pl.get_node("SelectedArrow").visible = false
-		pl.get_node("IsPlayer").selected = false
+		pl.deselected()
 
 	var unit_data: UnitData = player.get_node("UnitData")
 	if unit_data.killed:
@@ -163,9 +162,8 @@ func _on_player_selected(player:KinematicBody):
 		return
 		
 	selected_unit = player
-	player.get_node("SelectedArrow").visible = true
-	player.get_node("IsPlayer").selected = true
 
+	player.selected()
 #	$CameraController.target_aim = player.global_translation
 #	$CameraController.target_aim.z += 7
 	append_log("Unit selected")
@@ -201,8 +199,8 @@ func _create_player(pos: Vector3):
 	
 	$GameUI.add_player_icon(player)
 
-	if selected_unit == null:
-		_on_player_selected(player)
+#	if selected_unit == null:
+#		_on_player_selected(player)
 	pass
 
 

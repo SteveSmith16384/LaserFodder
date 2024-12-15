@@ -8,7 +8,8 @@
 [node name="CarriedPistol" type="Node"]
 
 [node name="IsGun" parent="." instance=ExtResource( 2 )]
-damage = 50.0
+damage = 40.0
+accuracy = 50
 shot_sfx = ExtResource( 1 )
 bullet_class = ExtResource( 4 )
 
