@@ -7,7 +7,7 @@
 
 [node name="IsItem" parent="." instance=ExtResource( 1 )]
 item_name = "Grenade"
-one_off = true
+one_off_shot = true
 
 [node name="IsGrenade" parent="." instance=ExtResource( 2 )]
 radius = 6.0

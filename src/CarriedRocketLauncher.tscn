@@ -8,8 +8,13 @@
 
 [node name="IsItem" parent="." instance=ExtResource( 1 )]
 item_name = "Rocket Launcher"
+one_off_shot = true
 
 [node name="IsGun" parent="." instance=ExtResource( 2 )]
 opp_fire = false
+reload_time_millis = 5000.0
 burst_size = 1
+max_ammo = 1
+infinite_ammo = false
 bullet_class = ExtResource( 3 )
+ammo_type = 1

@@ -11,12 +11,16 @@ export var infinite_ammo = true
 export var accuracy:int = 70
 export(Resource) var shot_sfx
 export(Resource) var bullet_class
+export (IsAmmo.AmmoType) var ammo_type: int
 
 var _ammo: int = -1
 
 var time_of_next_shot:float = 0
 var num_left_in_burst: int = 3
 
+
+func _process(delta):
+	pass
 
 func get_ammo():
 	if infinite_ammo:
@@ -33,5 +37,10 @@ func dec_ammo():
 	_ammo -= 1
 	if _ammo < 0:
 		_ammo = 0
+	pass
+	
+
+func reload():
+	_ammo = max_ammo
 	pass
 	

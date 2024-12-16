@@ -1,3 +1,4 @@
+class_name CanCarry
 extends Node
 
 var items = []

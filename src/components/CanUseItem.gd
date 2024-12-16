@@ -30,7 +30,7 @@ func use_item(current_weapon, target_point: Vector3): # Return whether to play s
 			$Audio_Shoot.play()
 		
 		var unit_data:UnitData = get_parent().get_node("UnitData")
-		var bullet:Bullet = is_gun.bullet_class.instance()
+		var bullet:Spatial = is_gun.bullet_class.instance()
 		bullet.init(get_parent(), unit_data.side, is_gun, bullet_colour)
 		var origin = get_parent().get_node("Rotator/Muzzle").global_translation
 		#bullet.translation = get_parent().get_node("Muzzle").global_translation

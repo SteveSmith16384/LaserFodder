@@ -37,6 +37,8 @@ func _process(_delta):
 	elif Input.is_action_just_pressed("unit_5"):
 		var players = get_tree().get_nodes_in_group("player")
 		_on_player_selected(players[4])
+	elif Input.is_action_just_pressed("reload"):
+		_reload()
 	pass
 	
 	
@@ -105,7 +107,7 @@ func _physics_process_in_game(_delta):
 				# Shoot!
 				var can_carry = selected_unit.get_node("CanCarry")
 				if can_carry.current_item != null:
-					if can_carry.current_item.get_node("IsItem").one_off:
+					if can_carry.current_item.get_node("IsItem").one_off_shot:
 						shoot_clicked = false
 					var can_shoot = selected_unit.get_node("CanUseItem")
 					var shot_fired = can_shoot.use_item(can_carry.current_item, result.position)
@@ -183,16 +185,12 @@ func _create_player(pos: Vector3):
 	player.get_node("UnitData").init(Globals.get_unit_name(idx), Globals.SIDE_PLAYER)
 
 	player.connect("health_changed", self, "_on_player_health_changed")
-	#self.call_deferred("add_child", player)
 	$SternersHouse.add_child(player)
 	
 	var num = get_tree().get_nodes_in_group("player").size()
 	player.set_label(num)
 	
 	$GameUI.add_player_icon(player)
-
-#	if selected_unit == null:
-#		_on_player_selected(player)
 	pass
 
 
@@ -237,6 +235,32 @@ func _on_player_health_changed(player):
 #		if player == selected_unit:
 #			selected_unit = null
 		append_log(unit_data.unit_name + " HAS BEEN KILLED!")
+	pass
+	
+	
+func _reload():
+	var can_carry:CanCarry = selected_unit.get_node("CanCarry")
+	var gun:IsGun = can_carry.current_item.find_node("IsGun", false)
+	if gun == null:
+		return
+		
+	if gun.get_ammo() >= gun.max_ammo:
+		append_log("Weapon already at full ammo")
+		return
+		
+	for item in can_carry.items:
+		var ammo = item.find_node("IsAmmo", false)
+		if ammo == null:
+			continue
+		if ammo.ammo_type != gun.ammo_type:
+			continue
+		
+		gun.reload()
+		can_carry.items.erase(item)
+		append_log("Weapon reloaded")
+		# todo - player can't shoot until reload time
+		player.emit_signal_equipment_changed()
+		break
 	pass
 	
 	

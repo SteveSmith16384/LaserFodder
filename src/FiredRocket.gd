@@ -13,7 +13,7 @@ func _ready():
 	pass
 
 
-func init(gun_data):
+func init(_shooter, _side, gun_data, _col:Color):
 	is_gun = gun_data
 	pass
 	
