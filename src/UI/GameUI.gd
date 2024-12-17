@@ -20,6 +20,14 @@ func add_player_icon(player:Spatial):
 
 func _on_player_selected(player):
 	emit_signal("player_selected", player)
+	
+	# Show unit stats
+	var unit_data :UnitData = player.get_node("UnitData")
+	$UnitStats.clear_log()
+	$UnitStats.text = unit_data.unit_name + "\n"
+	$UnitStats.text += "Armour: " + str(int(unit_data.armour)) + "%\n"
+	$UnitStats.text += "Acc: " + str(int(unit_data.accuracy)) + "%\n"
+	$UnitStats.text += "Health: " + str(int(unit_data.health)) + "\n"
 	pass
 	
 

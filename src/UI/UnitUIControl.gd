@@ -55,10 +55,13 @@ func _update_equipment():
 	
 
 func _get_item_text(item):
-	var is_item = item.get_node("IsItem")
-	var is_gun = item.find_node("IsGun", false)
+	var is_item:IsItem = item.get_node("IsItem")
+	var is_gun:IsGun = item.find_node("IsGun", false)
 	if is_gun != null:
-		return is_item.item_name + " " + str(is_gun.get_ammo()) + "/" + str(is_gun.max_ammo)
+		if is_gun.infinite_ammo:
+			return is_item.item_name
+		else:
+			return is_item.item_name + " " + str(is_gun.get_ammo()) + "/" + str(is_gun.max_ammo)
 	else:
 		return is_item.item_name
 

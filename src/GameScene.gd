@@ -50,7 +50,7 @@ func _physics_process(delta):
 	pass
 	
 
-func _physics_process_deploy(delta):
+func _physics_process_deploy(_delta):
 #	if mouse_pos.x > 612:
 #	$CameraController.adj_target_aim((mouse_pos.x - 612) * delta * 0.1, 0)
 #	else:
@@ -259,7 +259,7 @@ func _reload():
 		can_carry.items.erase(item)
 		append_log("Weapon reloaded")
 		# todo - player can't shoot until reload time
-		player.emit_signal_equipment_changed()
+		selected_unit.emit_signal_equipment_changed()
 		break
 	pass
 	

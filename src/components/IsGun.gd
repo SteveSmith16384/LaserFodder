@@ -19,9 +19,6 @@ var time_of_next_shot:float = 0
 var num_left_in_burst: int = 3
 
 
-func _process(delta):
-	pass
-
 func get_ammo():
 	if infinite_ammo:
 		return max_ammo

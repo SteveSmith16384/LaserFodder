@@ -1,3 +1,4 @@
+class_name IsItem
 extends Node
 
 export var item_name : String

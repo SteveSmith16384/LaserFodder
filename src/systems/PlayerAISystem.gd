@@ -153,8 +153,3 @@ func _stop_walking(player, can_move):
 	pass
 
 
-func _on_DistanceCheckTimer_timeout():
-	var players = get_tree().get_nodes_in_group("player")
-	for player in players:
-		var can_move:CanMove = player.get_node("CanMove")
-	pass
