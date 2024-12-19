@@ -6,7 +6,7 @@
 [node name="CarriedAP25Grenade" type="Node"]
 
 [node name="IsItem" parent="." instance=ExtResource( 1 )]
-item_name = "Grenade"
+equipment_type = 2
 one_off_shot = true
 
 [node name="IsGrenade" parent="." instance=ExtResource( 2 )]

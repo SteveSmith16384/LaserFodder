@@ -6,20 +6,20 @@ signal equipment_changed2
 onready var model = $Rotator/Spacesuit
 
 func _ready():
-	var pistol = CreateEquipment.get_equipment(CreateEquipment.EquipType.Pistol)
+	var pistol = CreateEquipment.create_carried_equipment(Globals.EquipType.Pistol)
 	$CanCarry.items.push_back(pistol)
 	$CanCarry.current_item = $CanCarry.get_first_gun()
 
-#	var grenade = CreateEquipment.get_equipment(CreateEquipment.EquipType.AP50)
+#	var grenade = CreateEquipment.create_carried_equipment(Globals.EquipType.AP50)
 #	$CanCarry.items.push_back(grenade)
 
-#	var medikit = CreateEquipment.get_equipment(CreateEquipment.EquipType.MediKit)
+#	var medikit = CreateEquipment.create_carried_equipment(Globals.EquipType.MediKit)
 #	$CanCarry.items.push_back(medikit)
 
-#	var rocketlauncher = CreateEquipment.get_equipment(CreateEquipment.EquipType.RocketLauncher)
+#	var rocketlauncher = CreateEquipment.create_carried_equipment(Globals.EquipType.RocketLauncher)
 #	$CanCarry.items.push_back(rocketlauncher)
 
-#	var rocket = CreateEquipment.get_equipment(CreateEquipment.EquipType.Rocket)
+#	var rocket = CreateEquipment.create_carried_equipment(Globals.EquipType.Rocket)
 #	$CanCarry.items.push_back(rocket)
 
 	model.idle()

@@ -3,6 +3,7 @@ extends Node
 signal explosion
 signal player_selected
 signal append_log
+#signal item_dropped
 
 func explosion(pos:Vector3, rad:float, dmg:float):
 	emit_signal("explosion", pos, rad, dmg)
@@ -15,7 +16,12 @@ func player_selected(player):
 	
 
 func append_log(s:String):
-	emit_signal(s)
+	emit_signal("append_log", s)
 	pass
+	
+	
+#func item_dropped(item):
+#	emit_signal("item_dropped", item)
+#	pass
 	
 	

@@ -14,6 +14,7 @@ var units_left_to_deploy = 5
 func _ready():
 	EventBus.connect("explosion", self, "_on_explosion")
 	EventBus.connect("player_selected", self, "_on_player_selected")
+	#EventBus.connect("item_dropped", self, "_on_item_dropped")
 
 	append_log("Select location for unit " + str(6-units_left_to_deploy))
 	pass
@@ -262,4 +263,33 @@ func _reload():
 		break
 	pass
 	
+	
+func _pickup():
+	var can_carry = selected_unit.get_node("CanCarry")
+
+	var can_pick_up = selected_unit.get_node("CanPickUp")
+	for area in can_pick_up.areas:
+		var item = area.get_parent()
+		var is_item:IsItem = item.get_node("IsItem")
+		var eq = CreateEquipment.create_carried_equipment(is_item.equipment_type)
+		can_carry.items.push_back(eq)
+		selected_unit.emit_signal_equipment_changed()
+
+		EventBus.append_log(CreateEquipment.get_item_name(is_item.equipment_type) + " picked up")
+
+		item.queue_free()
+		pass
+		
+	pass
+	
+	
+func _drop():
+	var can_carry:CanCarry = selected_unit.get_node("CanCarry")
+	var item = can_carry.current_item
+	var is_item:IsItem = item.get_node("IsItem")
+	var eq:Spatial = CreateEquipment.create_dropped_equipment(is_item.equipment_type)
+	eq.translation = selected_unit.translation
+	$SternersHouse.add_child(eq)
+	can_carry.items.erase(can_carry.current_item)
+	pass
 	

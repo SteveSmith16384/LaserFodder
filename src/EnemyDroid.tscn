@@ -114,7 +114,6 @@ shape = SubResource( 1 )
 bullet_colour = Color( 1, 0, 0, 1 )
 
 [node name="CheckCanSeeRay" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="UnitData" parent="." instance=ExtResource( 11 )]
 

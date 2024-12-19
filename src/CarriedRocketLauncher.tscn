@@ -7,7 +7,7 @@
 [node name="CarriedRocketLauncher" type="Node"]
 
 [node name="IsItem" parent="." instance=ExtResource( 1 )]
-item_name = "Rocket Launcher"
+equipment_type = 6
 one_off_shot = true
 
 [node name="IsGun" parent="." instance=ExtResource( 2 )]

@@ -21,6 +21,9 @@ var game_paused = false
 enum GameStage {DEPLOYMENT, IN_GAME}
 var game_stage : int = GameStage.DEPLOYMENT
 
+enum EquipType { Pistol, Autogun, AP25, AP50, AP100, MediKit, RocketLauncher, Rocket, DroidLaser, LasPack }
+
+
 
 func _ready():
 	rnd = RandomNumberGenerator.new()
@@ -37,12 +40,4 @@ func get_unit_name(idx:int) -> String:
 		_: return "Private Stone"
 	pass
 	
-	
-#func face(us: Spatial, player:Spatial, delta:float):
-#	var us_pos = self.translation
-#	var them_pos = player.translation
-#	var wtransform = us.global_transform.looking_at(Vector3(them_pos.x, us_pos.y ,them_pos.z),Vector3(0,1,0))
-#	var wrotation = Quat(us.global_transform.basis).slerp(Quat(wtransform.basis), delta*5)
-#	us.global_transform = Transform(Basis(wrotation), us.global_transform.origin)
-#	pass
 	

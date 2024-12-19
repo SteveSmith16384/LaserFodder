@@ -1,8 +1,6 @@
 class_name CreateEquipment
 extends Node
 
-enum EquipType { Pistol, Autogun, AP25, AP50, AP100, MediKit, RocketLauncher, Rocket }
-
 const carriedpistol_class = preload("res://CarriedPistol.tscn")
 const carriedautogun_class = preload("res://CarriedAutogun.tscn")
 const carriedlaspack_class = preload("res://CarriedLasPack.tscn")
@@ -13,26 +11,78 @@ const carriedrocketlauncher_class = preload("res://CarriedRocketLauncher.tscn")
 const carriedmedikit_class = preload("res://CarriedMediKit.tscn")
 const carriedrocket_class = preload("res://CarriedRocket.tscn")
 
+#const ap50grenadeonfloor_class = preload("res://Ap50GrenadeOnFloor.tscn")
 
-static func get_equipment(type: int):
+
+static func create_carried_equipment(type: int):
 	match type:
-		EquipType.Pistol:
+		Globals.EquipType.Pistol:
 			return carriedpistol_class.instance()
-		EquipType.Autogun:
+		Globals.EquipType.Autogun:
 			return carriedautogun_class.instance()
-		EquipType.AP25:
+		Globals.EquipType.AP25:
 			return carriedap25grenade_class.instance()
-		EquipType.AP50:
+		Globals.EquipType.AP50:
 			return carriedap50grenade_class.instance()
-		EquipType.AP100:
+		Globals.EquipType.AP100:
 			return carriedap100grenade_class.instance()
-		EquipType.MediKit:
+		Globals.EquipType.MediKit:
 			return carriedmedikit_class.instance()
-		EquipType.RocketLauncher:
+		Globals.EquipType.RocketLauncher:
 			return carriedrocketlauncher_class.instance()
-		EquipType.Rocket:
+		Globals.EquipType.Rocket:
 			return carriedrocket_class.instance()
 		_:
 			push_error("Unknown type:" + str(type))
-			
-			
+	pass
+	
+
+static func create_dropped_equipment(type: int):
+	var ap50grenadeonfloor_class = load("res://Ap50GrenadeOnFloor.tscn")
+	match type:
+		Globals.EquipType.Pistol:
+			return ap50grenadeonfloor_class.instance() # todo
+		Globals.EquipType.Autogun:
+			return ap50grenadeonfloor_class.instance() # todo
+		Globals.EquipType.AP25:
+			return ap50grenadeonfloor_class.instance() # todo
+		Globals.EquipType.AP50:
+			return ap50grenadeonfloor_class.instance()
+		Globals.EquipType.AP100:
+			return ap50grenadeonfloor_class.instance() # todo
+		Globals.EquipType.MediKit:
+			return ap50grenadeonfloor_class.instance() # todo
+		Globals.EquipType.RocketLauncher:
+			return ap50grenadeonfloor_class.instance() # todo
+		Globals.EquipType.Rocket:
+			return ap50grenadeonfloor_class.instance() # todo
+		_:
+			push_error("Unknown type:" + str(type))
+			return null
+	pass
+
+
+static func get_item_name(type:int) -> String:
+	match type:
+		Globals.EquipType.Pistol:
+			return "Pistol"
+		Globals.EquipType.Autogun:
+			return "Autogun"
+		Globals.EquipType.AP25:
+			return "AP25 Grenade"
+		Globals.EquipType.AP50:
+			return "AP50 Grenade"
+		Globals.EquipType.AP100:
+			return "AP100 Grenade"
+		Globals.EquipType.MediKit:
+			return "Medikit"
+		Globals.EquipType.RocketLauncher:
+			return "Rocket Launcher"
+		Globals.EquipType.Rocket:
+			return "Rocket"
+		_:
+			push_error("Unknown type:" + str(type))
+			return "nulUnknown"
+	pass
+	
+	

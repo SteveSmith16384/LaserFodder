@@ -6,7 +6,6 @@
 [node name="CarriedMediKit" type="Node"]
 
 [node name="IsItem" parent="." instance=ExtResource( 1 )]
-item_name = "MediKit"
-one_off = true
+equipment_type = 5
 
 [node name="IsMediKit" parent="." instance=ExtResource( 2 )]

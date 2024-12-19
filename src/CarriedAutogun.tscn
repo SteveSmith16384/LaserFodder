@@ -12,4 +12,4 @@ accuracy = 60
 bullet_class = ExtResource( 3 )
 
 [node name="IsItem" parent="." instance=ExtResource( 1 )]
-item_name = "Autogun"
+equipment_type = 1

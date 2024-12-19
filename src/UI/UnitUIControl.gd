@@ -58,11 +58,11 @@ func _get_item_text(item):
 	var is_gun:IsGun = item.find_node("IsGun", false)
 	if is_gun != null:
 		if is_gun.infinite_ammo:
-			return is_item.item_name
+			return CreateEquipment.get_item_name(is_item.equipment_type)
 		else:
-			return is_item.item_name + " " + str(is_gun.get_ammo()) + "/" + str(is_gun.max_ammo)
+			return CreateEquipment.get_item_name(is_item.equipment_type) + " " + str(is_gun.get_ammo()) + "/" + str(is_gun.max_ammo)
 	else:
-		return is_item.item_name
+		return CreateEquipment.get_item_name(is_item.equipment_type)
 
 
 func _on_CarriedItems_item_selected(index):
