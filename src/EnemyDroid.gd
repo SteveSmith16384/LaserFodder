@@ -28,15 +28,6 @@ func can_see_point(point:Vector3) -> bool:
 	var can_see = $CheckCanSeeRay.can_see_point(point - self.translation)
 	return can_see == null
 	
-		
-func _on_EnemyDroid_input_event(_camera, _event, _position, _normal, _shape_idx):
-#	if event is InputEventMouseButton:
-#		if event.button_index == 2 and event.pressed:
-			#EventBus.enemy_selected(self)
-			#emit_signal("selected", self)
-#		pass
-	pass
-
 
 func _on_UnitData_shot(_shooter):
 	$Rotator/MakeCentre/NewModel/Sparks.activate()

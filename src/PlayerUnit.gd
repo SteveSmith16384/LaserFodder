@@ -10,17 +10,17 @@ func _ready():
 	$CanCarry.items.push_back(pistol)
 	$CanCarry.current_item = $CanCarry.get_first_gun()
 
-	var grenade = CreateEquipment.get_equipment(CreateEquipment.EquipType.AP50)
-	$CanCarry.items.push_back(grenade)
+#	var grenade = CreateEquipment.get_equipment(CreateEquipment.EquipType.AP50)
+#	$CanCarry.items.push_back(grenade)
 
-	var medikit = CreateEquipment.get_equipment(CreateEquipment.EquipType.MediKit)
-	$CanCarry.items.push_back(medikit)
+#	var medikit = CreateEquipment.get_equipment(CreateEquipment.EquipType.MediKit)
+#	$CanCarry.items.push_back(medikit)
 
-	var rocketlauncher = CreateEquipment.get_equipment(CreateEquipment.EquipType.RocketLauncher)
-	$CanCarry.items.push_back(rocketlauncher)
+#	var rocketlauncher = CreateEquipment.get_equipment(CreateEquipment.EquipType.RocketLauncher)
+#	$CanCarry.items.push_back(rocketlauncher)
 
-	var rocket = CreateEquipment.get_equipment(CreateEquipment.EquipType.Rocket)
-	$CanCarry.items.push_back(rocket)
+#	var rocket = CreateEquipment.get_equipment(CreateEquipment.EquipType.Rocket)
+#	$CanCarry.items.push_back(rocket)
 
 	model.idle()
 	
@@ -56,12 +56,12 @@ func turn_to_face(point:Vector3):
 	pass
 	
 
-func _on_PlayerUnit_input_event(_camera, event, _position, _normal, _shape_idx):
-	if event is InputEventMouseButton:
-		if event.button_index == 1 and event.pressed:
-			EventBus.player_selected(self)
-		pass
-	pass
+#func _on_PlayerUnit_input_event(_camera, event, _position, _normal, _shape_idx):
+#	if event is InputEventMouseButton:
+#		if event.button_index == 1 and event.pressed:
+#			EventBus.player_selected(self)
+#		pass
+#	pass
 	
 
 func idle_anim():
@@ -129,3 +129,7 @@ func deselected():
 	can_move.set_route_colour(Color.gray)
 	pass
 
+
+func _on_CanBeSelected_selected():
+	EventBus.player_selected(self)
+	pass

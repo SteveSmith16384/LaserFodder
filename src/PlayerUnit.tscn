@@ -72,5 +72,6 @@ font = SubResource( 2 )
 [node name="UnitData" parent="." instance=ExtResource( 14 )]
 
 [connection signal="input_event" from="." to="." method="_on_PlayerUnit_input_event"]
+[connection signal="selected" from="CanBeSelected" to="." method="_on_CanBeSelected_selected"]
 [connection signal="killed" from="UnitData" to="." method="_on_UnitData_killed"]
 [connection signal="shot" from="UnitData" to="." method="_on_UnitData_shot"]

@@ -51,11 +51,6 @@ func _physics_process(delta):
 	
 
 func _physics_process_deploy(_delta):
-#	if mouse_pos.x > 612:
-#	$CameraController.adj_target_aim((mouse_pos.x - 612) * delta * 0.1, 0)
-#	else:
-#		$CameraController.adj_target_aim(mouse_pos.x - 612)
-	
 	if destination_clicked:
 		destination_clicked = false
 

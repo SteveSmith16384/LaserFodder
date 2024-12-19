@@ -45,14 +45,6 @@ func can_see(enemy:Spatial) -> bool:
 	return $CheckCanSeeRay.can_see(enemy)
 	
 
-func _on_EnemyAgent_input_event(_camera, event, _position, _normal, _shape_idx):
-	if event is InputEventMouseButton:
-		if event.button_index == 2 and event.pressed:
-			emit_signal("selected", self)
-		pass
-	pass
-
-
 func _on_UnitData_shot(shooter:Spatial):
 	if shooter != null:
 		turn_to_face(shooter.global_translation)
