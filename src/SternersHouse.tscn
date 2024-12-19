@@ -2178,3 +2178,6 @@ material = SubResource( 19 )
 
 [node name="GrenadeOnFloor" parent="Equipment" instance=ExtResource( 21 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.583, 0, -1.10431 )
+
+[node name="GrenadeOnFloor2" parent="Equipment" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2349, 0, -1.10431 )

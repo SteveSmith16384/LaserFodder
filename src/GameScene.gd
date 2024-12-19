@@ -25,19 +25,19 @@ func _process(_delta):
 		_set_pause(not Globals.game_paused)
 	if Input.is_action_just_pressed("unit_1"):
 		var players = get_tree().get_nodes_in_group("player")
-		_on_player_selected(players[0])
+		$GameUI._on_player_selected(players[0])
 	elif Input.is_action_just_pressed("unit_2"):
 		var players = get_tree().get_nodes_in_group("player")
-		_on_player_selected(players[1])
+		$GameUI._on_player_selected(players[1])
 	elif Input.is_action_just_pressed("unit_3"):
 		var players = get_tree().get_nodes_in_group("player")
-		_on_player_selected(players[2])
+		$GameUI._on_player_selected(players[2])
 	elif Input.is_action_just_pressed("unit_4"):
 		var players = get_tree().get_nodes_in_group("player")
-		_on_player_selected(players[3])
+		$GameUI._on_player_selected(players[3])
 	elif Input.is_action_just_pressed("unit_5"):
 		var players = get_tree().get_nodes_in_group("player")
-		_on_player_selected(players[4])
+		$GameUI._on_player_selected(players[4])
 	elif Input.is_action_just_pressed("reload"):
 		_reload()
 	elif Input.is_action_just_pressed("pickup"):
