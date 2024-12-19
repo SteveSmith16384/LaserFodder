@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GrenadeMesh.tscn" type="PackedScene" id=1]
+[ext_resource path="res://components/CanBePickedUp.tscn" type="PackedScene" id=3]
+[ext_resource path="res://components/OnlyVisibleWhenInView.tscn" type="PackedScene" id=4]
+[ext_resource path="res://components/IsItem.tscn" type="PackedScene" id=5]
+
+[node name="Ap100GrenadeOnFloor" type="Spatial"]
+
+[node name="CanBePickedUp" parent="." instance=ExtResource( 3 )]
+
+[node name="GrenadeMesh" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.145121, 0 )
+
+[node name="OnlyVisibleWhenInView" parent="." instance=ExtResource( 4 )]
+
+[node name="IsItem" parent="." instance=ExtResource( 5 )]
+equipment_type = 4
+one_off_shot = true

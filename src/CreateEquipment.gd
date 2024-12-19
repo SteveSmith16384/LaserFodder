@@ -38,24 +38,31 @@ static func create_carried_equipment(type: int):
 	
 
 static func create_dropped_equipment(type: int):
-	var ap50grenadeonfloor_class = load("res://Ap50GrenadeOnFloor.tscn")
 	match type:
 		Globals.EquipType.Pistol:
-			return ap50grenadeonfloor_class.instance() # todo
+			var eq_class = load("res://PistolOnFloor.tscn")
+			return eq_class.instance() # todo
 		Globals.EquipType.Autogun:
-			return ap50grenadeonfloor_class.instance() # todo
+			var eq_class = load("res://AutogunOnFloor.tscn")
+			return eq_class.instance() # todo
 		Globals.EquipType.AP25:
-			return ap50grenadeonfloor_class.instance() # todo
+			var eq_class = load("res://Ap25GrenadeOnFloor.tscn")
+			return eq_class.instance() # todo
 		Globals.EquipType.AP50:
+			var ap50grenadeonfloor_class = load("res://Ap50GrenadeOnFloor.tscn")
 			return ap50grenadeonfloor_class.instance()
 		Globals.EquipType.AP100:
-			return ap50grenadeonfloor_class.instance() # todo
+			var eq_class = load("res://Ap100GrenadeOnFloor.tscn")
+			return eq_class.instance() # todo
 		Globals.EquipType.MediKit:
-			return ap50grenadeonfloor_class.instance() # todo
+			var eq_class = load("res://MedikitOnFloor.tscn")
+			return eq_class.instance() # todo
 		Globals.EquipType.RocketLauncher:
-			return ap50grenadeonfloor_class.instance() # todo
+			var eq_class = load("res://RocketLauncherOnFloor.tscn")
+			return eq_class.instance() # todo
 		Globals.EquipType.Rocket:
-			return ap50grenadeonfloor_class.instance() # todo
+			var eq_class = load("res://RocketOnFloor.tscn")
+			return eq_class.instance() # todo
 		_:
 			push_error("Unknown type:" + str(type))
 			return null

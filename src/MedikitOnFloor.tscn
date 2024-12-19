@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://components/CanBePickedUp.tscn" type="PackedScene" id=3]
+[ext_resource path="res://components/OnlyVisibleWhenInView.tscn" type="PackedScene" id=4]
+[ext_resource path="res://components/IsItem.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 0.2, 0.2, 0.2 )
+
+[sub_resource type="SpatialMaterial" id=2]
+
+[node name="MedikitOnFloor" type="Spatial"]
+
+[node name="CanBePickedUp" parent="." instance=ExtResource( 3 )]
+
+[node name="OnlyVisibleWhenInView" parent="." instance=ExtResource( 4 )]
+
+[node name="IsItem" parent="." instance=ExtResource( 5 )]
+equipment_type = 5
+one_off_shot = true
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
