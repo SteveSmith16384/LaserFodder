@@ -7,6 +7,11 @@ signal pause_changed
 
 var player_icons = {} # player::icon
 
+func _ready():
+	EventBus.connect("append_log", self, "_on_append_log")
+	pass
+	
+	
 func add_player_icon(player:Spatial):
 	var icon = player_icon_class.instance()
 	icon.init(player)
@@ -42,5 +47,10 @@ func select_player(player):
 			ch.set_pressed(true)
 		else:
 			ch.set_pressed(false)
+	pass
+	
+
+func _on_append_log(s:String):
+	$Log.append_to_log(s)
 	pass
 	

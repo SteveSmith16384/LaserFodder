@@ -1,7 +1,6 @@
 extends Control
 
 signal player_selected
-#signal action_mode_changed
 
 var player : KinematicBody
 

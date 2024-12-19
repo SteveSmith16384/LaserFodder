@@ -39,6 +39,10 @@ func _process(_delta):
 		_on_player_selected(players[4])
 	elif Input.is_action_just_pressed("reload"):
 		_reload()
+	elif Input.is_action_just_pressed("pickup"):
+		_pickup()
+	elif Input.is_action_just_pressed("drop"):
+		_drop()
 	pass
 	
 	

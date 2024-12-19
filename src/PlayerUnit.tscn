@@ -47,7 +47,6 @@ skeleton = NodePath("../..")
 [node name="CanBeSelected" parent="." instance=ExtResource( 3 )]
 
 [node name="CheckCanSeeRay" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="CanMove" parent="." instance=ExtResource( 12 )]
 show_destination = true
